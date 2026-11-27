@@ -22,15 +22,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout CARE backend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care
+          ref: ddfd840dbe314b4e53d2a719d2138324d970634b
+          path: care
+          persist-credentials: false
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
+      - name: Remove previously recorded evidence
+        run: |
+          rm -f testing/coverage/coverage.json testing/coverage/coverage.xml
+          rm -rf testing/mutation/results
+          mkdir -p testing/mutation/results
+
       - name: Start CARE Docker services
         working-directory: care
         run: |
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml up -d --build --wait
+
+      - name: Install mutation tools
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend /.venv/bin/pip install mutmut==3.8.1 pytest==9.2.0
 
       - name: Load synthetic fixtures
         working-directory: care
@@ -49,16 +68,16 @@ jobs:
       - name: Run coverage and selected-function gate
         working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml -o /tmp/care_testing/coverage/coverage.xml'
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json testing/coverage/coverage.json
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml testing/coverage/coverage.xml
-          python testing/mutation/coverage_quality_gate.py
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.xml'
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json ../testing/coverage/coverage.json
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml ../testing/coverage/coverage.xml
+          python ../testing/mutation/coverage_quality_gate.py
 
       - name: Run mutmut campaign
         working-directory: care
         run: |
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'mkdir -p /tmp/care_mutation_workspace && cd /tmp/care_mutation_workspace && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python /tmp/care_testing/mutation/campaign.py --source-root /app --testing-root /tmp/care_testing --mutmut-bin /.venv/bin/mutmut --python-bin /.venv/bin/python --results-dir /tmp/care_testing/mutation/results'
-          docker cp care-backend-1:/tmp/care_testing/mutation/results/. testing/mutation/results/
+          docker cp care-backend-1:/tmp/care_testing/mutation/results/. ../testing/mutation/results/
 
       - name: Enforce mutation threshold
         run: |
@@ -73,7 +92,7 @@ jobs:
             testing/coverage/coverage.json
             testing/coverage/coverage.xml
             testing/mutation/results/
-          if-no-files-found: error
+          if-no-files-found: warn
 
   frontend-playwright:
     name: Frontend Playwright
