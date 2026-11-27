@@ -47,12 +47,8 @@ async function openCompletionDialog(page: any) {
 }
 
 async function triggerInpatientDischarge(page: any) {
-  const trigger = page
-    .getByRole("button", { name: /^Mark as Completed(?: M \+ C)?$/i })
-    .first();
-  await expect(trigger).toBeVisible();
-  await expect(trigger).toBeEnabled();
-  await trigger.click();
+  await page.getByRole("button", { name: "Encounter Actions" }).click();
+  await page.getByRole("dialog").getByRole("option", { name: /Mark for discharge/i }).click();
   await expect(page).toHaveURL(/questionnaire\/encounter.*toDischarge=true/, {
     timeout: 15000,
   });
@@ -209,13 +205,12 @@ test.describe("Team Member 1 - UC-ENC-002 Create Date/Status Validation", () => 
   test("E2E-EXC-004 exception: missing department rejects create", async ({ page }) => {
     await openCreate(page);
     await page.getByRole("button", { name: "Ambulatory" }).click();
+    const createButton = page.getByRole("button", { name: /^Create Encounter/ });
+    await expect(createButton).toBeEnabled();
     await page
       .getByRole("button", { name: "Remove Administration" })
       .click();
-    await page
-      .getByRole("button", { name: /^Create Encounter/ })
-      .click();
-    await expect(page.getByText(/department|organization/i)).toBeVisible();
+    await expect(createButton).toBeDisabled();
   });
 });
 
@@ -402,7 +397,7 @@ test.describe("Team Member 3 - UC-ENC-006 Restart Encounter", () => {
     const setup = await createEncounter(fixture, { status: "completed" });
     await openEncounter(page, setup.data.id, fixture, "admin", "admin");
     await page.getByRole("button", { name: "Encounter Actions" }).click();
-    await page.getByRole("menuitem", { name: /Restart Encounter/i }).click();
+    await page.getByRole("dialog").getByRole("option", { name: /Restart Encounter/i }).click();
     await expect(page.getByText(/restarted successfully/i)).toBeVisible();
     const record = await getEncounter(fixture, setup.data.id);
     expect(record.status).toBe("in_progress");
@@ -413,7 +408,7 @@ test.describe("Team Member 3 - UC-ENC-006 Restart Encounter", () => {
     const setup = await createEncounter(fixture, { status: "completed" });
     await openEncounter(page, setup.data.id, fixture, "admin", "admin");
     await page.getByRole("button", { name: "Encounter Actions" }).click();
-    await page.getByRole("menuitem", { name: /Restart Encounter/i }).click();
+    await page.getByRole("dialog").getByRole("option", { name: /Restart Encounter/i }).click();
     await expect(page.getByText(/restarted successfully/i)).toBeVisible();
     await page.waitForURL(/\/encounter\/[^/]+\/updates/);
     const record = await getEncounter(fixture, setup.data.id);
