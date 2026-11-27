@@ -22,6 +22,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clear previous quality evidence
+        run: |
+          rm -f testing/coverage/coverage.json testing/coverage/coverage.xml
+          rm -rf testing/mutation/results
+          mkdir -p testing/mutation/results
+
+      - name: Checkout CARE backend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care
+          ref: ddfd840dbe314b4e53d2a719d2138324d970634b
+          path: care
+          persist-credentials: false
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -37,6 +51,11 @@ jobs:
         run: |
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
 
+      - name: Install mutation tool
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend /.venv/bin/python -m pip install mutmut==3.8.1
+
       - name: Copy independent testing package
         run: |
           docker cp testing/. care-backend-1:/tmp/care_testing/
@@ -50,15 +69,15 @@ jobs:
         working-directory: care
         run: |
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml -o /tmp/care_testing/coverage/coverage.xml'
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json testing/coverage/coverage.json
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml testing/coverage/coverage.xml
-          python testing/mutation/coverage_quality_gate.py
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json ../testing/coverage/coverage.json
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml ../testing/coverage/coverage.xml
+          python ../testing/mutation/coverage_quality_gate.py
 
       - name: Run mutmut campaign
         working-directory: care
         run: |
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'mkdir -p /tmp/care_mutation_workspace && cd /tmp/care_mutation_workspace && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python /tmp/care_testing/mutation/campaign.py --source-root /app --testing-root /tmp/care_testing --mutmut-bin /.venv/bin/mutmut --python-bin /.venv/bin/python --results-dir /tmp/care_testing/mutation/results'
-          docker cp care-backend-1:/tmp/care_testing/mutation/results/. testing/mutation/results/
+          docker cp care-backend-1:/tmp/care_testing/mutation/results/. ../testing/mutation/results/
 
       - name: Enforce mutation threshold
         run: |
