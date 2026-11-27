@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-11-27T11:15:21.759613+00:00",
+  "standard_mutmut_status": "blocked",
+  "standard_mutmut_counts": {
+    "total": null,
+    "killed": null,
+    "survived": null,
+    "timeout": null,
+    "equivalent": null,
+    "blocked": null,
+    "excluded": null
+  },
+  "standard_mutation_score": null,
+  "standard_mutation_score_reason": "mutmut run did not complete successfully",
+  "custom_operator_counts": {
+    "generated": 3,
+    "killed": 3,
+    "survived": 0,
+    "timeout": 0,
+    "blocked": 0
+  },
+  "custom_detection_rate": 100.0,
+  "custom_detection_rate_reason": null
+}

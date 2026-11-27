@@ -1,0 +1,19 @@
+CARE Encounter Management - Restart Subset Coverage
+
+Suite: RestartEligibilityIntegrationTests
+Tests: 4 passed, 0 failed, 0 skipped
+
+EncounterViewSet.restart function summary:
+- Statements: 12/12 covered
+- Branches: 6/6 covered
+- Missing statements: none
+- Missing branches: none
+- Line 288 non-completed status guard: covered
+
+The non-completed status test patches AuthorizationController.call to authorize
+the isolated view invocation. This is necessary because the authorization helper
+can_restart_encounter_obj rejects every non-completed status before the view-level
+status guard. The patch does not change production behavior.
+
+Successful restart cases also assert database read-back of updated_by and
+modified_date.

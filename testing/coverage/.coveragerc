@@ -1,0 +1,9 @@
+[run]
+branch = True
+source =
+    care.emr.api.viewsets.encounter
+    care.emr.resources.encounter.spec
+    care.emr.resources.base
+
+[report]
+show_missing = True

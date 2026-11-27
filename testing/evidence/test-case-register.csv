@@ -1,0 +1,47 @@
+Test ID,Business rule,Requirement ID,Test level,Technique,Input,Expected result,Actual result,Execution status
+UNIT-ENC-001,BR-ENC-01,FR-ENC-01,Unit,Boundary,Active count 0;4;5;6,Counts below limit continue; count at or above limit rejects,All boundary subtests passed,Passed
+UNIT-ENC-002,BR-ENC-01,FR-ENC-02,Unit,Negative validation,Valid but nonexistent patient UUID,Patient does not exist validation error,Test passed,Passed
+UNIT-ENC-003,BR-ENC-01,FR-ENC-02,Unit,Negative validation,Valid but nonexistent facility UUID,Facility does not exist validation error,Test passed,Passed
+UNIT-ENC-004,BR-ENC-01,FR-ENC-02,Unit,Terminal-status partition,COMPLETED_CHOICES exclusion query,All four terminal statuses are excluded,Test passed,Passed
+UNIT-ENC-006,BR-ENC-01,FR-ENC-01,Unit,Create-versus-update branch,model_obj None versus model_obj supplied,Update skips create-only active-limit validation,Test passed,Passed
+UNIT-ENC-009,BR-ENC-03,FR-ENC-06,Unit,Create status-history branch,Create spec is_update false,Initial status-history entry is created,Test passed,Passed
+UNIT-ENC-010,BR-ENC-03,FR-ENC-06,Unit,Create appointment branch,Create spec with appointment UUID,Appointment and initial history are deserialized,Test passed,Passed
+UNIT-ENC-011,BR-ENC-03,FR-ENC-06,Unit,Create-spec update branch,Create spec is_update true,Create-only initialization is skipped,Test passed,Passed
+UNIT-ENC-012,BR-ENC-03,FR-ENC-06,Unit,Status-change branch,Old status differs from submitted status,Exactly one entry appended and previous entry preserved,Test passed,Passed
+UNIT-ENC-013,BR-ENC-03,FR-ENC-06,Unit,Unchanged-status branch,Old status equals submitted status,No history entry appended,Test passed,Passed
+UNIT-ENC-014,BR-ENC-03,FR-ENC-03,Unit,Pydantic enum validation,Invalid status string,ValidationError returned,Test passed,Passed
+UNIT-ENC-015,BR-ENC-05,FR-ENC-08,Unit,Period boundary,Aware start and end,Period accepted,Test passed,Passed
+UNIT-ENC-016,BR-ENC-05,FR-ENC-08,Unit,Naive datetime boundary,Naive start,Timezone-aware validation error,Test passed,Passed
+UNIT-ENC-017,BR-ENC-05,FR-ENC-08,Unit,Naive datetime boundary,Naive end,Timezone-aware validation error,Test passed,Passed
+UNIT-ENC-018,BR-ENC-05,FR-ENC-08,Unit,Period ordering boundary,Start greater than end,Ordering validation error,Test passed,Passed
+UNIT-ENC-019,BR-ENC-05,FR-ENC-08,Unit,Missing-end partition,Missing or null period end,Period accepted with end None,Test passed,Passed
+API-ENC-001,BR-ENC-01,FR-ENC-01,API/integration,Boundary,Create at 0;4;5;6 active encounters,Correct 200/400 behavior,All subtests passed,Passed
+API-ENC-002,BR-ENC-01,FR-ENC-02,API/integration,Equivalence partition,Active and terminal status sets,Terminal records do not count,All subtests passed,Passed
+API-ENC-003,BR-ENC-03,FR-ENC-06,API/integration,State persistence,Change status in_progress to completed,Previous history preserved and changed status appended,Test passed,Passed
+API-ENC-004,BR-ENC-03,FR-ENC-06,API/integration,State persistence,Submit unchanged in_progress status,History length remains one,Test passed,Passed
+API-ENC-005,BR-ENC-06,FR-ENC-10,API/integration,Restart boundary,Exactly/inside/outside/far restart limit,204 or 400 according to elapsed limit,All restart subtests passed,Passed
+API-ENC-008,BR-ENC-05,FR-ENC-08,API/integration,Period persistence,Missing end and existing end,Submitted period start/end read back correctly,Both tests passed,Passed
+API-ENC-009,BR-ENC-05,FR-ENC-08,API/integration,Negative period boundary,Start greater than end,400 and existing period unchanged,Test passed,Passed
+API-ENC-010,BR-ENC-06,FR-ENC-10,API/integration,View-level status branch,In-progress with authorization patched true,400 status rejection and no state/updated_by change,Test passed,Passed
+API-ENC-011,BR-ENC-06,FR-ENC-10,API/integration,Restart time boundary,Completed just outside/far outside limit,400 and no successful restart,Test passed,Passed
+API-ENC-012,BR-ENC-06,FR-ENC-10,API/integration,Authorization negative,Unauthorized completed encounter,403 and no state/updated_by change,Test passed,Passed
+FE-ENC-001,BR-ENC-04,FR-ENC-07,Frontend unit,Decision table,imp/amb x discharged/not discharged,Only imp/non-discharged requires discharge,All 4 combinations passed,Passed
+FE-ENC-002,BR-ENC-02,FR-ENC-03,Frontend source contract,Equivalence partition,Planned/in-progress/on-hold future dates,Future dates permitted only for planned,Source contract passed; browser behavior Planned,Passed - source contract
+FE-ENC-003,BR-ENC-05,FR-ENC-08,Frontend source contract,Boundary,Period end present/absent,Present end preserved; absent end uses ISO timestamp,Source contract passed; nested hook execution Planned,Passed - source contract
+API-ENC-013,None,FR-ENC-05,API/integration,Negative ID partition,Malformed and nonexistent encounter detail IDs,404/400 without persistence change,Passed in 49-test suite,Passed
+API-ENC-014,None,FR-ENC-03,API/integration,Enum and length negative,Invalid hospitalization and external identifier length,Invalid enum 400; 101-character identifier may produce database 500,Executed and read back where applicable,Passed
+API-ENC-015,None,FR-ENC-01,API/integration,Repeated and organization relationship,Duplicate organization and wrong-facility organization,Duplicate link deduplicated; wrong-facility request rejected,Passed,Passed
+API-ENC-016,None,FR-ENC-01,API/integration,Appointment association,Nonexistent booking and associated encounter booking,Rejected without extra Encounter row,Passed,Passed
+API-ENC-017,None,FR-ENC-01,API/integration,Repeated request,Repeated create and repeated completed status update,Second create blocked at limit; second update denied after terminal status,Passed,Passed
+API-ENC-018,None,FR-ENC-06,API/integration,State transition,Supported and terminal encounter transitions,Nonterminal transitions allowed; completed update denied,Passed,Passed
+API-ENC-019,BR-ENC-01,FR-ENC-02,API/integration,Dynamic three-point BVA,limit-1; limit; limit+1,Values generated from changed constraint and consumed,Passed,Passed
+API-ENC-020,None,FR-ENC-01,API/integration,Malformed UUID,Malformed patient and facility UUID,400 and no Encounter created,Passed,Passed
+API-ENC-021,None,FR-ENC-03,API/integration,Invalid enum partitions,status/class/priority invalid values,400 and no Encounter created,Passed,Passed
+API-ENC-022,BR-ENC-03,FR-ENC-06,API/integration,Rejected update persistence,Invalid status update,400; status/history unchanged,Passed,Passed
+API-ENC-023,BR-ENC-05,FR-ENC-08,API/integration,Date/time BVA,Naive start/end and equal start/end,Naive values 400; equal values 200/persisted,Passed,Passed
+API-ENC-024,BR-ENC-05,FR-ENC-08,API/integration,Missing/null period,period {}, period null,Behavior exercised; persisted state read back,Passed
+API-ENC-025,BR-ENC-06,FR-ENC-10,API/integration,Malformed/nonexistent restart ID,Malformed and random UUID restart,404/400 as applicable,Passed,Passed
+API-ENC-026,BR-ENC-06,FR-ENC-10,API/integration,Repeated restart,Restart twice,First 204; second 403 and status remains in_progress,Passed,Passed
+GEN-001,None,FR-ENC-01,Generator,Determinism and OpenAPI alignment,Valid generated payload,Same payload twice and values exist in spec,Passed,Passed
+GEN-002,None,FR-ENC-02,Generator,Generated invalid partitions,Invalid status/class/priority/UUID/identifier length,Generated values consumed as negative test inputs,Passed,Passed
+GEN-003,None,FR-ENC-01,Generator,Two-constraint regeneration,Active limit 5->3; identifier 100->12,Before/after evidence written and regenerated values consumed,Passed,Passed

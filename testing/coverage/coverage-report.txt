@@ -1,0 +1,26 @@
+CARE Encounter Management Independent Coverage Report
+
+Executed suite: 31 Django unit/API/integration tests
+Result: 31 passed, 0 failed, 0 skipped
+
+Module                                  Statements  Miss  Branch  Partial  Cover
+care/emr/api/viewsets/encounter.py          245     109      72        7   50%
+care/emr/resources/base.py                  140      18      58       10   83%
+care/emr/resources/encounter/spec.py        115      16      18        3   83%
+TOTAL                                       500     143     148       20   67%
+
+Per-business-rule selected function coverage:
+- BR-ENC-01 EncounterViewSet.validate_data: 8/8 statements, 8/8 branches.
+- BR-ENC-03 EncounterCreateSpec.perform_extra_deserialization: 7/7 statements, 4/4 branches.
+- BR-ENC-03 EncounterUpdateSpec.perform_extra_deserialization: 5/5 statements, 4/4 branches.
+- BR-ENC-05 PeriodSpec.validate_period: 7/7 statements, 6/6 branches.
+- BR-ENC-05 EncounterViewSet.perform_update: 4/4 statements, no branches.
+- BR-ENC-06 EncounterViewSet.restart: 12/12 statements, 6/6 branches.
+
+Whole-module coverage is not 100%: 67% combined for the three scoped source
+modules. Uncovered code includes unrelated encounter filters, organization
+management, identifiers, care-team actions and other custom actions. It also
+includes unrelated methods in the shared base resource module.
+
+Coverage.py proves statement and branch coverage only. MCC and MC/DC condition
+pairs are documented and mapped to executable test IDs in mcc-mcdc.md.

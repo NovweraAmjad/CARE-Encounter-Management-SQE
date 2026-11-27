@@ -1,0 +1,212 @@
+openapi: 3.0.3
+info:
+  title: CARE Encounter Test API
+  version: "1.0"
+  description: Focused specification for encounter create, retrieve and update testing.
+  x-care-active-encounter-limit: 5
+  x-care-external-identifier-max-length: 100
+paths:
+  /api/v1/encounter/:
+    get:
+      summary: List encounters
+      parameters:
+        - name: facility
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: patient
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+    post:
+      summary: Create encounter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EncounterCreate"
+      responses:
+        "200":
+          description: Encounter created
+        "400":
+          description: Validation error
+        "403":
+          description: Permission denied
+  /api/v1/encounter/{id}/:
+    get:
+      summary: Retrieve encounter
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+    put:
+      summary: Update encounter
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Encounter updated
+        "400":
+          description: Validation error
+        "403":
+          description: Permission denied
+  /api/v1/encounter/{id}/restart/:
+    post:
+      summary: Restart completed encounter
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Encounter changed to in_progress
+        "400":
+          description: Not completed or restart window expired
+        "403":
+          description: Permission denied
+components:
+  schemas:
+    EncounterCreate:
+      type: object
+      required:
+        - patient
+        - facility
+        - status
+        - encounter_class
+        - priority
+      properties:
+        patient:
+          type: string
+          format: uuid
+        facility:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+            - planned
+            - in_progress
+            - on_hold
+            - discharged
+            - completed
+            - cancelled
+            - discontinued
+            - entered_in_error
+            - unknown
+        encounter_class:
+          type: string
+          enum:
+            - imp
+            - amb
+            - obsenc
+            - emer
+            - vr
+            - hh
+        priority:
+          type: string
+          enum:
+            - stat
+            - ASAP
+            - emergency
+            - urgent
+            - routine
+            - elective
+            - rush_reporting
+            - timing_critical
+            - callback_results
+            - callback_for_scheduling
+            - preop
+            - as_needed
+            - use_as_directed
+        organizations:
+          type: array
+          items:
+            type: string
+            format: uuid
+        appointment:
+          type: string
+          format: uuid
+          nullable: true
+        period:
+          $ref: "#/components/schemas/Period"
+        hospitalization:
+          $ref: "#/components/schemas/Hospitalization"
+        external_identifier:
+          type: string
+          maxLength: 100
+          nullable: true
+        discharge_summary_advice:
+          type: string
+          nullable: true
+    Period:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+          nullable: true
+        end:
+          type: string
+          format: date-time
+          nullable: true
+    Hospitalization:
+      type: object
+      nullable: true
+      properties:
+        re_admission:
+          type: boolean
+          nullable: true
+        admit_source:
+          type: string
+          enum:
+            - hosp_trans
+            - emd
+            - outp
+            - born
+            - gp
+            - mp
+            - nursing
+            - psych
+            - rehab
+            - other
+        discharge_disposition:
+          type: string
+          enum:
+            - home
+            - alt_home
+            - other_hcf
+            - hosp
+            - long
+            - aadvice
+            - exp
+            - psy
+            - rehab
+            - snf
+            - oth
+        diet_preference:
+          type: string
+          enum:
+            - vegetarian
+            - dairy_free
+            - nut_free
+            - gluten_free
+            - vegan
+            - halal
+            - kosher
+            - none

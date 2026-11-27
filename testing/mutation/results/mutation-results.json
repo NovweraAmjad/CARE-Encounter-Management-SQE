@@ -1,0 +1,16 @@
+{
+  "status": "blocked",
+  "reason": "mutmut run did not complete successfully",
+  "killed": null,
+  "survived": null,
+  "timeout": null,
+  "excluded": null,
+  "equivalent": null,
+  "returncode": 1,
+  "stdout": "\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n    done in 988ms (2 files mutated, 0 ignored, 0 unmodified)\n\n\u2838 Running stats     \n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n\u280f Running stats\n\u280b Running stats\n\u2819 Running stats\n\u2839 Running stats\n\u2838 Running stats\n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\nfailed to collect stats. runner returned 1\n\n",
+  "stderr": "",
+  "targets": [
+    "care/emr/api/viewsets/encounter.py",
+    "care/emr/resources/encounter/spec.py"
+  ]
+}

@@ -1,0 +1,170 @@
+name: CARE Encounter Quality Gate
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  backend-and-mutation:
+    name: Python tests, coverage and mutation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Start CARE Docker services
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml up -d --build --wait
+
+      - name: Load synthetic fixtures
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
+
+      - name: Copy independent testing package
+        run: |
+          docker cp testing/. care-backend-1:/tmp/care_testing/
+
+      - name: Run Python unit, integration and generator tests
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1'
+
+      - name: Run coverage and selected-function gate
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml -o /tmp/care_testing/coverage/coverage.xml'
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json testing/coverage/coverage.json
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml testing/coverage/coverage.xml
+          python testing/mutation/coverage_quality_gate.py
+
+      - name: Run mutmut campaign
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'mkdir -p /tmp/care_mutation_workspace && cd /tmp/care_mutation_workspace && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python /tmp/care_testing/mutation/campaign.py --source-root /app --testing-root /tmp/care_testing --mutmut-bin /.venv/bin/mutmut --python-bin /.venv/bin/python --results-dir /tmp/care_testing/mutation/results'
+          docker cp care-backend-1:/tmp/care_testing/mutation/results/. testing/mutation/results/
+
+      - name: Enforce mutation threshold
+        run: |
+          python testing/mutation/quality_gate.py
+
+      - name: Upload coverage and mutation evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: care-quality-evidence
+          path: |
+            testing/coverage/coverage.json
+            testing/coverage/coverage.xml
+            testing/mutation/results/
+          if-no-files-found: error
+
+  frontend-playwright:
+    name: Frontend Playwright
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: care_fe/package-lock.json
+
+      - name: Start CARE Docker services
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml up -d --build --wait
+
+      - name: Load synthetic fixtures
+        working-directory: care
+        run: |
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
+
+      - name: Install frontend dependencies
+        working-directory: care_fe
+        run: npm ci
+
+      - name: Start frontend
+        working-directory: care_fe
+        env:
+          REACT_CARE_API_URL: http://127.0.0.1:9000
+        run: |
+          npm run local -- --host 127.0.0.1 --port 4000 > /tmp/care_fe.log 2>&1 &
+          echo $! > /tmp/care_fe.pid
+
+      - name: Install independent E2E dependencies
+        working-directory: testing/e2e
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Wait for CARE frontend
+        run: |
+          for i in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:4000/ >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/care_fe.log
+          exit 1
+
+      - name: Run Playwright Chromium suite
+        working-directory: testing/e2e
+        run: npx playwright test --project=chromium
+
+      - name: Run Lighthouse
+        working-directory: testing/e2e
+        run: node lighthouse-run.js http://127.0.0.1:4000/login
+
+  sonar:
+    name: SonarQube quality gate
+    runs-on: ubuntu-latest
+    needs:
+      - backend-and-mutation
+      - frontend-playwright
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download quality evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: care-quality-evidence
+          path: .
+
+      - name: Sonar scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        with:
+          args: >
+            -Dsonar.python.coverage.reportPaths=testing/coverage/coverage.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: Sonar quality gate
+        uses: SonarSource/sonarqube-quality-gate-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
