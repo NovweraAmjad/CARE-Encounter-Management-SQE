@@ -54,7 +54,7 @@ jobs:
       - name: Load synthetic fixtures
         working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py load_fixtures'
 
       - name: Copy independent testing package
         run: |
