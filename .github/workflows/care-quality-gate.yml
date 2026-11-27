@@ -102,6 +102,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout CARE backend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care
+          ref: ddfd840dbe314b4e53d2a719d2138324d970634b
+          path: care
+          persist-credentials: false
+
+      - name: Checkout CARE frontend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care_fe
+          ref: 5e02f9aa4f690e08375da310511e14606985f788
+          path: care_fe
+          persist-credentials: false
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -117,7 +133,7 @@ jobs:
       - name: Load synthetic fixtures
         working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
+          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py load_fixtures'
 
       - name: Install frontend dependencies
         working-directory: care_fe
