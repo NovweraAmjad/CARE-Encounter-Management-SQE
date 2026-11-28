@@ -115,7 +115,7 @@ No real patient-identifiable production data will be used.
 | Phase 2 | Unit test design and implementation | 26–27 Nov | Done (18 unit tests) |
 | Phase 3 | API and integration test implementation | 26–27 Nov | Done (30 integration tests) |
 | Phase 4 | Browser end-to-end automation | 27–28 Nov | Done (2 main + 8 alternative/exception flows) |
-| Phase 5 | Test data generator and OpenAPI specification | 27 Nov | Done (3 generator tests, two-constraint regeneration) |
+| Phase 5 | Test data generator and OpenAPI specification | 27 Nov | Done (5 generator tests, regenerated v2 spec) |
 | Phase 6 | Mutation testing and defect analysis | 27–28 Nov | Done locally; see completion report |
 | Phase 7 | CI quality-gate configuration | 27 Nov – open | **Not passed on GitHub** (see completion report) |
 | Phase 8 | Regression testing and final reporting | 28 Nov | Done locally |

@@ -11,8 +11,8 @@
 | Level | Tests | Result | Evidence |
 |---|---|---|---|
 | Unit (Django) | 18 | 18 pass | `testing/unit/` |
-| API / integration | 46 (incl. 16 added from mutation analysis) | 46 pass | `testing/integration/` |
-| Generator (OpenAPI → EP/BVA) | 3 | 3 pass | `testing/generators/`, `testing/openapi/` |
+| API / integration | 51 (incl. 16 from mutation analysis, 49 state transitions in 2 tests, 28 generated EP classes, recovery) | 51 pass | `testing/integration/` |
+| Generator (OpenAPI → EP/BVA) | 5 | 5 pass (incl. regenerated v2 spec) | `testing/generators/`, `testing/openapi/` |
 | Frontend rules | 3 | 3 pass | `testing/frontend/` |
 | Browser use cases | 2 UCs × (main + 2 alternative + 2 exception) = 10 | **30/30 over 3 consecutive runs** | `testing/e2e/specs/` |
 | Security (role checks, session) | 12 | 12 pass | `testing/security/` |
@@ -50,7 +50,7 @@
 | 5 | **PR-01:** 4/5/6 active-encounter boundaries | ✅ Met | API-ENC-001/019, UNIT-ENC-001, E2E-ENC-006 |
 | 6 | Status-history and period consistency | ✅ Met | API-ENC-003/004/022/034/035, E2E-ENC-008 |
 | 7 | 100% statement/branch on the selected logic | ✅ Met | `coverage_quality_gate.py`: PASS |
-| 8 | ≥95% API pass rate over 3 runs | ✅ Met | 67/67 on 3 consecutive runs (`testing/evidence/backend-consecutive-runs-2026-11-28.log`) |
+| 8 | ≥95% API pass rate over 3 runs | ✅ Met | 74/74 on 3 consecutive runs (`testing/evidence/backend-consecutive-runs-2026-11-28.log`) |
 | 9 | ≥95% browser pass over 3 runs; each flow < 10 s | ✅ pass rate (30/30) · ⚠️ timing not isolated | Whole tests take 6.9–18.0 s *including* login and API setup; the flow alone was not timed separately |
 | 10 | No unresolved Critical/High defect | ❌ **Not met** | DEF-03 and DEF-14 open at P1; DEF-01/02/19/13 open Major |
 
@@ -102,7 +102,7 @@ RCAs (5 Whys + fishbone) with corrective and preventive actions: RCA-1 (DEF-03),
 
 | Gate | Result |
 |---|---|
-| Backend tests | 67/67 |
+| Backend tests | 74/74 |
 | Coverage gate | PASS |
 | Mutation gate | 92.82% ≥ 80% PASS |
 | E2E | 10/10 (×3) |

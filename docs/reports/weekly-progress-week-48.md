@@ -10,7 +10,7 @@
 |---|---|---|---|
 | 1 Planning, requirements, risks | Week 48 | ✅ Done | test plan, risk register (10 product + 2 project risks), estimation |
 | 2 Unit tests | Week 48 | ✅ Done | 18 unit tests; 100% statement and branch on the selected business-rule functions |
-| 3 API/integration tests | Week 48 | ✅ Done | 46 integration tests + 3 generator tests (67 backend total, all pass) |
+| 3 API/integration tests | Week 48 | ✅ Done | 51 integration tests + 5 generator tests (74 backend total, all pass) |
 | 4 Browser E2E (use cases) | Week 48 | ✅ Done | 2 use cases × (main + 2 alternative + 2 exception) = 10 flows; 30/30 over 3 consecutive runs |
 | 5 Generator + OpenAPI | Week 48 | ✅ Done | `testing/openapi/encounter-openapi.yaml`, generator, two-constraint regeneration |
 | 6 Mutation + defect analysis | Week 48 | ✅ Done | score 65.1% → **92.8%**; 146 survivors analysed; 20 defects, 3 RCAs |

@@ -44,3 +44,25 @@
 - **Relevant workflow:** Complete Patient Encounter.
 - **Actual source:** `care/config/settings/config.py` - `ENCOUNTER_RESTART_TIME_LIMIT_HOURS`, default `0`; `care/care/emr/api/viewsets/encounter.py` - `EncounterViewSet.restart`; `care/care/emr/tests/test_encounter_api.py` - `test_restart_completed_encounter`, `test_restart_expired_encounter`.
 - **How to test:** Override the setting to a positive test value such as `24`, then test modified times at exactly `24` hours, just inside the limit, just outside the limit and much older. Test an in-progress encounter and an unauthorized user. Do not assume the default is `24`; source code defines the default as `0`, while the existing upstream test sets `24` only inside the test.
+## Rule types required by the brief
+
+| Required rule type | Rule |
+|---|---|
+| Boundary or limit | **BR-ENC-01**: at most `MAX_ACTIVE_ENCOUNTERS_PER_PATIENT_IN_FACILITY` (default 5) active encounters per patient per facility |
+| Decision with at least two Boolean conditions | **BR-ENC-04**: `encounter_class == "imp"` AND `status != "discharged"` → discharge questionnaire. **BR-ENC-02**: `status != planned` AND `start_date > now` → rejected |
+| Change of state | **BR-ENC-03**: a status change appends one status-history entry; an unchanged status appends none. **BR-ENC-06** (restart: completed → in progress within the window) |
+
+## User roles with different permissions
+
+The two roles below are CARE fixture accounts (`care/care/fixtures/scripts/default_fixtures.py:102-127`). Their encounter permissions come from `care/care/security/permissions/encounter.py`, where encounter create/list/read/write are granted to `CLINICAL_DATA_ACCESS_ROLES = [Admin, Doctor, Nurse, Facility Admin]`.
+
+| Capability (permission) | **Doctor** (`care-doctor`) | **Volunteer** (`care-volunteer`) |
+|---|---|---|
+| Create encounter (`can_create_encounter`) | ✅ Allowed | ⛔ Denied |
+| List encounters (`can_list_encounter`) | ✅ Allowed | ⛔ Denied (empty result) |
+| Read encounter (`can_read_encounter`) | ✅ Allowed | ⛔ Denied (403) |
+| Update / complete encounter (`can_write_encounter`) | ✅ Allowed | ⛔ Denied (403) |
+| List patients (`can_list_patients`) | ✅ Allowed | ✅ Allowed (only where the role applies to the patient's organization) |
+| Facility membership | "Administration" department of the facility | none |
+
+These decisions are verified automatically by `testing/security/specs/authorization.spec.ts` (AC-01–AC-10) and by the browser exception flow `E2E-ENC-010`.
