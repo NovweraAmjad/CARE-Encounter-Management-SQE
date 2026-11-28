@@ -1,0 +1,18 @@
+{
+  "create": {
+    "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+    "scores": {
+      "accessibility": 1,
+      "bestPractices": 0.96,
+      "seo": 1
+    }
+  },
+  "complete": {
+    "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patient/a3f7d15b-0208-4a17-ac48-7bfa963ab1f9/encounter/5524eaab-e337-4da3-86a5-58f9b480b599/updates",
+    "scores": {
+      "accessibility": 0.96,
+      "bestPractices": 0.96,
+      "seo": 1
+    }
+  }
+}

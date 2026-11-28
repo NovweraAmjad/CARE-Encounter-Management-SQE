@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test --project=chromium",
+    "test:e2e": "playwright test --project=chromium",
+    "audit:accessibility": "node accessibility-run.js before",
+    "audit:accessibility:after": "node accessibility-run.js after",
+    "audit:compare": "node accessibility-compare.js",
+    "audit:error-association": "node verify-error-association.js"
   },
   "keywords": [],
   "author": "",

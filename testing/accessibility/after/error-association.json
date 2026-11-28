@@ -1,0 +1,22 @@
+{
+  "phase": "after",
+  "generated": "2026-11-27T20:55:22.586Z",
+  "field": "Create Encounter > Date and Time > time input",
+  "accessible_name": "Date and Time",
+  "before_submit": {
+    "id": "_r_2t_-form-item",
+    "labelledBy": "Date and Time",
+    "ariaInvalid": "false",
+    "describedByText": []
+  },
+  "after_rejected_submit": {
+    "id": "_r_2t_-form-item",
+    "labelledBy": "Date and Time",
+    "ariaInvalid": "true",
+    "describedByText": [
+      "Future date is only allowed for planned encounters"
+    ]
+  },
+  "error_announced_with_field": true,
+  "create_requests_sent": 0
+}

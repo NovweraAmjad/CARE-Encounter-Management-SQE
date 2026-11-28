@@ -11,3 +11,10 @@ __pycache__/
 # SonarQube scanner working files
 .scannerwork/
 .scannerwork_stale/
+
+# Playwright per-run scratch output (reports and evidence are kept)
+testing/e2e/test-results/
+testing/security/evidence/test-results/
+testing/security/zap/reports/playwright-test-results/
+# Generated for SonarQube from coverage.xml by testing/coverage/sonar_coverage_paths.py
+testing/coverage/coverage-sonar.xml

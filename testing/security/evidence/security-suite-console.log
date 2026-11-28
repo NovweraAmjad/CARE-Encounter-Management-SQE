@@ -1,0 +1,16 @@
+Running 12 tests using 1 worker
+
+  ok  1 [chromium] › specs\authorization.spec.ts:144:1 › AC-01 doctor can read an encounter in their facility (587ms)
+  ok  2 [chromium] › specs\authorization.spec.ts:163:1 › AC-02 volunteer cannot read the same encounter (332ms)
+  ok  3 [chromium] › specs\authorization.spec.ts:182:1 › AC-03 doctor can list facility encounters (227ms)
+  ok  4 [chromium] › specs\authorization.spec.ts:201:1 › AC-04 volunteer listing facility encounters receives no records (158ms)
+  ok  5 [chromium] › specs\authorization.spec.ts:222:1 › AC-05 volunteer cannot create an encounter (147ms)
+  ok  6 [chromium] › specs\authorization.spec.ts:250:1 › AC-06 volunteer cannot update an encounter (327ms)
+  ok  7 [chromium] › specs\authorization.spec.ts:276:1 › AC-07 doctor can update an open encounter (no-op PUT) (801ms)
+  ok  8 [chromium] › specs\authorization.spec.ts:304:1 › AC-08 unauthenticated request is rejected (48ms)
+  ok  9 [chromium] › specs\authorization.spec.ts:345:1 › AC-09 doctor opens encounter page in the browser (20.1s)
+  ok 10 [chromium] › specs\authorization.spec.ts:363:1 › AC-10 volunteer opens the same encounter page in the browser (17.6s)
+  ok 11 [chromium] › specs\session-controls.spec.ts:26:1 › SC-01 session token storage, cookies and headers after login (17.8s)
+  ok 12 [chromium] › specs\session-controls.spec.ts:90:1 › SC-02 logout revokes the access and refresh tokens server-side (669ms)
+
+  12 passed (1.1m)

@@ -1,0 +1,90 @@
+{
+  "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patient/a3f7d15b-0208-4a17-ac48-7bfa963ab1f9/encounter/c684b393-577b-4dc5-bf74-37aa6641b5e3/updates",
+  "timestamp": "2026-11-27T20:48:03.428Z",
+  "testEngine": {
+    "name": "axe-core",
+    "version": "4.14.1"
+  },
+  "violationCount": 2,
+  "violations": [
+    {
+      "id": "aria-command-name",
+      "impact": "serious",
+      "help": "ARIA commands must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-command-name?application=playwright",
+      "nodes": [
+        {
+          "target": [
+            "#base-ui-_r_m_"
+          ],
+          "html": "<span role=\"button\" tabindex=\"0\" data-base-ui-click-trigger=\"\" id=\"base-ui-_r_m_\" aria-haspopup=\"dialog\" aria-expanded=\"false\" data-slot=\"sheet-trigger\"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        }
+      ]
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "help": "Elements must have their visible text as part of their accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=playwright",
+      "nodes": [
+        {
+          "target": [
+            "a[aria-label=\"Add Allergy\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Add Allergy\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "a[aria-label=\"Service Request\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Service Request\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "a[aria-label=\"Add Medication\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Add Medication\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "#base-ui-_r_1a_"
+          ],
+          "html": "<button type=\"button\" tabindex=\"0\" data-slot=\"dialog-trigger\" data-variant=\"outline\" data-size=\"default\" data-base-ui-click-t...=\"\" id=\"base-ui-_r_1a_\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"Forms\" class=\"inline-flex items-ce...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "a[aria-label=\"Add Symptom\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Add Symptom\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "a[aria-label=\"Add Diagnosis\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Add Diagnosis\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "a[aria-label=\"Add Procedure\"]"
+          ],
+          "html": "<a role=\"link\" tabindex=\"0\" data-slot=\"button\" data-variant=\"outline\" data-size=\"default\" aria-label=\"Add Procedure\" class=\"inline-flex items-ce...\" href=\"/facility/209d3774-d...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        },
+        {
+          "target": [
+            "#base-ui-_r_1c_"
+          ],
+          "html": "<button type=\"button\" tabindex=\"0\" data-slot=\"dialog-trigger\" data-variant=\"outline\" data-size=\"default\" data-base-ui-click-t...=\"\" id=\"base-ui-_r_1c_\" aria-haspopup=\"dialog\" aria-expanded=\"false\" aria-label=\"New Referral\" class=\"inline-flex items-ce...\">",
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        }
+      ]
+    }
+  ]
+}

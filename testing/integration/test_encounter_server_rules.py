@@ -1068,3 +1068,168 @@ class RestartEligibilityIntegrationTests(CareAPITestBase):
                             response.status_code,
                             status.HTTP_400_BAD_REQUEST,
                         )
+
+
+class EncounterRetrieveAuthorizationTests(CareAPITestBase):
+    """API-ENC-027..029: GET /api/v1/encounter/{id}/ authorization.
+
+    Added after mutation testing showed that no test exercised
+    EncounterViewSet.authorize_retrieve (23 "no tests" mutants). Each user has
+    exactly one of the two permissions that authorize_retrieve accepts, so a
+    broken branch flips the response between 200 and 403.
+    """
+
+    DENIED_MESSAGE = "You do not have permission to view this patient"
+
+    def setUp(self):
+        super().setUp()
+        self.facility = self.create_facility(user=self.create_super_user())
+        self.patient = self.create_patient(name="Retrieve Authorization Patient")
+        self.organization = self.create_facility_organization(facility=self.facility)
+        self.encounter = self.create_encounter(
+            patient=self.patient,
+            facility=self.facility,
+            organization=self.organization,
+            status=StatusChoices.in_progress.value,
+        )
+
+    def user_with(self, permissions):
+        user = self.create_user()
+        role = self.create_role_with_permissions(permissions)
+        self.attach_role_facility_organization_user(self.organization, user, role)
+        return user
+
+    def get_detail(self, user):
+        self.client.force_authenticate(user=user)
+        url = reverse("encounter-detail", kwargs={"external_id": self.encounter.external_id})
+        return self.client.get(url)
+
+    def test_encounter_read_permission_alone_allows_retrieve(self):
+        # API-ENC-027: can_read_encounter, but no patient permission.
+        response = self.get_detail(
+            self.user_with([EncounterPermissions.can_read_encounter.name])
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["id"], str(self.encounter.external_id))
+
+    def test_patient_view_permission_alone_allows_retrieve(self):
+        # API-ENC-028: can_list_patients (patient view), but no encounter read.
+        response = self.get_detail(
+            self.user_with([PatientPermissions.can_list_patients.name])
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["id"], str(self.encounter.external_id))
+
+    def test_user_without_either_permission_is_denied_with_message(self):
+        # API-ENC-029: a role in the same department with neither permission.
+        response = self.get_detail(
+            self.user_with([EncounterPermissions.can_create_encounter.name])
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(str(response.data["detail"]), self.DENIED_MESSAGE)
+
+
+class EncounterListSerializationAndFilterTests(CareAPITestBase):
+    """API-ENC-030..032: GET /api/v1/encounter/ payload and list filters.
+
+    Added after mutation testing: 42 mutants in EncounterListSpec
+    .perform_extra_serialization and 22 in OrganizationUUIDFilter /
+    CareTeamUserFilter survived because no test asserted the list payload or
+    used these filters. Encounter A has a location, a care-team member and a tag;
+    encounter B has none, so both branches of each field are checked.
+    """
+
+    def setUp(self):
+        super().setUp()
+        from care.emr.models.location import FacilityLocation
+        from care.emr.models.tag_config import TagConfig
+
+        self.facility = self.create_facility(user=self.create_super_user())
+        self.patient = self.create_patient(name="List Serialization Patient")
+        self.org_a = self.create_facility_organization(facility=self.facility)
+        self.org_b = self.create_facility_organization(facility=self.facility)
+        self.user = self.create_user()
+        role = self.create_role_with_permissions(
+            [
+                EncounterPermissions.can_list_encounter.name,
+                EncounterPermissions.can_read_encounter.name,
+            ]
+        )
+        self.attach_role_facility_organization_user(self.org_a, self.user, role)
+        self.attach_role_facility_organization_user(self.org_b, self.user, role)
+
+        self.member = self.create_user()
+        self.location = baker.make(
+            FacilityLocation, facility=self.facility, name="Ward List-Test"
+        )
+        self.tag = baker.make(
+            TagConfig, facility=self.facility, status="active", display="List tag"
+        )
+        self.encounter_a = self.create_encounter(
+            patient=self.patient,
+            facility=self.facility,
+            organization=self.org_a,
+            status=StatusChoices.in_progress.value,
+        )
+        self.encounter_a.current_location = self.location
+        self.encounter_a.care_team = [
+            {"user_id": self.member.id, "role": {"code": "doc", "display": "Doctor"}}
+        ]
+        self.encounter_a.tags = [self.tag.id]
+        self.encounter_a.save()
+        self.encounter_b = self.create_encounter(
+            patient=self.patient,
+            facility=self.facility,
+            organization=self.org_b,
+            status=StatusChoices.in_progress.value,
+        )
+        self.client.force_authenticate(user=self.user)
+        self.url = reverse("encounter-list")
+
+    def list(self, **params):
+        return self.client.get(self.url, {"facility": self.facility.external_id, **params})
+
+    def by_id(self, response):
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        return {row["id"]: row for row in response.data["results"]}
+
+    def test_list_payload_fields_for_full_and_bare_encounters(self):
+        # API-ENC-030
+        rows = self.by_id(self.list())
+        a = rows[str(self.encounter_a.external_id)]
+        b = rows[str(self.encounter_b.external_id)]
+        for row in (a, b):
+            self.assertEqual(row["patient"]["id"], str(self.patient.external_id))
+            self.assertEqual(row["facility"]["id"], str(self.facility.external_id))
+        self.assertEqual(a["current_location"]["id"], str(self.location.external_id))
+        self.assertIn("current_location", b)
+        self.assertIsNone(b["current_location"])
+        self.assertEqual(len(a["care_team"]), 1)
+        self.assertEqual(a["care_team"][0]["member"]["username"], self.member.username)
+        self.assertEqual(a["care_team"][0]["role"], {"code": "doc", "display": "Doctor"})
+        self.assertEqual(b["care_team"], [])
+        self.assertEqual([t["id"] for t in a["tags"]], [str(self.tag.external_id)])
+        self.assertEqual(b["tags"], [])
+
+    def test_organization_filter(self):
+        # API-ENC-031: match, other department, unknown department -> 404
+        self.assertEqual(
+            set(self.by_id(self.list(organization=self.org_a.external_id))),
+            {str(self.encounter_a.external_id)},
+        )
+        self.assertEqual(
+            set(self.by_id(self.list(organization=self.org_b.external_id))),
+            {str(self.encounter_b.external_id)},
+        )
+        response = self.list(organization=uuid.uuid4())
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_care_team_user_filter(self):
+        # API-ENC-032: member's encounters only; unknown username -> 404
+        self.assertEqual(
+            set(self.by_id(self.list(care_team_user=self.member.username))),
+            {str(self.encounter_a.external_id)},
+        )
+        self.assertEqual(self.by_id(self.list(care_team_user=self.user.username)), {})
+        response = self.list(care_team_user="no-such-user-xyz")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

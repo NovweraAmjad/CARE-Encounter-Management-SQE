@@ -1,0 +1,55 @@
+diff --git a/src/components/Encounter/CreateEncounterForm.tsx b/src/components/Encounter/CreateEncounterForm.tsx
+index d7ab34d16..ea2cfcaed 100644
+--- a/src/components/Encounter/CreateEncounterForm.tsx
++++ b/src/components/Encounter/CreateEncounterForm.tsx
+@@ -291,25 +291,31 @@ export default function CreateEncounterForm({
+                             }}
+                             className="text-sm border-gray-400 shadow-sm"
+                           />
+-                          <Input
+-                            type="time"
+-                            className="text-sm border-gray-400 shadow-sm sm:py-px"
+-                            value={date.toLocaleTimeString([], {
+-                              hour: "2-digit",
+-                              minute: "2-digit",
+-                              hour12: false,
+-                            })}
+-                            onChange={(e) => {
+-                              const [hours, minutes] = e.target.value
+-                                .split(":")
+-                                .map(Number);
+-                              if (isNaN(hours) || isNaN(minutes)) return;
+-                              const updatedDate = new Date(date);
+-                              updatedDate.setHours(hours);
+-                              updatedDate.setMinutes(minutes);
+-                              field.onChange(updatedDate.toISOString());
+-                            }}
+-                          />
++                          {/* FormControl gives the time input the id that the
++                              "Date and Time" label points to, and adds
++                              aria-invalid / aria-describedby so the
++                              validation message is announced with the field. */}
++                          <FormControl>
++                            <Input
++                              type="time"
++                              className="text-sm border-gray-400 shadow-sm sm:py-px"
++                              value={date.toLocaleTimeString([], {
++                                hour: "2-digit",
++                                minute: "2-digit",
++                                hour12: false,
++                              })}
++                              onChange={(e) => {
++                                const [hours, minutes] = e.target.value
++                                  .split(":")
++                                  .map(Number);
++                                if (isNaN(hours) || isNaN(minutes)) return;
++                                const updatedDate = new Date(date);
++                                updatedDate.setHours(hours);
++                                updatedDate.setMinutes(minutes);
++                                field.onChange(updatedDate.toISOString());
++                              }}
++                            />
++                          </FormControl>
+                         </div>
+                         <FormMessage />
+                       </FormItem>

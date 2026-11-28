@@ -1,0 +1,162 @@
+{
+  "status": "measured",
+  "campaign": "standard-mutmut",
+  "actual_survivor_count": 30,
+  "analysed_survivor_count": 30,
+  "analyses": [
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_2: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_3: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_4: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_5: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_6: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_7: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_8: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_9: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_10: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_11: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_12: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_13: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_14: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1authorize_retrieve__mutmut_10: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1authorize_retrieve__mutmut_19: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_4: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_7: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_21: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_28: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_46: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_9: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_10: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_11: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_12: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_13: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_14: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.resources.encounter.spec.x\u01c1EncounterListSpec\u01c1perform_extra_serialization__mutmut_17: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.resources.encounter.spec.x\u01c1EncounterListSpec\u01c1perform_extra_serialization__mutmut_18: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.resources.encounter.spec.x\u01c1EncounterRetrieveSpec\u01c1perform_extra_serialization__mutmut_38: survived"
+    },
+    {
+      "mutant_id": null,
+      "status": "survived",
+      "evidence": "care.emr.resources.encounter.spec.x\u01c1EncounterRetrieveSpec\u01c1perform_extra_serialization__mutmut_39: survived"
+    }
+  ],
+  "analysis_complete": true,
+  "stdout": "    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_2: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_3: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_4: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_5: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_6: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_7: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_8: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_9: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_10: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_11: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_12: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_13: survived\n    care.emr.api.viewsets.encounter.x\u01c1LiveFilter\u01c1filter__mutmut_14: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1authorize_retrieve__mutmut_10: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1authorize_retrieve__mutmut_19: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_4: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_7: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_21: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_28: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1perform_create__mutmut_46: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_9: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_10: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_11: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_12: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_13: survived\n    care.emr.api.viewsets.encounter.x\u01c1EncounterViewSet\u01c1get_queryset__mutmut_14: survived\n    care.emr.resources.encounter.spec.x\u01c1EncounterListSpec\u01c1perform_extra_serialization__mutmut_17: survived\n    care.emr.resources.encounter.spec.x\u01c1EncounterListSpec\u01c1perform_extra_serialization__mutmut_18: survived\n    care.emr.resources.encounter.spec.x\u01c1EncounterRetrieveSpec\u01c1perform_extra_serialization__mutmut_38: survived\n    care.emr.resources.encounter.spec.x\u01c1EncounterRetrieveSpec\u01c1perform_extra_serialization__mutmut_39: survived\n",
+  "stderr": "",
+  "returncode": 0
+}

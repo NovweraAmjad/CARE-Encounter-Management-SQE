@@ -1,0 +1,11 @@
+{
+  "name": "SQE Encounter Gate",
+  "justification": "See docs/reports/sonarqube-analysis.md section 'Quality gate'. Conditions are on OVERALL code (not new code) so the gate is evaluated on every analysis of the scoped encounter modules.",
+  "conditions": [
+    { "metric": "reliability_rating", "op": "GT", "error": "1", "meaning": "fail if Reliability rating is worse than A (any bug)" },
+    { "metric": "security_rating", "op": "GT", "error": "1", "meaning": "fail if Security rating is worse than A (any vulnerability)" },
+    { "metric": "sqale_rating", "op": "GT", "error": "1", "meaning": "fail if Maintainability rating is worse than A (debt ratio > 5%)" },
+    { "metric": "duplicated_lines_density", "op": "GT", "error": "3", "meaning": "fail if more than 3% of lines are duplicated" },
+    { "metric": "coverage", "op": "LT", "error": "75", "meaning": "fail if backend line+branch coverage of the scoped modules drops below 75% (measured 76.8% on 28 Nov 2026; regression ratchet - business-rule functions are separately held at 100% by testing/mutation/coverage_quality_gate.py)" }
+  ]
+}

@@ -45,3 +45,32 @@ API-ENC-026,BR-ENC-06,FR-ENC-10,API/integration,Repeated restart,Restart twice,F
 GEN-001,None,FR-ENC-01,Generator,Determinism and OpenAPI alignment,Valid generated payload,Same payload twice and values exist in spec,Passed,Passed
 GEN-002,None,FR-ENC-02,Generator,Generated invalid partitions,Invalid status/class/priority/UUID/identifier length,Generated values consumed as negative test inputs,Passed,Passed
 GEN-003,None,FR-ENC-01,Generator,Two-constraint regeneration,Active limit 5->3; identifier 100->12,Before/after evidence written and regenerated values consumed,Passed,Passed
+E2E-ENC-001,BR-ENC-01;BR-ENC-02,FR-ENC-01;FR-ENC-03;FR-ENC-04,Browser E2E (UC1 main),Use case + keyboard + EP,Keyboard-only create; future start + In Progress rejected then corrected; active limit reached then cleared,Focus order Date>Time>Type>Status>Priority>Departments>Submit; BR-ENC-02 inline error and no POST; BR-ENC-01 message; success toast + redirect + stored in_progress/amb,Passed 3/3 consecutive runs (28 Nov 2026),Passed
+E2E-ENC-002,BR-ENC-03;BR-ENC-05,FR-ENC-06,Browser E2E (UC2 main),Use case,Actions panel > Mark as Completed > confirm,Toast 'Encounter Completed'; Status History Completed; stored status completed,Passed 3/3 consecutive runs,Passed
+E2E-ENC-003,BR-ENC-02,FR-ENC-03;FR-ENC-04,Browser E2E (UC1 ALT-1),Use case + EP (valid partition),Planned + tomorrow,Success toast; stored planned with future period.start,Passed 3/3,Passed
+E2E-ENC-004,None,FR-ENC-01;FR-ENC-03,Browser E2E (UC1 ALT-2),Use case + EP,Emergency + In Progress + Urgent,Success toast; stored emer/urgent/in_progress; first history entry in_progress,Passed 3/3,Passed
+E2E-ENC-005,None,FR-ENC-03,Browser E2E (UC1 EXC-1),Use case (exception),Submit with no encounter type,'Required' shown; dialog stays open; no create request; encounter count unchanged,Passed 3/3,Passed
+E2E-ENC-006,BR-ENC-01,FR-ENC-02,Browser E2E (UC1 EXC-2),Use case (exception) + boundary,Patient at active limit,Server message 'maximum number of active encounters (5)'; active count unchanged,Passed 3/3,Passed
+E2E-ENC-007,BR-ENC-04,FR-ENC-07,Browser E2E (UC2 ALT-1),Use case + decision table row imp/not discharged,Inpatient in_progress encounter,'Mark for discharge' only; navigates to questionnaire?toDischarge=true; no write request; status stays in_progress,Passed 3/3,Passed
+E2E-ENC-008,BR-ENC-05,FR-ENC-08,Browser E2E (UC2 ALT-2),Use case + partition (existing end),Encounter with period.end already set,Toast; status completed; period.start and period.end unchanged,Passed 3/3,Passed
+E2E-ENC-009,None,FR-ENC-06,Browser E2E (UC2 EXC-1),Use case (exception),Cancel the confirmation dialog,Dialog closes; status In Progress; no write request,Passed 3/3,Passed
+E2E-ENC-010,None,FR-ENC-09,Browser E2E (UC2 EXC-2),Use case (exception) + authorization,care-volunteer opens the encounter,Permission message; no Encounter region; no Mark as Completed; no write; status unchanged,Passed 3/3,Passed
+SEC-AC-01..10,None,FR-ENC-01;FR-ENC-05;FR-ENC-06;FR-ENC-09,Security (Playwright API+UI),Role-based access matrix,care-doctor / care-volunteer / anonymous on read/list/create/update/UI,4 allowed and 6 denied decisions as per permissions/encounter.py,10/10 passed (testing/security/evidence/authorization-results.md),Passed
+SEC-SC-01..02,None,FR-ENC-09,Security (Playwright),Control verification,Login; logout with access+refresh,No cookies; tokens in localStorage (DEF-13); revoked tokens rejected,2/2 passed (testing/security/evidence/),Passed
+A11Y-001,None,FR-ENC-04,Accessibility (Lighthouse+axe),Before/after audit,Create dialog + Complete screen,Unique issues counted once; fix verified,6 issues before; 5 after; Create dialog axe 2->1; Lighthouse 94->99 (testing/accessibility/comparison.md),Passed
+API-ENC-027,None,FR-ENC-05,API/integration,EP (authorization partition),GET detail as user with can_read_encounter only,200 and the encounter,200,Passed
+API-ENC-028,None,FR-ENC-05,API/integration,EP (authorization partition),GET detail as user with patient view only,200 and the encounter,200,Passed
+API-ENC-029,None,FR-ENC-05,API/integration,EP (authorization partition),GET detail as user with neither permission,403 'You do not have permission to view this patient',403 exact message,Passed
+API-ENC-030,None,FR-ENC-04,API/integration,Read-back,List payload for full and bare encounters,patient/facility/location/care_team/tags fields correct,All fields matched,Passed
+API-ENC-031,None,FR-ENC-04,API/integration,EP,organization filter: match / other / unknown,Only that department's encounters; unknown -> 404,Matched,Passed
+API-ENC-032,None,FR-ENC-04,API/integration,EP,care_team_user filter: member / non-member / unknown,Member's encounters only; unknown -> 404,Matched,Passed
+API-ENC-033,BR-ENC-01,FR-ENC-02,API/integration,EP (scope partition),Other patient at the limit in the same facility,Creation for this patient allowed,201,Passed
+API-ENC-034,BR-ENC-03,FR-ENC-01,API/integration,Read-back,Create then read history moved_at + facility identifier,moved_at is a current timestamp; default identifier '100' created and shown,Matched,Passed
+API-ENC-035,BR-ENC-03,FR-ENC-06,API/integration,State transition + read-back,PUT in_progress->on_hold with discharge advice,Advice kept; new history entry with timestamp,Matched,Passed
+API-ENC-036,None,FR-ENC-01,API/integration,Authorization negative,Create in a facility where the user has no role,403 exact message,403 exact message,Passed
+API-ENC-037,None,FR-ENC-09,API/integration,Authorization negative + read-back,PUT completed as read-only user,403 exact message; status unchanged,Matched,Passed
+API-ENC-038,None,FR-ENC-05,API/integration,EP (list access paths),?patient= / ?facility= / no filter / outsider / unknown patient,Scoped results; 403 messages; 404,Matched,Passed
+API-ENC-039,None,FR-ENC-01,API/integration,Repeated request + read-back,Create linked to 2nd of 2 bookings; repeat with same booking,Correct booking linked (updated_by set); repeat -> 400 message,Matched,Passed
+API-ENC-040,None,FR-ENC-01,API/integration,Exception path,Encounter create lock held,400 'Encounter creation failed, try again after a while',Matched,Passed
+API-ENC-041,None,FR-ENC-05,API/integration,Read-back,Detail payload with appointment/location/history/care team/tag vs bare,Every field matched; bare defaults,Matched,Passed
+API-ENC-042,None,FR-ENC-01,API/integration,EP (empty departments),Create with organizations=[],Encounter scoped to the facility default organization,Matched,Passed

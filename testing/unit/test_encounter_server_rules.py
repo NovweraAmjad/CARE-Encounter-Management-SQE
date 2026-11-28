@@ -111,8 +111,11 @@ class ActiveEncounterLimitUnitTests(SimpleTestCase):
                 return_value=SimpleNamespace(exists=lambda: False),
             ),
         ):
-            with self.assertRaisesMessage(DRFValidationError, "Patient does not exist"):
+            # Exact message (assertRaisesMessage only checks a substring, which
+            # let a mutated "XXPatient does not existXX" message survive mutation testing).
+            with self.assertRaises(DRFValidationError) as raised:
                 viewset.validate_data(instance)
+            self.assertEqual([str(m) for m in raised.exception.detail], ["Patient does not exist"])
 
     @override_settings(MAX_ACTIVE_ENCOUNTERS_PER_PATIENT_IN_FACILITY=5)
     def test_nonexistent_facility_uuid_is_rejected_by_actual_validation(self):
@@ -132,8 +135,11 @@ class ActiveEncounterLimitUnitTests(SimpleTestCase):
                 return_value=SimpleNamespace(exists=lambda: False),
             ),
         ):
-            with self.assertRaisesMessage(DRFValidationError, "Facility does not exist"):
+            # Exact message (assertRaisesMessage only checks a substring, which
+            # let a mutated "XXFacility does not existXX" message survive mutation testing).
+            with self.assertRaises(DRFValidationError) as raised:
                 viewset.validate_data(instance)
+            self.assertEqual([str(m) for m in raised.exception.detail], ["Facility does not exist"])
 
     @override_settings(MAX_ACTIVE_ENCOUNTERS_PER_PATIENT_IN_FACILITY=5)
     def test_update_skips_create_only_active_limit_validation(self):

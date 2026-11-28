@@ -1,0 +1,2158 @@
+{
+  "generated": "2026-11-27T20:29:36.281Z",
+  "backend": {
+    "packages_checked": 194,
+    "checked": [
+      "accessible-pygments==0.0.5",
+      "aiohappyeyeballs==2.7.1",
+      "aiohttp==3.14.5",
+      "aiosignal==1.4.0",
+      "alabaster==1.0.0",
+      "amazon-s3-encryption-client-python==4.0.0",
+      "amqp==5.4.2",
+      "annotated-types==0.8.0",
+      "argon2-cffi==25.1.0",
+      "argon2-cffi-bindings==26.2.0",
+      "asgiref==3.13.0",
+      "asttokens==3.0.2",
+      "attrs==26.1.0",
+      "authlib==1.6.12",
+      "babel==2.18.0",
+      "beautifulsoup4==4.15.0",
+      "billiard==4.3.2",
+      "boto3==1.43.6",
+      "boto3-stubs==1.43.6",
+      "botocore==1.43.127",
+      "botocore-stubs==1.43.126",
+      "brotli==1.2.1",
+      "celery==5.6.0",
+      "certifi==2026.10.23",
+      "cffi==2.1.1",
+      "cfgv==3.5.0",
+      "charset-normalizer==3.5.2",
+      "click==8.5.1",
+      "click-didyoumean==0.3.1",
+      "click-plugins==1.1.1.2",
+      "click-repl==0.4.1",
+      "coverage==7.13.0",
+      "cryptography==48.0.1",
+      "cssselect2==0.10.1",
+      "debugpy==1.8.17",
+      "decorator==5.3.1",
+      "diff-match-patch==20241021",
+      "distlib==0.4.4",
+      "django==6.0",
+      "django-anymail==15.2",
+      "django-cors-headers==4.9.0",
+      "django-environ==0.12.0",
+      "django-extensions==4.1",
+      "django-filter==25.2",
+      "django-import-export==4.3.14",
+      "django-maintenance-mode==0.22.0",
+      "django-ratelimit==4.1.0",
+      "django-redis==6.0.0",
+      "django-silk==5.4.3",
+      "django-stubs==6.1.2",
+      "django-stubs-ext==6.1.2",
+      "django-coverage-plugin==3.2.0",
+      "djangoql==0.18.1",
+      "djangorestframework==3.16.1",
+      "djangorestframework-stubs==3.16.6",
+      "djangorestframework-simplejwt==5.5.1",
+      "docutils==0.21.2",
+      "drf-nested-routers==0.95.0",
+      "drf-spectacular==0.29.0",
+      "dry-rest-permissions==0.1.10",
+      "evalidate==2.1.3",
+      "exceptiongroup==1.3.1",
+      "executing==2.3.0",
+      "faker==38.2.0",
+      "filelock==4.2.12",
+      "fonttools==4.68.0",
+      "freezegun==1.5.5",
+      "frozenlist==1.8.0",
+      "furo==2025.9.25",
+      "gprof2dot==2025.4.14",
+      "gunicorn==23.0.0",
+      "healthy-django==0.1.0",
+      "hiredis==3.5.0",
+      "http-ece==1.2.1",
+      "identify==2.6.20",
+      "idna==3.20",
+      "imagesize==2.0.1",
+      "inflection==0.5.1",
+      "iniconfig==2.3.1",
+      "ipython==9.8.0",
+      "ipython-pygments-lexers==1.1.1",
+      "jedi==0.20.1",
+      "jinja2==3.1.6",
+      "jmespath==1.1.0",
+      "json-fingerprint==0.14.1",
+      "jsonschema==4.25.1",
+      "jsonschema-specifications==2025.9.1",
+      "kombu==5.7.0",
+      "libcst==1.9.0",
+      "librt==0.16.0",
+      "linkify-it-py==2.2.0",
+      "markdown-it-py==3.0.0",
+      "markupsafe==3.0.4",
+      "matplotlib-inline==0.2.2",
+      "mdit-py-plugins==0.7.0",
+      "mdurl==0.1.2",
+      "model-bakery==1.20.5",
+      "multidict==7.2.1",
+      "mutmut==3.8.1",
+      "mypy==1.19.1",
+      "mypy-boto3-s3==1.43.106",
+      "mypy-extensions==1.2.0",
+      "myst-parser==4.0.1",
+      "nodeenv==1.12.0",
+      "packaging==26.3",
+      "parso==0.8.7",
+      "pathspec==1.1.1",
+      "pexpect==4.9.0",
+      "phonenumberslite==9.0.19",
+      "pillow==12.2.0",
+      "pipenv==2025.1.1",
+      "platformdirs==4.14.7",
+      "pluggy==1.7.0",
+      "ply==3.11",
+      "pre-commit==4.5.0",
+      "prometheus-client==0.26.0",
+      "prompt-toolkit==3.0.53",
+      "propcache==0.5.4",
+      "psycopg==3.3.2",
+      "psycopg-c==3.3.2",
+      "ptyprocess==0.7.0",
+      "pure-eval==0.2.4",
+      "py-vapid==1.9.6",
+      "pycountry==26.2.16",
+      "pycparser==3.12",
+      "pydantic==2.12.5",
+      "pydantic-extra-types==2.10.6",
+      "pydantic-core==2.41.5",
+      "pydyf==0.13.0",
+      "pygments==2.21.0",
+      "pyjwt==2.12.0",
+      "pyotp==2.9.0",
+      "pyphen==0.18.1",
+      "pytest==9.2.0",
+      "python-dateutil==2.9.0.post0",
+      "python-discovery==1.9.6",
+      "python-fsutil==0.18.0",
+      "python-magic==0.4.28",
+      "python-slugify==8.0.4",
+      "pywebpush==2.1.2",
+      "pyyaml==6.0.3",
+      "pyyaml-ft==8.0.0",
+      "redis==7.1.0",
+      "referencing==0.37.0",
+      "requests==2.33.0",
+      "rich==15.0.0",
+      "roman-numerals==4.1.0",
+      "roman-numerals-py==4.1.0",
+      "rpds-py==2026.9.1",
+      "ruff==0.14.14",
+      "s3transfer==0.17.1",
+      "sentry-sdk==2.58.0",
+      "setproctitle==1.3.8",
+      "setuptools==84.2.1",
+      "simplejson==3.20.2",
+      "six==1.17.0",
+      "snowballstemmer==3.1.1",
+      "soupsieve==4.1.1",
+      "sphinx==8.2.3",
+      "sphinx-basic-ng==1.0.0b2",
+      "sphinxcontrib-applehelp==2.0.0",
+      "sphinxcontrib-devhelp==2.0.0",
+      "sphinxcontrib-htmlhelp==2.1.0",
+      "sphinxcontrib-jsmath==2.0.0",
+      "sphinxcontrib-qthelp==2.0.0",
+      "sphinxcontrib-serializinghtml==2.0.0",
+      "sqlparse==0.6.1",
+      "stack-data==0.6.3",
+      "tablib==3.10.0",
+      "tblib==3.2.2",
+      "text-unidecode==1.3",
+      "textual==8.2.8",
+      "tinycss2==1.5.1",
+      "tinyhtml5==2.1.0",
+      "traitlets==5.16.1",
+      "types-pyyaml==6.0.12.20261113",
+      "types-requests==2.33.0.20261030",
+      "types-s3transfer==0.19.3",
+      "typing-inspection==0.4.5",
+      "typing-extensions==4.16.0",
+      "tzdata==2026.6",
+      "tzlocal==5.4.5",
+      "uritemplate==4.2.0",
+      "urllib3==2.7.0",
+      "vine==5.1.0",
+      "virtualenv==21.15.8",
+      "watchdog==6.0.0",
+      "wcwidth==0.9.4",
+      "weasyprint==70.0",
+      "webencodings==0.6.1",
+      "werkzeug==3.1.6",
+      "whitenoise==6.11.0",
+      "yarl==1.25.1",
+      "zopfli==0.4.3"
+    ],
+    "vulnerable": [
+      {
+        "name": "authlib",
+        "installed": "1.6.12",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 9,
+        "by_severity": {
+          "CRITICAL": 1,
+          "HIGH": 3,
+          "MODERATE": 4,
+          "LOW": 1,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "1.8.0",
+          "1.9.0",
+          "1.9.1"
+        ],
+        "context": "JWKS/JOSE handling in config/settings (token signing keys).",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-96760",
+              "GHSA-6v38-4h7w-rj9h"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-6v38-4h7w-rj9h",
+            "summary": "Authlib: empty signatures validation in JWS JSON deserialization",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114615",
+              "GHSA-7vr2-2fgp-9w7p",
+              "PYSEC-2026-4355"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-7vr2-2fgp-9w7p",
+            "summary": "Authlib incomplete algorithm-confusion fix permits HMAC forgery with prefixed public keys",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114616",
+              "GHSA-8m4g-j4wp-wgcg",
+              "PYSEC-2026-4356"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-8m4g-j4wp-wgcg",
+            "summary": "Authlib accepts an empty HMAC key, allowing JWS/JWT signature forgery (HS256/HS384/HS512)",
+            "fix_versions": [
+              "1.9.1"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-116672",
+              "GHSA-c73q-w75p-j82v"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-c73q-w75p-j82v",
+            "summary": "Authlib RFC 7592 examples omit registration-access-token client binding",
+            "fix_versions": [
+              "1.9.1"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114617",
+              "GHSA-c5mf-xmp2-59rc",
+              "PYSEC-2026-4357"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-c5mf-xmp2-59rc",
+            "summary": "Authlib: ID token can disable its own nonce validation via the nonce_supported claim",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114618",
+              "GHSA-fch4-3c6x-j4gc",
+              "PYSEC-2026-4358"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-fch4-3c6x-j4gc",
+            "summary": "Authlib: Default JWT bearer grant accepts assertions for the wrong audience",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114619",
+              "GHSA-q686-2qmg-hqc7",
+              "PYSEC-2026-4359"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-q686-2qmg-hqc7",
+            "summary": "Authlib: OpenID implicit grant checks raw scope instead of allowed scope before issuing ID tokens",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114620",
+              "GHSA-x4rv-c3wx-4cr8",
+              "PYSEC-2026-4360"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-x4rv-c3wx-4cr8",
+            "summary": "Authlib: Unvalidated request_uri fetch in JWT-secured authorization request (JAR) leading to SSRF",
+            "fix_versions": [
+              "1.9.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114614",
+              "GHSA-jj7h-c3hg-m23x",
+              "PYSEC-2026-4354"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-jj7h-c3hg-m23x",
+            "summary": "Authlib: is_secure_transport() loopback exemption can be bypassed with a userinfo component, allowing cleartext-HTTP URLs to non-loopback hosts",
+            "fix_versions": [
+              "1.8.0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "cryptography",
+        "installed": "48.0.1",
+        "dependency_type": "transitive",
+        "unique_advisories": 3,
+        "by_severity": {
+          "CRITICAL": 0,
+          "HIGH": 2,
+          "MODERATE": 1,
+          "LOW": 0,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "49.0.0",
+          "50.0.0"
+        ],
+        "context": "Crypto primitives used by authlib/pyjwt.",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-69247",
+              "GHSA-g6cj-pr64-35w5",
+              "PYSEC-2026-3552"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-g6cj-pr64-35w5",
+            "summary": "cryptography: PKCS#7 EnvelopedData decryption exposes a Bleichenbacher oracle through distinguishable errors and timing",
+            "fix_versions": [
+              "50.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-69249",
+              "GHSA-jwv3-5hgf-82ww",
+              "PYSEC-2026-3553"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-jwv3-5hgf-82ww",
+            "summary": "python-cryptography: Duplicate self-signed intermediates can cause exponential path-building",
+            "fix_versions": [
+              "49.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-69248",
+              "GHSA-m2h6-j472-rp4c",
+              "PYSEC-2026-3554"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-m2h6-j472-rp4c",
+            "summary": "python-cryptography verifier accepts wildcard DNS names allowing escape from permittedSubtrees",
+            "fix_versions": [
+              "49.0.0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "django",
+        "installed": "6.0",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 26,
+        "by_severity": {
+          "CRITICAL": 0,
+          "HIGH": 6,
+          "MODERATE": 6,
+          "LOW": 14,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "4.2.28",
+          "4.2.29",
+          "4.2.30",
+          "5.2.11",
+          "5.2.12",
+          "5.2.13",
+          "5.2.14",
+          "5.2.15",
+          "5.2.16",
+          "5.2.17",
+          "6.0.2",
+          "6.0.3",
+          "6.0.4",
+          "6.0.5",
+          "6.0.6",
+          "6.0.7",
+          "6.0.8",
+          "6.1.1"
+        ],
+        "context": "Core web framework; serves every API request in both workflows.",
+        "advisories": [
+          {
+            "ids": [
+              "BIT-django-2026-25673",
+              "CVE-2026-25673",
+              "GHSA-8p8v-wh79-9r56",
+              "PYSEC-2026-2448"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-8p8v-wh79-9r56",
+            "summary": "Django vulnerable to Uncontrolled Resource Consumption",
+            "fix_versions": [
+              "4.2.29",
+              "5.2.12",
+              "6.0.3"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-33034",
+              "CVE-2026-33034",
+              "GHSA-933h-hp56-hf7m",
+              "PYSEC-2026-49"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-933h-hp56-hf7m",
+            "summary": "Django: SGI requests with a missing or understated `Content-Length` header could bypass the `DATA_UPLOAD_MAX_MEMORY_SIZE` limit",
+            "fix_versions": [
+              "4.2.30",
+              "5.2.13",
+              "6.0.4"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-1287",
+              "CVE-2026-1287",
+              "GHSA-gvg8-93h5-g6qq",
+              "PYSEC-2026-46"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-gvg8-93h5-g6qq",
+            "summary": "Django has an SQL Injection issue",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-3902",
+              "CVE-2026-3902",
+              "GHSA-mvfq-ggxm-9mc5",
+              "PYSEC-2026-51"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-mvfq-ggxm-9mc5",
+            "summary": "Django vulnerable to ASGI header spoofing via underscore/hyphen conflation",
+            "fix_versions": [
+              "4.2.30",
+              "5.2.13",
+              "6.0.4"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-1207",
+              "CVE-2026-1207",
+              "GHSA-mwm9-4648-f68q",
+              "PYSEC-2026-44"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-mwm9-4648-f68q",
+            "summary": "Django has an SQL Injection issue",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-15307",
+              "CVE-2026-15307",
+              "GHSA-wvqv-fj8w-qmhm",
+              "PYSEC-2026-4035"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-wvqv-fj8w-qmhm",
+            "summary": "Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing",
+            "fix_versions": [
+              "5.2.17",
+              "6.0.8"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-33033",
+              "CVE-2026-33033",
+              "GHSA-5mf9-h53q-7mhq",
+              "PYSEC-2026-48"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-5mf9-h53q-7mhq",
+            "summary": "Django has potential DoS via MultiPartParser through crafted multipart uploads",
+            "fix_versions": [
+              "4.2.30",
+              "5.2.13",
+              "6.0.4"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-1312",
+              "CVE-2026-1312",
+              "GHSA-6426-9fv3-65x8",
+              "PYSEC-2026-47"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-6426-9fv3-65x8",
+            "summary": "Django has an SQL Injection issue",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-53878",
+              "CVE-2026-53878",
+              "GHSA-8qcx-xf44-272x",
+              "PYSEC-2026-2092"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-8qcx-xf44-272x",
+            "summary": "Django: DomainNameValidator permits newline characters that may enable HTTP header injection",
+            "fix_versions": [
+              "5.2.16",
+              "6.0.7"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-53877",
+              "CVE-2026-53877",
+              "GHSA-crhf-3pfg-w68w",
+              "PYSEC-2026-2091"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-crhf-3pfg-w68w",
+            "summary": " Django: GDALRaster may over-read heap memory when constructed from bytes",
+            "fix_versions": [
+              "5.2.16",
+              "6.0.7"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-15830",
+              "CVE-2026-15830",
+              "GHSA-q238-5cxm-5c9h",
+              "PYSEC-2026-3717"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-q238-5cxm-5c9h",
+            "summary": "Django GeoDjango vulnerable to denial of service through deeply nested geometry collections",
+            "fix_versions": [
+              "5.2.17",
+              "6.0.8",
+              "6.1.1"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-5766",
+              "CVE-2026-5766",
+              "GHSA-w26r-rmm8-9c29",
+              "PYSEC-2026-54"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-w26r-rmm8-9c29",
+            "summary": "Django has an Improper Handling of Length Parameter Inconsistency",
+            "fix_versions": [
+              "5.2.14",
+              "6.0.5"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2025-13473",
+              "CVE-2025-13473",
+              "GHSA-2mcm-79hx-8fxw",
+              "PYSEC-2026-42"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-2mcm-79hx-8fxw",
+            "summary": "Django has Observable Timing Discrepancy",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2025-14550",
+              "CVE-2025-14550",
+              "GHSA-33mw-q7rj-mjwj",
+              "PYSEC-2026-43"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-33mw-q7rj-mjwj",
+            "summary": "Django has Inefficient Algorithmic Complexity",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-48588",
+              "CVE-2026-48588",
+              "GHSA-3h9f-r86x-qvjx",
+              "PYSEC-2026-2090"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-3h9f-r86x-qvjx",
+            "summary": "Django: cache middleware may expose private responses when unrelated request cookies are present",
+            "fix_versions": [
+              "5.2.16",
+              "6.0.7"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-1285",
+              "CVE-2026-1285",
+              "GHSA-4rrr-2h4v-f3j9",
+              "PYSEC-2026-45"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-4rrr-2h4v-f3j9",
+            "summary": "Django has Inefficient Algorithmic Complexity",
+            "fix_versions": [
+              "4.2.28",
+              "5.2.11",
+              "6.0.2"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-6907",
+              "CVE-2026-6907",
+              "GHSA-5hrc-gvxj-w55p",
+              "PYSEC-2026-55"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-5hrc-gvxj-w55p",
+            "summary": "Django Uses Cache Containing Sensitive Information",
+            "fix_versions": [
+              "5.2.14",
+              "6.0.5"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-35192",
+              "CVE-2026-35192",
+              "GHSA-7h2m-m8vj-598h",
+              "PYSEC-2026-50"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-7h2m-m8vj-598h",
+            "summary": "Django Uses Persistent Cookies Containing Sensitive Information ",
+            "fix_versions": [
+              "5.2.14",
+              "6.0.5"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-8404",
+              "CVE-2026-8404",
+              "GHSA-8cjm-8mp7-r2xf",
+              "PYSEC-2026-201"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-8cjm-8mp7-r2xf",
+            "summary": "Django: UpdateCacheMiddleware may disclose cached responses due to case-sensitive Cache-Control handling",
+            "fix_versions": [
+              "5.2.15",
+              "6.0.6"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-48587",
+              "CVE-2026-48587",
+              "GHSA-923m-gv2p-w5qp",
+              "PYSEC-2026-198"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-923m-gv2p-w5qp",
+            "summary": "Django: has_vary_header may expose cached responses when Vary values contain whitespace",
+            "fix_versions": [
+              "5.2.15",
+              "6.0.6"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-6873",
+              "CVE-2026-6873",
+              "GHSA-h7pc-vwp9-298g",
+              "PYSEC-2026-199"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-h7pc-vwp9-298g",
+            "summary": "Django: signed cookies are vulnerable to salt namespace collisions",
+            "fix_versions": [
+              "5.2.15",
+              "6.0.6"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-25674",
+              "CVE-2026-25674",
+              "GHSA-mjgh-79qc-68w3",
+              "PYSEC-2026-2449"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-mjgh-79qc-68w3",
+            "summary": "Django has a Race Condition vulnerability",
+            "fix_versions": [
+              "4.2.29",
+              "5.2.12",
+              "6.0.3"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-7666",
+              "CVE-2026-7666",
+              "GHSA-mm6v-q8q9-pgcf",
+              "PYSEC-2026-200"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-mm6v-q8q9-pgcf",
+            "summary": "Django fails to prevent reuse of a partially-initialized connection after a failed `STARTTLS` handshake",
+            "fix_versions": [
+              "5.2.15",
+              "6.0.6"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-4292",
+              "CVE-2026-4292",
+              "GHSA-mmwr-2jhp-mc7j",
+              "PYSEC-2026-53"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-mmwr-2jhp-mc7j",
+            "summary": "Django vulnerable to privilege abuse in ModelAdmin.list_editable",
+            "fix_versions": [
+              "4.2.30",
+              "5.2.13",
+              "6.0.4"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-4277",
+              "CVE-2026-4277",
+              "GHSA-pwjp-ccjc-ghwg",
+              "PYSEC-2026-52"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-pwjp-ccjc-ghwg",
+            "summary": "Django vulnerable to privilege abuse in GenericInlineModelAdmin",
+            "fix_versions": [
+              "4.2.30",
+              "5.2.13",
+              "6.0.4"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-django-2026-35193",
+              "CVE-2026-35193",
+              "GHSA-qpc8-7fxc-cm4p",
+              "PYSEC-2026-197"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-qpc8-7fxc-cm4p",
+            "summary": "Django: UpdateCacheMiddleware may disclose private cached responses by omitting Authorization from Vary",
+            "fix_versions": [
+              "5.2.15",
+              "6.0.6"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "djangorestframework",
+        "installed": "3.16.1",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 5,
+        "by_severity": {
+          "CRITICAL": 0,
+          "HIGH": 3,
+          "MODERATE": 2,
+          "LOW": 0,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "3.17.2",
+          "3.18.2"
+        ],
+        "context": "API layer for /api/v1/encounter/ and all workflow endpoints.",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-114138",
+              "GHSA-33wh-fxxf-88vv"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-33wh-fxxf-88vv",
+            "summary": "Django REST framework: Accept header with many large quoted parameters burns ~19s of CPU per request in content negotiation",
+            "fix_versions": [
+              "3.18.2"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114136",
+              "GHSA-3547-9m27-7rxg"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-3547-9m27-7rxg",
+            "summary": "Django REST framework: JSONParser applies an attacker-named codec to the request stream",
+            "fix_versions": [
+              "3.18.2"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-114137",
+              "GHSA-xw6w-gcfp-cf8m"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-xw6w-gcfp-cf8m",
+            "summary": "Django REST framework: TokenProxy.delete() reports success and revokes nothing",
+            "fix_versions": [
+              "3.18.2"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-73228",
+              "GHSA-2m8g-3cmr-wg3w",
+              "PYSEC-2026-3827"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-2m8g-3cmr-wg3w",
+            "summary": "Django REST framework: Potential bypass of Django `DATA_UPLOAD_MAX_MEMORY_SIZE` when parsing oversized JSON and urlencoded request bodies via DRF `request.data`",
+            "fix_versions": [
+              "3.17.2"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-73229",
+              "GHSA-g47c-3xmw-q6m2",
+              "PYSEC-2026-3828"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-g47c-3xmw-q6m2",
+            "summary": "Django REST framework: AdminRenderer may disclose GET-protected data when rendering invalid write requests",
+            "fix_versions": [
+              "3.17.2"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pillow",
+        "installed": "12.2.0",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 56,
+        "by_severity": {
+          "CRITICAL": 5,
+          "HIGH": 34,
+          "MODERATE": 17,
+          "LOW": 0,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "12.3.0",
+          "13.0.0"
+        ],
+        "context": "Image processing for uploads; not exercised by the encounter workflows.",
+        "advisories": [
+          {
+            "ids": [
+              "BIT-pillow-2026-112398",
+              "CVE-2026-112398",
+              "GHSA-5x8w-8jj5-q52h",
+              "PYSEC-2026-4330"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-5x8w-8jj5-q52h",
+            "summary": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112403",
+              "CVE-2026-112403",
+              "GHSA-8g5g-8vmr-9782",
+              "PYSEC-2026-4332"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-8g5g-8vmr-9782",
+            "summary": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96639",
+              "CVE-2026-96639",
+              "GHSA-v9pv-5gc8-w2m6",
+              "PYSEC-2026-4339"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-v9pv-5gc8-w2m6",
+            "summary": "Pillow multi-frame loaders can reuse stale native image storage after mode transitions",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112393",
+              "CVE-2026-112393",
+              "GHSA-332p-7hrc-92wf"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-332p-7hrc-92wf",
+            "summary": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112900",
+              "CVE-2026-112900",
+              "GHSA-w889-685w-c8fh"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-w889-685w-c8fh",
+            "summary": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112392",
+              "CVE-2026-112392",
+              "GHSA-27h8-gf7j-v5hc",
+              "PYSEC-2026-4326"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-27h8-gf7j-v5hc",
+            "summary": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96642",
+              "CVE-2026-96642",
+              "GHSA-3j72-p6qg-6xp7",
+              "PYSEC-2026-4341"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-3j72-p6qg-6xp7",
+            "summary": "Pillow: TarIO negative size field causes infinite CPU-spin loop",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-55379",
+              "CVE-2026-55379",
+              "GHSA-45hq-cxwh-f6vc",
+              "PYSEC-2026-2255"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-45hq-cxwh-f6vc",
+            "summary": "Pillow `BdfFontFile`: `Image.new()` called without `_decompression_bomb_check()` — bomb protection bypass via font loading",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112397",
+              "CVE-2026-112397",
+              "GHSA-58r4-6rv3-gfh8",
+              "PYSEC-2026-4329"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-58r4-6rv3-gfh8",
+            "summary": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-54060",
+              "CVE-2026-54060",
+              "GHSA-5x94-69rx-g8h2",
+              "PYSEC-2026-2254"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-5x94-69rx-g8h2",
+            "summary": "Pillow: `FontFile.compile()`: `Image.new()` called without `_decompression_bomb_check()`",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-54058",
+              "CVE-2026-54058",
+              "GHSA-62p4-gmf7-7g93",
+              "PYSEC-2026-3493"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-62p4-gmf7-7g93",
+            "summary": "Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59199",
+              "CVE-2026-59199",
+              "GHSA-6r8x-57c9-28j4",
+              "PYSEC-2026-3451"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-6r8x-57c9-28j4",
+            "summary": "Pillow: Heap out-of-bounds write `Image.paste()` / `Image.crop()` via signed coordinate overflow",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112402",
+              "CVE-2026-112402",
+              "GHSA-7mwm-ghpf-9vrm",
+              "PYSEC-2026-4331"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-7mwm-ghpf-9vrm",
+            "summary": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-54059",
+              "CVE-2026-54059",
+              "GHSA-8v84-f9pq-wr9x",
+              "PYSEC-2026-2253"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-8v84-f9pq-wr9x",
+            "summary": "Pillow `PcfFontFile._load_bitmaps()`: `Image.frombytes()` called without `_decompression_bomb_check()` — bomb protection bypass via PCF font loading",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59205",
+              "CVE-2026-59205",
+              "GHSA-9hw9-ch79-4vh6",
+              "PYSEC-2026-3453"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-9hw9-ch79-4vh6",
+            "summary": "Pillow: Controlled heap out-of-bounds write in Pillow `ImageCmsTransform.apply()` via output mode mismatch",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96644",
+              "CVE-2026-96644",
+              "GHSA-9v9v-9qvf-h2hj",
+              "PYSEC-2026-4343"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-9v9v-9qvf-h2hj",
+            "summary": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112405",
+              "CVE-2026-112405",
+              "GHSA-cp9v-662q-vvx9",
+              "PYSEC-2026-4333"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-cp9v-662q-vvx9",
+            "summary": "Pillow: NULL pointer dereference in Image.merge via an unvalidated band 0",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96643",
+              "CVE-2026-96643",
+              "GHSA-g4qv-2jxx-769h",
+              "PYSEC-2026-4342"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-g4qv-2jxx-769h",
+            "summary": "Pillow: PNG eXIf chunk makes EXIF parsing run in quadratic time",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96637",
+              "CVE-2026-96637",
+              "GHSA-g842-9rc4-69pw",
+              "PYSEC-2026-4338"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-g842-9rc4-69pw",
+            "summary": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59200",
+              "CVE-2026-59200",
+              "GHSA-jjj6-mw9f-p565",
+              "PYSEC-2026-3495"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-jjj6-mw9f-p565",
+            "summary": "Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112896",
+              "CVE-2026-112896",
+              "GHSA-pchr-8j38-3x4p",
+              "PYSEC-2026-4334"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-pchr-8j38-3x4p",
+            "summary": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-55380",
+              "CVE-2026-55380",
+              "GHSA-phj9-mv4w-65pm",
+              "PYSEC-2026-2256"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-phj9-mv4w-65pm",
+            "summary": "Pillow `GdImageFile._open()`: image dimensions accepted without `_decompression_bomb_check()`",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59204",
+              "CVE-2026-59204",
+              "GHSA-vjc4-5qp5-m44j",
+              "PYSEC-2026-3496"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-vjc4-5qp5-m44j",
+            "summary": "Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59197",
+              "CVE-2026-59197",
+              "GHSA-xj96-63gp-2gmr",
+              "PYSEC-2026-3454"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-xj96-63gp-2gmr",
+            "summary": "Pillow: Heap out-of-bounds write in `ImageFilter.RankFilter` via integer overflow in `ImagingExpand`",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112902",
+              "CVE-2026-112902",
+              "GHSA-xvh5-g6gv-559v",
+              "PYSEC-2026-4363"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-xvh5-g6gv-559v",
+            "summary": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112390",
+              "CVE-2026-112390",
+              "GHSA-22hg-r758-rrw9"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-22hg-r758-rrw9",
+            "summary": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112399",
+              "CVE-2026-112399",
+              "GHSA-5xm2-6676-qcp9"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-5xm2-6676-qcp9",
+            "summary": "Pillow: APNG background disposal allocates full canvas before decompression bomb check",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112400",
+              "CVE-2026-112400",
+              "GHSA-65qm-jvmh-6pqg"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-65qm-jvmh-6pqg",
+            "summary": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "GHSA-78g4-xqwv-q3g8"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-78g4-xqwv-q3g8",
+            "summary": "Pillow: Bundled libopenjp2 2.5.4 in all wheels since 11.1.0 carries OSV-2025-219 heap-buffer-overflow write reachable from Image.open().load()",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112404",
+              "CVE-2026-112404",
+              "GHSA-c6hw-5grf-ff96"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-c6hw-5grf-ff96",
+            "summary": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112406",
+              "CVE-2026-112406",
+              "GHSA-f2g6-542v-9j58"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-f2g6-542v-9j58",
+            "summary": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96778",
+              "CVE-2026-96778",
+              "GHSA-g7cr-3p24-7wf7"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-g7cr-3p24-7wf7",
+            "summary": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112892",
+              "CVE-2026-112892",
+              "GHSA-gg2r-wvfm-q9rx"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-gg2r-wvfm-q9rx",
+            "summary": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112893",
+              "CVE-2026-112893",
+              "GHSA-j4m9-6w36-pw47"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-j4m9-6w36-pw47",
+            "summary": "Pillow: Invalid free in FreeType glyph rendering when a stroker is active",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112894",
+              "CVE-2026-112894",
+              "GHSA-jg86-v3jv-hrpm"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-jg86-v3jv-hrpm",
+            "summary": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96640",
+              "CVE-2026-96640",
+              "GHSA-mrfp-p49p-3hf2"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-mrfp-p49p-3hf2",
+            "summary": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112895",
+              "CVE-2026-112895",
+              "GHSA-p4wg-p73j-c528"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-p4wg-p73j-c528",
+            "summary": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112897",
+              "CVE-2026-112897",
+              "GHSA-q45j-58j2-45rg"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-q45j-58j2-45rg",
+            "summary": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-128067",
+              "CVE-2026-128067",
+              "GHSA-xcvg-w56q-r89m"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-xcvg-w56q-r89m",
+            "summary": "Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112394",
+              "CVE-2026-112394",
+              "GHSA-4558-3h8r-v8xp",
+              "PYSEC-2026-4327"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-4558-3h8r-v8xp",
+            "summary": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96641",
+              "CVE-2026-96641",
+              "GHSA-4rm8-3hmm-39fg",
+              "PYSEC-2026-4340"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-4rm8-3hmm-39fg",
+            "summary": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112396",
+              "CVE-2026-112396",
+              "GHSA-4rr5-89j8-mwwm",
+              "PYSEC-2026-4328"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-4rr5-89j8-mwwm",
+            "summary": "Pillow: Heap use-after-free when encoding TIFF to an in-memory buffer",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-55798",
+              "CVE-2026-55798",
+              "GHSA-4x4j-2g7c-83w6",
+              "PYSEC-2026-2257"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-4x4j-2g7c-83w6",
+            "summary": "Pillow: WindowsViewer.get_command() OS command injection via unescaped shell path",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-114501",
+              "CVE-2026-114501",
+              "GHSA-654x-cwwv-5j9c",
+              "PYSEC-2026-4336"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-654x-cwwv-5j9c",
+            "summary": "Pillow: Arrow export leaks stale heap memory when PILLOW_ALIGNMENT > 1",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59198",
+              "CVE-2026-59198",
+              "GHSA-fj7v-r99m-22gq",
+              "PYSEC-2026-3494"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-fj7v-r99m-22gq",
+            "summary": "Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96636",
+              "CVE-2026-96636",
+              "GHSA-p8hx-v2p6-rp84",
+              "PYSEC-2026-4337"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-p8hx-v2p6-rp84",
+            "summary": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-59203",
+              "CVE-2026-59203",
+              "GHSA-pg7v-jwj7-p798",
+              "PYSEC-2026-3452"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-pg7v-jwj7-p798",
+            "summary": "Pillow EpsImagePlugin negative %%BeginBinary byte count causes infinite loop denial of service",
+            "fix_versions": [
+              "12.3.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112901",
+              "CVE-2026-112901",
+              "GHSA-xgh8-jp6q-p5x8",
+              "PYSEC-2026-4335"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-xgh8-jp6q-p5x8",
+            "summary": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-96638",
+              "CVE-2026-96638",
+              "GHSA-24rc-8hj2-v98c"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-24rc-8hj2-v98c",
+            "summary": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112391",
+              "CVE-2026-112391",
+              "GHSA-254f-3936-288h"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-254f-3936-288h",
+            "summary": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112395",
+              "CVE-2026-112395",
+              "GHSA-462x-pgg6-55fp"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-462x-pgg6-55fp",
+            "summary": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112401",
+              "CVE-2026-112401",
+              "GHSA-74r2-7ff9-mjj2"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-74r2-7ff9-mjj2",
+            "summary": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112891",
+              "CVE-2026-112891",
+              "GHSA-fc9g-5qg7-mf45"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-fc9g-5qg7-mf45",
+            "summary": "Pillow: Quadratic GIF comment copying during save",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112898",
+              "CVE-2026-112898",
+              "GHSA-rfgq-q3w2-pmv2"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-rfgq-q3w2-pmv2",
+            "summary": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-112899",
+              "CVE-2026-112899",
+              "GHSA-vx6w-vv9f-6gvg"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-vx6w-vv9f-6gvg",
+            "summary": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          },
+          {
+            "ids": [
+              "BIT-pillow-2026-128066",
+              "CVE-2026-128066",
+              "GHSA-wqgw-9xfh-qf2g"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-wqgw-9xfh-qf2g",
+            "summary": "Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data",
+            "fix_versions": [
+              "13.0.0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pyjwt",
+        "installed": "2.12.0",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 16,
+        "by_severity": {
+          "CRITICAL": 1,
+          "HIGH": 4,
+          "MODERATE": 10,
+          "LOW": 1,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "2.12.1",
+          "2.13.0",
+          "2.14.0",
+          "2.15.0"
+        ],
+        "context": "Signs/verifies the JWT access tokens used by both roles (via djangorestframework-simplejwt).",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-102268",
+              "GHSA-ffc3-869f-jxw9",
+              "PYSEC-2026-4145"
+            ],
+            "severity": "CRITICAL",
+            "severity_source": "GHSA-ffc3-869f-jxw9",
+            "summary": "PyJWT: Asymmetric-PEM detection bypass: whitespace/line-ending-mutated public keys skip the HS/asymmetric confusion guard",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-102267",
+              "GHSA-9v7f-9g4p-ffgj",
+              "PYSEC-2026-4144"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-9v7f-9g4p-ffgj",
+            "summary": "PyJWT: PyJWKClient follows redirects when fetching JWKS",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-102271",
+              "GHSA-p4g4-x82p-q773",
+              "PYSEC-2026-4149"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-p4g4-x82p-q773",
+            "summary": "PyJWT: Public keys in DER form are accepted as HMAC secrets, bypassing the CVE-2022-29217 guard",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-48526",
+              "GHSA-xgmm-8j9v-c9wx",
+              "PYSEC-2026-179"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-xgmm-8j9v-c9wx",
+            "summary": "PyJWT: Public-key JWK accepted as HMAC secret enables forged HS256 tokens when mixed families are allowed",
+            "fix_versions": [
+              "2.13.0"
+            ]
+          },
+          {
+            "ids": [
+              "GHSA-pxh4-856f-4h89"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-pxh4-856f-4h89",
+            "summary": "PyJWT: HS256/384/512 verify accepts empty HMAC key via oct JWK (PyJWK/PyJWKClient) enabling token forgery",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-101917",
+              "GHSA-2gx3-rcp4-g85q",
+              "PYSEC-2026-4140"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-2gx3-rcp4-g85q",
+            "summary": "PyJWT: PyJWKClient still amplifies unauthenticated JWKS fetches on unknown kid values (incomplete fix of CVE-2026-48524)",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-101918",
+              "GHSA-42vr-xj54-vc7v",
+              "PYSEC-2026-4141"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-42vr-xj54-vc7v",
+            "summary": "PyJWT: Unauthenticated RecursionError DoS in pre-verification payload parse (PyJWKClient.get_signing_key_from_jwt / verify_signature=False)",
+            "fix_versions": [
+              "2.15.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-48522",
+              "GHSA-993g-76c3-p5m4",
+              "PYSEC-2026-175"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-993g-76c3-p5m4",
+            "summary": "PyJWKClient: missing scheme allowlist enables CVE-2024-21643-class SSRF + token forgery via file://, ftp://, data: schemes",
+            "fix_versions": [
+              "2.13.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-103001",
+              "GHSA-gvp8-978c-rx2q",
+              "PYSEC-2026-4146"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-gvp8-978c-rx2q",
+            "summary": "PyJWT.decode() reintroduces options-dict mutation, enabling silent claim-verification bypass on dict reuse",
+            "fix_versions": []
+          },
+          {
+            "ids": [
+              "CVE-2026-102269",
+              "GHSA-hxm8-2xgr-2p9m",
+              "PYSEC-2026-4147"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-hxm8-2xgr-2p9m",
+            "summary": "PyJWT: Non-canonical signature segments enable raw-token revocation bypass",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-48523",
+              "GHSA-jq35-7prp-9v3f",
+              "PYSEC-2026-176"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-jq35-7prp-9v3f",
+            "summary": "PyJWT: Algorithm allow-list bypass when decoding with `PyJWK` / `PyJWKClient` keys",
+            "fix_versions": [
+              "2.12.1",
+              "2.13.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-102270",
+              "GHSA-jwrc-g2q2-pq5p",
+              "PYSEC-2026-4148"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-jwrc-g2q2-pq5p",
+            "summary": "PyJWT: ReDoS vulnerability when calling the `is_pem_format` function.",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-102274",
+              "GHSA-w6j9-cwv2-h6wq",
+              "PYSEC-2026-4152"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-w6j9-cwv2-h6wq",
+            "summary": "PyJWT: Malformed RSA JWK aborts parsing of an entire JWK Set",
+            "fix_versions": [
+              "2.14.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-48525",
+              "GHSA-w7vc-732c-9m39",
+              "PYSEC-2026-178"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-w7vc-732c-9m39",
+            "summary": "PyJWT: Unauthenticated DoS via unbounded Base64URL decoding of unused payload segment in b64=false detached JWS",
+            "fix_versions": [
+              "2.13.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-102275",
+              "GHSA-x33g-cr3x-6449",
+              "PYSEC-2026-4183"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-x33g-cr3x-6449",
+            "summary": "PyJWT accepts inconsistent OKP x/d JWKs, causing public/private key identity confusion",
+            "fix_versions": [
+              "2.15.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-48524",
+              "GHSA-fhv5-28vv-h8m8",
+              "PYSEC-2026-177"
+            ],
+            "severity": "LOW",
+            "severity_source": "GHSA-fhv5-28vv-h8m8",
+            "summary": "PyJWKClient unbounded JWKS endpoint requests via attacker-controlled kid values (DoS)",
+            "fix_versions": [
+              "2.13.0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "urllib3",
+        "installed": "2.7.0",
+        "dependency_type": "direct (Pipfile [packages])",
+        "unique_advisories": 3,
+        "by_severity": {
+          "CRITICAL": 0,
+          "HIGH": 2,
+          "MODERATE": 1,
+          "LOW": 0,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "2.8.0"
+        ],
+        "context": "Outbound HTTP client (via requests); not on the encounter request path.",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-97687",
+              "GHSA-8988-9cw3-xx77",
+              "PYSEC-2026-4175"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-8988-9cw3-xx77",
+            "summary": "urllib3: HTTPS proxy TLS configuration may be ignored or overridden",
+            "fix_versions": [
+              "2.8.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-97689",
+              "GHSA-vxq7-64xx-v4gw",
+              "PYSEC-2026-4177"
+            ],
+            "severity": "HIGH",
+            "severity_source": "GHSA-vxq7-64xx-v4gw",
+            "summary": "urllib3: HTTPResponse.stream()/read_chunked() buffers an unbounded chunk-size line into memory",
+            "fix_versions": [
+              "2.8.0"
+            ]
+          },
+          {
+            "ids": [
+              "CVE-2026-97688",
+              "GHSA-gh4c-6fx4-qh6g",
+              "PYSEC-2026-4176"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-gh4c-6fx4-qh6g",
+            "summary": "urllib3: Chunked Deflate streaming can enter an infinite loop",
+            "fix_versions": [
+              "2.8.0"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "werkzeug",
+        "installed": "3.1.6",
+        "dependency_type": "direct (Pipfile [dev-packages])",
+        "unique_advisories": 1,
+        "by_severity": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MODERATE": 1,
+          "LOW": 0,
+          "UNRATED": 0
+        },
+        "fix_versions": [
+          "3.1.9"
+        ],
+        "context": "[dev-packages] only; serves the LOCAL backend via runserver_plus (scripts/start-dev.sh).",
+        "advisories": [
+          {
+            "ids": [
+              "CVE-2026-102598",
+              "GHSA-g6x2-hccm-hh4m",
+              "PYSEC-2026-4312"
+            ],
+            "severity": "MODERATE",
+            "severity_source": "GHSA-g6x2-hccm-hh4m",
+            "summary": "Werkzeug safe_join() allows Windows special device names",
+            "fix_versions": [
+              "3.1.9"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "node": [
+    {
+      "project": "care_fe",
+      "dependencies_checked": 1352,
+      "totals": {
+        "info": 0,
+        "low": 0,
+        "moderate": 9,
+        "high": 0,
+        "critical": 0,
+        "total": 9
+      },
+      "root_advisories": [
+        {
+          "package": "glob",
+          "range": ">=9.0.0 <=14.0.1",
+          "severity": "MODERATE",
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "advisory": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+          "cvss": 0
+        },
+        {
+          "package": "minimatch",
+          "range": ">=7.0.0 <11.0.1",
+          "severity": "MODERATE",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "cvss": 0
+        },
+        {
+          "package": "postcss-selector-parser",
+          "range": "<6.1.5",
+          "severity": "MODERATE",
+          "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+          "advisory": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+          "cvss": 5.9
+        }
+      ],
+      "affected_packages": [
+        {
+          "package": "@tailwindcss/typography",
+          "severity": "MODERATE",
+          "direct": true,
+          "range": "<=0.0.0-insiders.fda8ce5 || >=0.5.5",
+          "dependency_type": "direct (devDependencies)",
+          "fix": "@tailwindcss/typography@0.5.4 (semver-major)"
+        },
+        {
+          "package": "@ts-morph/common",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": "0.19.0 - 0.29.0",
+          "dependency_type": "transitive",
+          "fix": "shadcn@4.23.1"
+        },
+        {
+          "package": "glob",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": "9.0.0 - 14.0.1",
+          "dependency_type": "direct (devDependencies)",
+          "fix": "vite-plugin-pwa@1.1.0 (semver-major)"
+        },
+        {
+          "package": "minimatch",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": "7.0.0 - 11.0.0",
+          "dependency_type": "transitive",
+          "fix": "vite-plugin-pwa@1.1.0 (semver-major)"
+        },
+        {
+          "package": "postcss-selector-parser",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": "<6.1.5",
+          "dependency_type": "transitive",
+          "fix": "@tailwindcss/typography@0.5.4 (semver-major)"
+        },
+        {
+          "package": "shadcn",
+          "severity": "MODERATE",
+          "direct": true,
+          "range": "<=0.0.0-rc-20261007105214 || 2.0.0 - 4.23.0",
+          "dependency_type": "direct (devDependencies)",
+          "fix": "shadcn@4.23.1"
+        },
+        {
+          "package": "ts-morph",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": "18.0.0 - 27.0.2",
+          "dependency_type": "transitive",
+          "fix": "shadcn@4.23.1"
+        },
+        {
+          "package": "vite-plugin-pwa",
+          "severity": "MODERATE",
+          "direct": true,
+          "range": ">=1.2.0",
+          "dependency_type": "direct (devDependencies)",
+          "fix": "vite-plugin-pwa@1.1.0 (semver-major)"
+        },
+        {
+          "package": "workbox-build",
+          "severity": "MODERATE",
+          "direct": false,
+          "range": ">=7.4.0",
+          "dependency_type": "transitive",
+          "fix": "vite-plugin-pwa@1.1.0 (semver-major)"
+        }
+      ]
+    },
+    {
+      "project": "testing-e2e",
+      "dependencies_checked": 141,
+      "totals": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "root_advisories": [],
+      "affected_packages": []
+    },
+    {
+      "project": "testing-security",
+      "dependencies_checked": 3,
+      "totals": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "root_advisories": [],
+      "affected_packages": []
+    }
+  ]
+}

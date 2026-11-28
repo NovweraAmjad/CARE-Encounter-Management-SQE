@@ -1,0 +1,40 @@
+diff --git a/src/components/Encounter/CreateEncounterForm.tsx b/src/components/Encounter/CreateEncounterForm.tsx
+index ea2cfcaed..35b392c0d 100644
+--- a/src/components/Encounter/CreateEncounterForm.tsx
++++ b/src/components/Encounter/CreateEncounterForm.tsx
+@@ -194,7 +194,7 @@ export default function CreateEncounterForm({
+       toast.success(t("encounter_created"));
+       setIsOpen(false);
+       resetForm();
+-      queryClient.invalidateQueries({ queryKey: ["encounters", patientId] });
++      void queryClient.invalidateQueries({ queryKey: ["encounters", patientId] });
+       onSuccess?.(data);
+       if (!disableRedirectOnSuccess) {
+         navigate({
+diff --git a/src/pages/Encounters/utils/useEncounterProgressController.ts b/src/pages/Encounters/utils/useEncounterProgressController.ts
+index 3ed6f6adf..4856d1dfd 100644
+--- a/src/pages/Encounters/utils/useEncounterProgressController.ts
++++ b/src/pages/Encounters/utils/useEncounterProgressController.ts
+@@ -31,18 +31,18 @@ export function useEncounterProgressController({
+   const { mutate: executeBatch, isPending } = useBatchRequest({
+     onSuccess: ({ results }) => {
+       if (results.some((r) => r.reference_id === "encounter-closed")) {
+-        queryClient.invalidateQueries({
++        void queryClient.invalidateQueries({
+           queryKey: ["encounter", encounter.id],
+         });
+         toast.success(t("encounter_marked_as_complete"));
+       }
+ 
+       if (results.some((r) => r.reference_id === "appointment-closed")) {
+-        queryClient.invalidateQueries({
++        void queryClient.invalidateQueries({
+           queryKey: ["encounter", encounter.id],
+         });
+-        queryClient.invalidateQueries({ queryKey: ["appointment"] });
+-        queryClient.invalidateQueries({ queryKey: ["tokens"] });
++        void queryClient.invalidateQueries({ queryKey: ["appointment"] });
++        void queryClient.invalidateQueries({ queryKey: ["tokens"] });
+         toast.success(t("appointment_closed_successfully"));
+       }
+     },

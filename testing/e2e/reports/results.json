@@ -1,0 +1,366 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--list"
+    ],
+    "configFile": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\playwright.config.ts",
+    "rootDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "encounter-e2e.spec.ts",
+          "use-cases.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "name": "chromium",
+        "testDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "snapshotDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "testIgnore": [],
+        "testMatch": [
+          "encounter-e2e.spec.ts",
+          "use-cases.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4000",
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "video": "off",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reports/playwright-html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run local -- --host 127.0.0.1 --port 4000",
+      "cwd": "../../care_fe",
+      "url": "http://localhost:4000/login",
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "REACT_CARE_API_URL": "http://127.0.0.1:9000"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "encounter-e2e.spec.ts",
+      "file": "encounter-e2e.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "create a patient encounter with keyboard validation correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-88a3072d106e12789970",
+          "file": "encounter-e2e.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "complete an existing encounter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-3c7809de2c744780a5f7",
+          "file": "encounter-e2e.spec.ts",
+          "line": 239,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "use-cases.spec.ts",
+      "file": "use-cases.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UC1 Create Patient Encounter",
+          "file": "use-cases.spec.ts",
+          "line": 138,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC1-ALT-1 planned encounter with a future start date is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-8d08b6baf6715dbb97c3",
+              "file": "use-cases.spec.ts",
+              "line": 139,
+              "column": 3
+            },
+            {
+              "title": "UC1-ALT-2 emergency encounter with urgent priority is created",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-9f2c1ec062d32eff15fa",
+              "file": "use-cases.spec.ts",
+              "line": 165,
+              "column": 3
+            },
+            {
+              "title": "UC1-EXC-1 submitting without an encounter type is blocked",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-c5d47cf45cac81678c8c",
+              "file": "use-cases.spec.ts",
+              "line": 188,
+              "column": 3
+            },
+            {
+              "title": "UC1-EXC-2 creation is rejected at the active-encounter limit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-91464af0b726795b3cfc",
+              "file": "use-cases.spec.ts",
+              "line": 205,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "UC2 Complete Patient Encounter",
+          "file": "use-cases.spec.ts",
+          "line": 235,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC2-ALT-1 inpatient encounter is routed to the discharge questionnaire",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-81672558829367a6c561",
+              "file": "use-cases.spec.ts",
+              "line": 236,
+              "column": 3
+            },
+            {
+              "title": "UC2-ALT-2 completing an encounter that already has an end time keeps that end",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-cff2eb757e49609ab731",
+              "file": "use-cases.spec.ts",
+              "line": 257,
+              "column": 3
+            },
+            {
+              "title": "UC2-EXC-1 cancelling the confirmation leaves the encounter open",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-3c6f3278d8c1f6ce6107",
+              "file": "use-cases.spec.ts",
+              "line": 277,
+              "column": 3
+            },
+            {
+              "title": "UC2-EXC-2 a user without encounter permission cannot complete it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [],
+                  "status": "skipped"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-d99fcaf9cb7b3212e948",
+              "file": "use-cases.spec.ts",
+              "line": 298,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-28T09:35:14.561Z",
+    "duration": 227.96000000000004,
+    "expected": 0,
+    "skipped": 10,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,146 @@
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_2	survived	- if not value: + if value: 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_3	survived	- if value.lower() == "true": + if value.upper() == "true": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_4	survived	- if value.lower() == "true": + if value.lower() != "true": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_5	survived	- if value.lower() == "true": + if value.lower() == "XXtrueXX": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_6	survived	- if value.lower() == "true": + if value.lower() == "TRUE": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_7	survived	- queryset = queryset.filter(status__in=COMPLETED_CHOICES) + queryset = None 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_8	survived	- queryset = queryset.filter(status__in=COMPLETED_CHOICES) + queryset = queryset.filter(status__in=None) 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_9	survived	- elif value.lower() == "false": + elif value.upper() == "false": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_10	survived	- elif value.lower() == "false": + elif value.lower() != "false": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_11	survived	- elif value.lower() == "false": + elif value.lower() == "XXfalseXX": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_12	survived	- elif value.lower() == "false": + elif value.lower() == "FALSE": 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_13	survived	- queryset = queryset.exclude(status__in=COMPLETED_CHOICES) + queryset = None 
+care.emr.api.viewsets.encounter.xǁLiveFilterǁfilter__mutmut_14	survived	- queryset = queryset.exclude(status__in=COMPLETED_CHOICES) + queryset = queryset.exclude(status__in=None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁvalidate_data__mutmut_5	killed	- patient__external_id=instance.patient, 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁvalidate_data__mutmut_13	killed	- raise ValidationError("Patient does not exist") + raise ValidationError("XXPatient does not existXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁvalidate_data__mutmut_19	killed	- raise ValidationError("Facility does not exist") + raise ValidationError("XXFacility does not existXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_retrieve__mutmut_10	survived	- return True + return False 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_retrieve__mutmut_19	survived	- return True + return False 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_4	survived	- organizations = getattr(instance, "_organizations", []) + organizations = getattr(instance, "_organizations", None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_7	survived	- organizations = getattr(instance, "_organizations", []) + organizations = getattr(instance, "_organizations", ) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_21	survived	- if not organizations: + if organizations: 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_22	killed	- raise ValidationError("Encounter already has an associated booking") + raise ValidationError(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_23	killed	- raise ValidationError("Encounter already has an associated booking") + raise ValidationError("XXEncounter already has an associated bookingXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_24	killed	- raise ValidationError("Encounter already has an associated booking") + raise ValidationError("encounter already has an associated booking") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_25	killed	- raise ValidationError("Encounter already has an associated booking") + raise ValidationError("ENCOUNTER ALREADY HAS AN ASSOCIATED BOOKING") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_26	killed	- instance.appointment.associated_encounter = instance + instance.appointment.associated_encounter = None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_27	killed	- instance.appointment.updated_by = self.request.user + instance.appointment.updated_by = None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_28	survived	- update_fields=[ - "associated_encounter", - "updated_by", - "modified_date", - ] + update_fields=None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_29	killed	- "associated_encounter", + "XXassociated_encounterXX", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_30	killed	- "associated_encounter", + "ASSOCIATED_ENCOUNTER", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_31	killed	- "updated_by", + "XXupdated_byXX", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_32	killed	- "updated_by", + "UPDATED_BY", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_33	killed	- "modified_date", + "XXmodified_dateXX", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_34	killed	- "modified_date", + "MODIFIED_DATE", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_37	killed	- "Encounter creation failed, try again after a while" + None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_38	killed	- "Encounter creation failed, try again after a while" + "XXEncounter creation failed, try again after a whileXX" 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_39	killed	- "Encounter creation failed, try again after a while" + "encounter creation failed, try again after a while" 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_40	killed	- "Encounter creation failed, try again after a while" + "ENCOUNTER CREATION FAILED, TRY AGAIN AFTER A WHILE" 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_41	killed	- instance.patient, instance.facility + None, instance.facility 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_42	killed	- instance.patient, instance.facility + instance.patient, None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_45	killed	- instance.patient.build_facility_identifiers(instance.facility.id) + instance.patient.build_facility_identifiers(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁperform_create__mutmut_46	survived	- instance.patient.save(update_fields=["facility_identifiers"]) + instance.patient.save(update_fields=None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_update__mutmut_10	killed	- raise PermissionDenied("You do not have permission to update encounter") + raise PermissionDenied(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_update__mutmut_11	killed	- raise PermissionDenied("You do not have permission to update encounter") + raise PermissionDenied("XXYou do not have permission to update encounterXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_update__mutmut_12	killed	- raise PermissionDenied("You do not have permission to update encounter") + raise PermissionDenied("you do not have permission to update encounter") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_update__mutmut_13	killed	- raise PermissionDenied("You do not have permission to update encounter") + raise PermissionDenied("YOU DO NOT HAVE PERMISSION TO UPDATE ENCOUNTER") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_1	killed	- facility = get_object_or_404(Facility, external_id=instance.facility) + facility = None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_9	killed	- "can_create_encounter_obj", self.request.user, facility + "can_create_encounter_obj", self.request.user, None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_15	killed	- raise PermissionDenied("You do not have permission to create encounter") + raise PermissionDenied(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_16	killed	- raise PermissionDenied("You do not have permission to create encounter") + raise PermissionDenied("XXYou do not have permission to create encounterXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_17	killed	- raise PermissionDenied("You do not have permission to create encounter") + raise PermissionDenied("you do not have permission to create encounter") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁauthorize_create__mutmut_18	killed	- raise PermissionDenied("You do not have permission to create encounter") + raise PermissionDenied("YOU DO NOT HAVE PERMISSION TO CREATE ENCOUNTER") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_9	survived	- "patient", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_10	survived	- "facility", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_11	survived	- "appointment", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_12	survived	- "current_location", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_13	survived	- "created_by", 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_14	survived	- "updated_by", - ) + ) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_31	killed	- self.action in ["list"] + self.action not in ["list"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_32	killed	- self.action in ["list"] + self.action in ["XXlistXX"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_33	killed	- self.action in ["list"] + self.action in ["LIST"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_34	killed	- and "patient" in self.request.GET + and "XXpatientXX" in self.request.GET 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_35	killed	- and "patient" in self.request.GET + and "PATIENT" in self.request.GET 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_37	killed	- and self.request.GET["patient"] + and self.request.GET["XXpatientXX"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_38	killed	- and self.request.GET["patient"] + and self.request.GET["PATIENT"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_39	killed	- patient = get_object_or_404( - Patient, external_id=self.request.GET["patient"] - ) + patient = None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_40	killed	- Patient, external_id=self.request.GET["patient"] + None, external_id=self.request.GET["patient"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_41	killed	- Patient, external_id=self.request.GET["patient"] + Patient, external_id=None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_42	killed	- Patient, external_id=self.request.GET["patient"] + external_id=self.request.GET["patient"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_43	killed	- Patient, external_id=self.request.GET["patient"] - ) + Patient, ) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_44	killed	- Patient, external_id=self.request.GET["patient"] + Patient, external_id=self.request.GET["XXpatientXX"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_45	killed	- Patient, external_id=self.request.GET["patient"] + Patient, external_id=self.request.GET["PATIENT"] 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_46	killed	- "can_view_patient_obj", self.request.user, patient + None, self.request.user, patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_47	killed	- "can_view_patient_obj", self.request.user, patient + "can_view_patient_obj", None, patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_48	killed	- "can_view_patient_obj", self.request.user, patient + "can_view_patient_obj", self.request.user, None 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_49	killed	- "can_view_patient_obj", self.request.user, patient + self.request.user, patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_50	killed	- "can_view_patient_obj", self.request.user, patient + "can_view_patient_obj", patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_51	killed	- "can_view_patient_obj", self.request.user, patient - ): + "can_view_patient_obj", self.request.user, ): 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_52	killed	- "can_view_patient_obj", self.request.user, patient + "XXcan_view_patient_objXX", self.request.user, patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_53	killed	- "can_view_patient_obj", self.request.user, patient + "CAN_VIEW_PATIENT_OBJ", self.request.user, patient 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_54	killed	- return qs.filter(patient=patient) + return qs.filter(patient=None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_55	killed	- raise PermissionDenied("User cannot access patient") + raise PermissionDenied(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_56	killed	- raise PermissionDenied("User cannot access patient") + raise PermissionDenied("XXUser cannot access patientXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_57	killed	- raise PermissionDenied("User cannot access patient") + raise PermissionDenied("user cannot access patient") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_58	killed	- raise PermissionDenied("User cannot access patient") + raise PermissionDenied("USER CANNOT ACCESS PATIENT") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_73	killed	- Facility, external_id=self.request.GET["facility"] - ) + Facility, ) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_87	killed	- if self.action in ["list"]: + if self.action in ["XXlistXX"]: 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_88	killed	- if self.action in ["list"]: + if self.action in ["LIST"]: 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_89	killed	- raise PermissionDenied("Cannot access encounters") + raise PermissionDenied(None) 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_90	killed	- raise PermissionDenied("Cannot access encounters") + raise PermissionDenied("XXCannot access encountersXX") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_91	killed	- raise PermissionDenied("Cannot access encounters") + raise PermissionDenied("cannot access encounters") 
+care.emr.api.viewsets.encounter.xǁEncounterViewSetǁget_queryset__mutmut_92	killed	- raise PermissionDenied("Cannot access encounters") + raise PermissionDenied("CANNOT ACCESS ENCOUNTERS") 
+care.emr.resources.encounter.spec.xǁEncounterCreateSpecǁperform_extra_deserialization__mutmut_25	killed	- external_id=self.appointment, 
+care.emr.resources.encounter.spec.xǁEncounterCreateSpecǁperform_extra_deserialization__mutmut_40	killed	- "history": [{"status": obj.status, "moved_at": str(timezone.now())}] + "history": [{"status": obj.status, "moved_at": str(None)}] 
+care.emr.resources.encounter.spec.xǁEncounterUpdateSpecǁperform_extra_deserialization__mutmut_11	killed	- {"status": self.status, "moved_at": str(timezone.now())} + {"status": self.status, "moved_at": str(None)} 
+care.emr.resources.encounter.spec.xǁEncounterUpdateSpecǁperform_extra_deserialization__mutmut_12	killed	- if self.discharge_summary_advice is None and is_update: + if self.discharge_summary_advice is None or is_update: 
+care.emr.resources.encounter.spec.xǁEncounterListSpecǁperform_extra_serialization__mutmut_17	survived	- mapping["current_location"] = None + mapping["XXcurrent_locationXX"] = None 
+care.emr.resources.encounter.spec.xǁEncounterListSpecǁperform_extra_serialization__mutmut_18	survived	- mapping["current_location"] = None + mapping["CURRENT_LOCATION"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_4	killed	- mapping["patient"] = PatientRetrieveSpec.serialize( - obj.patient, facility=obj.facility - ).to_json() + mapping["patient"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_5	killed	- mapping["patient"] = PatientRetrieveSpec.serialize( + mapping["XXpatientXX"] = PatientRetrieveSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_6	killed	- mapping["patient"] = PatientRetrieveSpec.serialize( + mapping["PATIENT"] = PatientRetrieveSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_8	killed	- obj.patient, facility=obj.facility + obj.patient, facility=None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_10	killed	- obj.patient, facility=obj.facility - ).to_json() + obj.patient, ).to_json() 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_11	killed	- mapping["facility"] = FacilityBareMinimumSpec.serialize(obj.facility).to_json() + mapping["facility"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_12	killed	- mapping["facility"] = FacilityBareMinimumSpec.serialize(obj.facility).to_json() + mapping["XXfacilityXX"] = FacilityBareMinimumSpec.serialize(obj.facility).to_json() 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_13	killed	- mapping["facility"] = FacilityBareMinimumSpec.serialize(obj.facility).to_json() + mapping["FACILITY"] = FacilityBareMinimumSpec.serialize(obj.facility).to_json() 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_15	killed	- mapping["tags"] = SingleFacilityTagManager().render_tags(obj) + mapping["tags"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_16	killed	- mapping["tags"] = SingleFacilityTagManager().render_tags(obj) + mapping["XXtagsXX"] = SingleFacilityTagManager().render_tags(obj) 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_17	killed	- mapping["tags"] = SingleFacilityTagManager().render_tags(obj) + mapping["TAGS"] = SingleFacilityTagManager().render_tags(obj) 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_19	killed	- mapping["appointment"] = TokenBookingReadSpec.serialize( - obj.appointment - ).to_json() + mapping["appointment"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_20	killed	- mapping["appointment"] = TokenBookingReadSpec.serialize( + mapping["XXappointmentXX"] = TokenBookingReadSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_21	killed	- mapping["appointment"] = TokenBookingReadSpec.serialize( + mapping["APPOINTMENT"] = TokenBookingReadSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_22	killed	- obj.appointment + None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_24	killed	- organizations = EncounterOrganization.objects.filter(encounter=obj) + organizations = EncounterOrganization.objects.filter(encounter=None) 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_25	killed	- mapping["organizations"] = [ - FacilityOrganizationReadSpec.serialize(encounter_org.organization).to_json() - for encounter_org in organizations - ] + mapping["organizations"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_26	killed	- mapping["organizations"] = [ + mapping["XXorganizationsXX"] = [ 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_27	killed	- mapping["organizations"] = [ + mapping["ORGANIZATIONS"] = [ 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_29	killed	- mapping["location_history"] = [ - FacilityLocationEncounterListSpecWithLocation.serialize(i) - for i in FacilityLocationEncounter.objects.filter(encounter=obj).order_by( - "-created_date" - ) - ] + mapping["location_history"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_30	killed	- mapping["location_history"] = [ + mapping["XXlocation_historyXX"] = [ 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_31	killed	- mapping["location_history"] = [ + mapping["LOCATION_HISTORY"] = [ 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_32	killed	- FacilityLocationEncounterListSpecWithLocation.serialize(i) + FacilityLocationEncounterListSpecWithLocation.serialize(None) 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_34	killed	- for i in FacilityLocationEncounter.objects.filter(encounter=obj).order_by( + for i in FacilityLocationEncounter.objects.filter(encounter=None).order_by( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_37	killed	- mapping["current_location"] = None + mapping["current_location"] = "" 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_38	survived	- mapping["current_location"] = None + mapping["XXcurrent_locationXX"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_39	survived	- mapping["current_location"] = None + mapping["CURRENT_LOCATION"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_40	killed	- mapping["current_location"] = FacilityLocationMinimalListSpec.serialize( - obj.current_location - ).to_json() + mapping["current_location"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_41	killed	- mapping["current_location"] = FacilityLocationMinimalListSpec.serialize( + mapping["XXcurrent_locationXX"] = FacilityLocationMinimalListSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_42	killed	- mapping["current_location"] = FacilityLocationMinimalListSpec.serialize( + mapping["CURRENT_LOCATION"] = FacilityLocationMinimalListSpec.serialize( 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_43	killed	- obj.current_location + None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_44	killed	- care_team = [] + care_team = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_46	killed	- user_mapping = {x["user_id"]: x for x in obj.care_team} + user_mapping = {x["XXuser_idXX"]: x for x in obj.care_team} 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_47	killed	- user_mapping = {x["user_id"]: x for x in obj.care_team} + user_mapping = {x["USER_ID"]: x for x in obj.care_team} 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_50	killed	- { - "member": model_from_cache(UserSpec, id=user_id), - "role": user_mapping[user_id]["role"], - } + None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_51	killed	- "member": model_from_cache(UserSpec, id=user_id), + "XXmemberXX": model_from_cache(UserSpec, id=user_id), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_52	killed	- "member": model_from_cache(UserSpec, id=user_id), + "MEMBER": model_from_cache(UserSpec, id=user_id), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_53	killed	- "member": model_from_cache(UserSpec, id=user_id), + "member": model_from_cache(None, id=user_id), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_54	killed	- "member": model_from_cache(UserSpec, id=user_id), + "member": model_from_cache(UserSpec, id=None), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_55	killed	- "member": model_from_cache(UserSpec, id=user_id), + "member": model_from_cache(id=user_id), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_56	killed	- "member": model_from_cache(UserSpec, id=user_id), + "member": model_from_cache(UserSpec, ), 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_57	killed	- "role": user_mapping[user_id]["role"], + "XXroleXX": user_mapping[user_id]["role"], 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_58	killed	- "role": user_mapping[user_id]["role"], + "ROLE": user_mapping[user_id]["role"], 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_59	killed	- "role": user_mapping[user_id]["role"], + "role": user_mapping[user_id]["XXroleXX"], 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_60	killed	- "role": user_mapping[user_id]["role"], + "role": user_mapping[user_id]["ROLE"], 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_61	killed	- mapping["care_team"] = care_team + mapping["care_team"] = None 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_62	killed	- mapping["care_team"] = care_team + mapping["XXcare_teamXX"] = care_team 
+care.emr.resources.encounter.spec.xǁEncounterRetrieveSpecǁperform_extra_serialization__mutmut_63	killed	- mapping["care_team"] = care_team + mapping["CARE_TEAM"] = care_team 

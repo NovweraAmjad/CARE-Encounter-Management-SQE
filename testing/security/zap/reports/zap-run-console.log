@@ -1,0 +1,27 @@
+Starting ZAP daemon (zap-2.17.0.jar) on http://127.0.0.1:8090
+ZAP 2.17.0 ready; 62 passive rules enabled
+
+Running 2 tests using 1 worker
+
+  ok 1 [chromium] › specs\encounter-e2e.spec.ts:27:1 › create a patient encounter with keyboard validation correction (28.8s)
+  ok 2 [chromium] › specs\encounter-e2e.spec.ts:91:1 › complete an existing encounter (20.1s)
+
+  2 passed (1.5m)
+Playwright workflows exit code: 0
+  passive scan queue: 16 records left
+  passive scan queue: 0 records left
+
+Messages observed: 9252
+  [Medium] Content Security Policy (CSP) Header Not Set (42)
+  [Medium] Cross-Domain Misconfiguration (78)
+  [Medium] Missing Anti-clickjacking Header (3)
+  [Low] Private IP Disclosure (1)
+  [Low] Server Leaks Version Information via "Server" HTTP Response Header Field (78)
+  [Low] Timestamp Disclosure - Unix (26)
+  [Low] X-Content-Type-Options Header Missing (2173)
+  [Informational] Authentication Request Identified (1)
+  [Informational] Information Disclosure - Sensitive Information in URL (1)
+  [Informational] Information Disclosure - Suspicious Comments (666)
+  [Informational] Modern Web Application (3)
+  [Informational] Session Management Response Identified (2)
+exit=0

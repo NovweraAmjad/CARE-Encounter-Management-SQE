@@ -1,0 +1,315 @@
+[
+  {
+    "id": "DEF-01",
+    "title": "POST /api/v1/encounter/ returns HTTP 500 for external_identifier longer than 100 characters",
+    "category": "validation",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Open",
+    "triage": "Report upstream - add max_length=100 to EncounterCreateSpec/UpdateSpec.external_identifier",
+    "steps": [
+      "Log in as care-doctor (synthetic fixture account).",
+      "POST /api/v1/encounter/ with a valid payload and external_identifier = 'X' * 101."
+    ],
+    "expected": "HTTP 400 with a validation message (the database column is varchar(100)).",
+    "actual": "HTTP 500, django.db.utils.DataError: value too long for type character varying(100). A 100-character value returns 200.",
+    "evidence": "API-ENC-014; live re-run 28 Nov 2026; testing/evidence/endpoint-weaknesses.md (EW-01); RCA-2 in docs/defects/rca.md"
+  },
+  {
+    "id": "DEF-02",
+    "title": "PUT /api/v1/encounter/{id}/ returns HTTP 500 when hospitalization is null",
+    "category": "validation",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Open",
+    "triage": "Report upstream - reject null or coerce it to {} in the spec",
+    "steps": [
+      "Log in as care-doctor.",
+      "PUT /api/v1/encounter/{id}/ for an open encounter with hospitalization: null."
+    ],
+    "expected": "HTTP 400, or null treated as an empty object.",
+    "actual": "HTTP 500 IntegrityError (NOT NULL on emr_encounter.hospitalization). Record unchanged.",
+    "evidence": "API-ENC-024; live re-run 28 Nov 2026; EW-02; RCA-2"
+  },
+  {
+    "id": "DEF-03",
+    "title": "Backend accepts a non-planned encounter with a future start date (BR-ENC-02 only enforced in the browser)",
+    "category": "business-rule",
+    "severity": "Major",
+    "priority": "P1",
+    "status": "Open",
+    "triage": "Report upstream - add the BR-ENC-02 check to server-side create validation",
+    "steps": [
+      "Log in as care-doctor.",
+      "POST /api/v1/encounter/ with status 'in_progress' and period.start = tomorrow."
+    ],
+    "expected": "HTTP 400 'Future date is only allowed for planned encounters' (the UI blocks this input).",
+    "actual": "HTTP 200; the encounter is stored as in_progress with a future start.",
+    "evidence": "Live API check 28 Nov 2026 (record cancelled afterwards); UI rejection in testing/e2e/specs/encounter-e2e.spec.ts; RCA-1"
+  },
+  {
+    "id": "DEF-04",
+    "title": "Create Encounter: time input has no accessible name and the BR-ENC-02 error is not linked to the field",
+    "category": "accessibility",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Fixed",
+    "triage": "Fix now - FormControl wrapper (one component)",
+    "steps": [
+      "Open Patient Home > Create Encounter.",
+      "Run axe-core, or inspect the time input with a screen reader."
+    ],
+    "expected": "Input named 'Date and Time'; aria-invalid and aria-describedby set when the rule rejects the value.",
+    "actual": "Before fix: no name (axe 'label', critical); no aria-invalid/describedby.",
+    "evidence": "testing/accessibility/{before,after}/; testing/accessibility/after/care_fe-create-encounter-fix.patch"
+  },
+  {
+    "id": "DEF-05",
+    "title": "Date-picker calendar icon is an unnamed role=img",
+    "category": "accessibility",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Open",
+    "triage": "Defer - in shared src/components/ui primitive",
+    "steps": [
+      "Open the Create Encounter dialog.",
+      "Run axe-core."
+    ],
+    "expected": "Decorative icon hidden from assistive technology.",
+    "actual": "axe svg-img-alt (serious) on svg.care-l-calender.",
+    "evidence": "testing/accessibility/after/axe-create.md"
+  },
+  {
+    "id": "DEF-06",
+    "title": "Encounter screen has an empty span[role=button] sheet trigger with no accessible name",
+    "category": "accessibility",
+    "severity": "Major",
+    "priority": "P3",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open an encounter's updates screen.",
+      "Run axe-core or Lighthouse."
+    ],
+    "expected": "Every focusable control has a name.",
+    "actual": "aria-command-name on span[data-slot=sheet-trigger] (axe serious + Lighthouse).",
+    "evidence": "testing/accessibility/after/axe-complete.md"
+  },
+  {
+    "id": "DEF-07",
+    "title": "Quick-action accessible names do not contain their visible text",
+    "category": "accessibility",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open an encounter's updates screen.",
+      "Run axe-core."
+    ],
+    "expected": "Accessible name starts with the visible label (WCAG 2.5.3).",
+    "actual": "e.g. visible 'Symptoms', name 'Add Symptom' (8 controls).",
+    "evidence": "testing/accessibility/after/axe-complete.md; care_fe/src/pages/Encounters/tabs/overview/quick-actions.tsx:142-143"
+  },
+  {
+    "id": "DEF-08",
+    "title": "Encounter status dot uses aria-label on a plain div",
+    "category": "accessibility",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open Patient Home.",
+      "Run Lighthouse."
+    ],
+    "expected": "Status available to assistive technology.",
+    "actual": "aria-prohibited-attr on div[aria-label='Planned'] (EncounterCard.tsx:53-58).",
+    "evidence": "testing/accessibility/after/lighthouse-create-navigation.json"
+  },
+  {
+    "id": "DEF-09",
+    "title": "Tab moves focus outside the Create Encounter dialog after Submit",
+    "category": "accessibility",
+    "severity": "Minor",
+    "priority": "P3",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open Create Encounter.",
+      "Press Tab repeatedly."
+    ],
+    "expected": "Focus stays inside the modal.",
+    "actual": "After Submit, focus moves to a span outside the dialog, then returns to Close.",
+    "evidence": "Playwright report attachment keyboard-focus-order.json"
+  },
+  {
+    "id": "DEF-10",
+    "title": "Missing encounter type shows only 'Required'",
+    "category": "usability",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open Create Encounter.",
+      "Submit without choosing a type."
+    ],
+    "expected": "A message that names the field and the action.",
+    "actual": "'Required'.",
+    "evidence": "testing/e2e/specs/use-cases.spec.ts UC1-EXC-1"
+  },
+  {
+    "id": "DEF-11",
+    "title": "Hidden sr-only duplicate 'Mark as Completed' button",
+    "category": "accessibility",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open an encounter screen with a screen reader."
+    ],
+    "expected": "One 'Mark as Completed' control.",
+    "actual": "An extra sr-only, tabIndex -1 button (EncounterShow.tsx:262-268).",
+    "evidence": "Playwright locator count = 2"
+  },
+  {
+    "id": "DEF-12",
+    "title": "Encounter screen requests /account/default_account/ and gets 400 on every load",
+    "category": "functional",
+    "severity": "Minor",
+    "priority": "P3",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Open an encounter's updates screen.",
+      "Watch the network log."
+    ],
+    "expected": "No failing request when no billing account is configured.",
+    "actual": "GET .../account/default_account/ -> 400 (Lighthouse errors-in-console).",
+    "evidence": "testing/accessibility/after/lighthouse-complete-navigation.json"
+  },
+  {
+    "id": "DEF-13",
+    "title": "JWTs stored in localStorage and production CSP is report-only",
+    "category": "security",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Open",
+    "triage": "Report upstream",
+    "steps": [
+      "Log in.",
+      "Inspect localStorage and the nginx config."
+    ],
+    "expected": "Tokens not readable by page script; enforced CSP.",
+    "actual": "care_access_token and care_refresh_token in localStorage; Content-Security-Policy-Report-Only.",
+    "evidence": "testing/security/evidence/session-controls.json; care_fe/nginx/nginx.conf:14"
+  },
+  {
+    "id": "DEF-14",
+    "title": "Backend dependencies with published advisories (Django 6.0, DRF 3.16.1, PyJWT 2.12.0, authlib, Pillow, urllib3, cryptography)",
+    "category": "security",
+    "severity": "Major",
+    "priority": "P1",
+    "status": "Open",
+    "triage": "Report upstream - upgrade after team approval",
+    "steps": [
+      "pip-audit on the installed backend packages."
+    ],
+    "expected": "No known advisories.",
+    "actual": "119 unique advisories in 8 packages (7 Critical, 54 High).",
+    "evidence": "testing/security/dependency-audit/dependency-audit-summary.md"
+  },
+  {
+    "id": "DEF-15",
+    "title": "Local settings allow any CORS origin and any host",
+    "category": "security",
+    "severity": "Minor",
+    "priority": "P4",
+    "status": "Won't fix",
+    "triage": "Won't fix - local development settings only",
+    "steps": [
+      "Observe the API response headers."
+    ],
+    "expected": "Allow-list.",
+    "actual": "Access-Control-Allow-Origin: *.",
+    "evidence": "ZAP 10098; care/config/settings/local.py:12"
+  },
+  {
+    "id": "DEF-16",
+    "title": "Mutation campaign never produced a mutmut score (local and CI)",
+    "category": "test-infrastructure",
+    "severity": "Major",
+    "priority": "P1",
+    "status": "Fixed",
+    "triage": "Fix now",
+    "steps": [
+      "Run testing/mutation/campaign.py."
+    ],
+    "expected": "Mutation score.",
+    "actual": "'failed to collect stats. runner returned 1' - score null.",
+    "evidence": "RCA-3; testing/mutation/results/"
+  },
+  {
+    "id": "DEF-17",
+    "title": "Complete-encounter E2E test clicked a hidden shortcut button through JavaScript",
+    "category": "test-infrastructure",
+    "severity": "Minor",
+    "priority": "P2",
+    "status": "Fixed",
+    "triage": "Fix now",
+    "steps": [
+      "Read testing/e2e/specs/encounter-e2e.spec.ts (before)."
+    ],
+    "expected": "Test uses the user-visible control.",
+    "actual": "element.click() on a 2x2px sr-only button.",
+    "evidence": "Current spec uses the Actions-panel button"
+  },
+  {
+    "id": "DEF-18",
+    "title": "testing/README.md backend test command used the wrong PYTHONPATH",
+    "category": "documentation",
+    "severity": "Minor",
+    "priority": "P3",
+    "status": "Fixed",
+    "triage": "Fix now",
+    "steps": [
+      "Run the README command."
+    ],
+    "expected": "Tests run.",
+    "actual": "ModuleNotFoundError: No module named 'care_testing'.",
+    "evidence": "Reproduced 28 Nov 2026; README now uses PYTHONPATH=/tmp:/app (as CI)"
+  },
+  {
+    "id": "DEF-19",
+    "title": "Encounter list filter live=true returns only completed/cancelled encounters (the \"Live\" view shows ended encounters)",
+    "category": "functional",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Open",
+    "triage": "Report upstream - invert LiveFilter (live=true -> exclude COMPLETED_CHOICES); upstream test test_filters_by_live_as_true currently asserts the inverted behaviour",
+    "steps": [
+      "Log in as care-doctor.",
+      "GET /api/v1/encounter/?facility={id}&live=true and &live=false."
+    ],
+    "expected": "live=true lists open (in-progress/planned/on-hold) encounters, as the frontend EncounterList sends live=true for its \"live\" status (EncounterList.tsx:129-130).",
+    "actual": "live=true -> 200 completed/cancelled only; live=false -> open only (LiveFilter in emr/api/viewsets/encounter.py:57-66).",
+    "evidence": "Live API check 28 Nov 2026; 13 LiveFilter mutants survive because killing them would require asserting the defective behaviour (testing/evidence/mutation-analysis.md)"
+  },
+  {
+    "id": "DEF-20",
+    "title": "Unhandled (floating) promises from queryClient.invalidateQueries in the create and complete flows",
+    "category": "reliability",
+    "severity": "Major",
+    "priority": "P2",
+    "status": "Fixed",
+    "triage": "Fix now - mark fire-and-forget invalidations with void (testing/sonar/care_fe-floating-promises-fix.patch), delivered through a pull request",
+    "steps": [
+      "Run SonarQube (testing/sonar/sonar-gate.sh) on the scoped modules."
+    ],
+    "expected": "Reliability rating A (no bugs).",
+    "actual": "5 x typescript:S9383 (CreateEncounterForm.tsx:197; useEncounterProgressController.ts:34,41,44,45); Reliability rating C; quality gate FAILED.",
+    "evidence": "testing/sonar/results/ (before fix); docs/reports/sonarqube-analysis.md; gate ERROR -> OK after the fix (testing/sonar/results-before-fix vs results-after-fix)"
+  }
+]

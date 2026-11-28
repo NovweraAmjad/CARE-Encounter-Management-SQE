@@ -1,14 +1,14 @@
 {
-  "cwd": "/tmp/care-mutation-1yi4kpc5/care",
-  "setup_cfg": "/tmp/care-mutation-1yi4kpc5/care/setup.cfg",
-  "setup_cfg_contents": "[mutmut]\nsource_paths =\n    care/emr/api/viewsets/encounter.py\n    care/emr/resources/encounter/spec.py\npytest_add_cli_args =\n    -q\npytest_add_cli_args_test_selection =\n    /tmp/care-mutation-1yi4kpc5/care_testing/unit\n    /tmp/care-mutation-1yi4kpc5/care_testing/integration\nprocess_isolation = forkserver\nmutate_only_covered_lines = false\nuse_git_change_detection = false\n",
+  "cwd": "/tmp/care-mutation-vslfddav/care",
+  "setup_cfg": "/tmp/care-mutation-vslfddav/care/setup.cfg",
+  "setup_cfg_contents": "[mutmut]\nsource_paths =\n    care/emr/api/viewsets/encounter.py\n    care/emr/resources/encounter/spec.py\nalso_copy =\n    config\n    care\n    plugs\n    manage.py\n    plug_config.py\n    install_plugins.py\n    care_testing\npytest_add_cli_args =\n    -q\n    -p\n    no:cacheprovider\npytest_add_cli_args_test_selection =\n    care_testing/unit\n    care_testing/integration\nprocess_isolation = fork\ndebug = true\nlog_to_file = true\nlog_file_path = mutants/mutmut-debug.log\nmutate_only_covered_lines = false\nuse_git_change_detection = false\n",
   "source_paths": [
     "care/emr/api/viewsets/encounter.py",
     "care/emr/resources/encounter/spec.py"
   ],
   "pytest_selection": [
-    "/tmp/care-mutation-1yi4kpc5/care_testing/unit",
-    "/tmp/care-mutation-1yi4kpc5/care_testing/integration"
+    "/tmp/care-mutation-vslfddav/care/care_testing/unit",
+    "/tmp/care-mutation-vslfddav/care/care_testing/integration"
   ],
   "probe_returncode": 0,
   "probe_stdout": "",

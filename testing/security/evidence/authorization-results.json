@@ -1,0 +1,136 @@
+{
+  "generated": "2026-11-27T20:24:48.419Z",
+  "backend": "http://127.0.0.1:9000",
+  "frontend": "http://localhost:4000",
+  "role_evidence": {
+    "care-doctor": {
+      "is_superuser": false,
+      "role_organizations": [
+        "Doctor",
+        "Health Department"
+      ],
+      "facilities": [
+        "FACILITY WITH PATIENTS"
+      ]
+    },
+    "care-volunteer": {
+      "is_superuser": false,
+      "role_organizations": [
+        "Volunteer"
+      ],
+      "facilities": []
+    }
+  },
+  "checks": [
+    {
+      "id": "AC-01",
+      "role": "care-doctor",
+      "action": "Read encounter",
+      "request": "GET /api/v1/encounter/{id}/",
+      "expected": "Allowed",
+      "observed": "Allowed",
+      "http_status": 200,
+      "evidence": "Response body id matches requested encounter (true)",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-02",
+      "role": "care-volunteer",
+      "action": "Read encounter",
+      "request": "GET /api/v1/encounter/{id}/",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": 403,
+      "evidence": "Body: {\"detail\":\"You do not have permission to view this patient\"}",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-03",
+      "role": "care-doctor",
+      "action": "List facility encounters",
+      "request": "GET /api/v1/encounter/?facility={id}",
+      "expected": "Allowed",
+      "observed": "Allowed",
+      "http_status": 200,
+      "evidence": "count=323",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-04",
+      "role": "care-volunteer",
+      "action": "List facility encounters",
+      "request": "GET /api/v1/encounter/?facility={id}",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": 200,
+      "evidence": "count=0 (queryset filtered by role; see authorization/encounter.py get_filtered_encounters)",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-05",
+      "role": "care-volunteer",
+      "action": "Create encounter",
+      "request": "POST /api/v1/encounter/",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": 403,
+      "evidence": "Body: {\"detail\":\"You do not have permission to create encounter\"}",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-06",
+      "role": "care-volunteer",
+      "action": "Update encounter status",
+      "request": "PUT /api/v1/encounter/{id}/",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": 403,
+      "evidence": "Body: {\"detail\":\"You do not have permission to update encounter\"}; status after request still \"planned\"",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-07",
+      "role": "care-doctor",
+      "action": "Update encounter (same values)",
+      "request": "PUT /api/v1/encounter/{id}/",
+      "expected": "Allowed",
+      "observed": "Allowed",
+      "http_status": 200,
+      "evidence": "Encounter status \"planned\" re-sent unchanged",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-08",
+      "role": "anonymous (no token)",
+      "action": "Read encounter",
+      "request": "GET /api/v1/encounter/{id}/",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": 403,
+      "evidence": "Body: {\"detail\":\"Authentication credentials were not provided.\"}",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-09",
+      "role": "care-doctor",
+      "action": "Open encounter page (UI)",
+      "request": "/facility/{f}/patient/{p}/encounter/{e}/updates",
+      "expected": "Allowed",
+      "observed": "Allowed",
+      "http_status": "200",
+      "evidence": "Encounter region visible; screenshots/AC-09-doctor-encounter.png",
+      "result": "PASS"
+    },
+    {
+      "id": "AC-10",
+      "role": "care-volunteer",
+      "action": "Open encounter page (UI)",
+      "request": "/facility/{f}/patient/{p}/encounter/{e}/updates",
+      "expected": "Denied",
+      "observed": "Denied",
+      "http_status": "403",
+      "evidence": "Encounter region visible=false; screenshots/AC-10-volunteer-encounter.png",
+      "result": "PASS"
+    }
+  ]
+}
