@@ -7,6 +7,8 @@ const BASE_URL = process.env.E2E_BASE_URL ?? "http://localhost:4000";
 export default defineConfig({
   testDir: "./specs",
   testMatch: ["encounter-e2e.spec.ts", "use-cases.spec.ts"],
+  // Compiles the key screens once on a fresh dev server (see global-setup.ts).
+  globalSetup: "./global-setup.ts",
   outputDir: "./test-results",
   timeout: 60000,
   expect: { timeout: 10000 },
