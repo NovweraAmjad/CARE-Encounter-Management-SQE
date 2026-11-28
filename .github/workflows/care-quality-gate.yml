@@ -261,6 +261,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
+          cache: npm
+          cache-dependency-path: care_fe/package-lock.json
+
+      # Type-aware TypeScript rules (e.g. typescript:S9383 floating promises)
+      # need the project's dependencies to resolve types. Without them SonarQube
+      # silently skips those rules, so the gate would miss real bugs.
+      - name: Install frontend dependencies for type-aware analysis
+        working-directory: care_fe
+        run: npm ci --ignore-scripts
 
       - name: Scan and enforce the quality gate
         env:
