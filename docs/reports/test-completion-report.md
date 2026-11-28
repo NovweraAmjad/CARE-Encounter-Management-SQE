@@ -20,6 +20,8 @@
 | Mutation (mutmut 3.8.1) | 418 mutants + 3 custom operators | **92.8%**; custom 3/3 killed | `testing/evidence/mutation-analysis.md` |
 | Static analysis (SonarQube) | 9 scoped source files | Gate **OK** after DEF-20 fix | `docs/reports/sonarqube-analysis.md` |
 | ZAP passive + dependency audit | both workflows | see Section 4 report | `testing/security/SECTION4-REPORT.md` |
+| Performance (k6 OSS) | 1 VU ×2, 5 VUs ×2, 60 s steady | p95 158.7/161.3 ms and 690.5/649.6 ms, 0% failures, all within the pre-set limits | `testing/performance/` |
+| Failure and recovery | Redis lock unavailable mid-create | Full rollback; retry creates exactly one record; 3/3 runs | `testing/integration/test_failure_recovery.py` |
 
 **Coverage:**
 - 100% statement and branch on every selected business-rule function (gate passes).
@@ -43,7 +45,7 @@
 |---|---|---|---|
 | 1 | 100% of FR-ENC-01–10 with an executed test | ✅ Met | Traceability: 10/10 |
 | 2 | **PR-08 security gate:** all unauthenticated/unauthorized cases pass, no 2xx for denied roles | ✅ Met | SEC-AC-01–10, API-ENC-012/029/036/037/038 |
-| 3 | **PJ-02:** CI runs backend + browser suites, publishes artifacts, final regression | ⚠️ Met locally; **GitHub run pending** | Workflow verified step by step locally; see §6 |
+| 3 | **PJ-02:** CI runs backend + browser suites, publishes artifacts, final regression | ✅ Met | GitHub run 46148402745: all gates green (§6) |
 | 4 | **PR-05:** 4-row discharge decision table | ✅ Met | FE-ENC-001 + E2E-ENC-007 |
 | 5 | **PR-01:** 4/5/6 active-encounter boundaries | ✅ Met | API-ENC-001/019, UNIT-ENC-001, E2E-ENC-006 |
 | 6 | Status-history and period consistency | ✅ Met | API-ENC-003/004/022/034/035, E2E-ENC-008 |
@@ -108,11 +110,21 @@ RCAs (5 Whys + fishbone) with corrective and preventive actions: RCA-1 (DEF-03),
 | Patches apply to a clean baseline | ✅ |
 | SonarQube gate | ERROR before DEF-20 fix → OK after |
 
-**Pull requests:**
-- **Fix PR** (fails before, passes after): the SonarQube gate fails on DEF-20; the fix commit makes it pass.
-- **Blocked PR:** a deliberately weakened test; the pipeline fails and branch protection blocks the merge.
+**GitHub Actions history** (`NovweraAmjad/CARE-Encounter-Management-SQE`, all on 28 Nov 2026):
 
-Run links are added once GitHub has executed them. Merge blocking also needs branch protection on `main` with the three jobs as required checks, configured by the repository owner.
+| Run | Commit | Python + mutation | Frontend E2E + security | SonarQube | What it shows |
+|---|---|---|---|---|---|
+| 46139520006 | `dc701cf` | ✅ | ❌ | skipped | Mutation campaign works on GitHub. E2E failed: fresh DB (patient visible only through an open encounter), IPv6 `localhost` |
+| 46141819500 | `04388fa` | ✅ | ❌ 9/10 | skipped | Remaining failure: first page on a cold Vite server > 10 s |
+| 46144666161 | `133f849` | ✅ | ✅ | ✅ | First fully green run; but SonarQube was **blind**: type-aware rules skipped without `node_modules` (`testing/sonar/type-aware-analysis-evidence.md`) |
+| **46146842984** | `216c488` | ✅ | ✅ | **❌** | **Fix PR, before:** with type information the gate fails on DEF-20 (5 floating promises) |
+| **46148402745** | `f2730c0` | ✅ | ✅ | **✅** | **Fix PR, after:** the DEF-20 fix applied; every gate passes |
+| **46148457020** | `sqe/demo-blocked-remove-tests` | **❌ at "Enforce mutation threshold"** | ✅ | skipped | **Blocked PR:** the "redundant" tests were deleted. All remaining tests and the coverage gate still pass, but the mutation score falls below 80% |
+
+**Pull requests:**
+- **PR #5** `sqe/complete-quality-gate` → `main` is the **documented fix**: run 46146842984 fails, run 46148402745 passes.
+- **Blocked PR:** the demo branch `sqe/demo-blocked-remove-tests` (must not be merged).
+- **Deviation:** PR #4 (the first part of this work) was merged with a red pipeline, because branch protection was not yet enabled on `main`. Blocking merges requires the repository owner to enable branch protection with the three gate jobs as required status checks. With it, the demo branch's PR cannot be merged.
 
 ## 7. Residual risk per registered risk
 
@@ -129,7 +141,7 @@ Run links are added once GitHub has executed them. Merge blocking also needs bra
 | PR-09 browser gaps | Medium (6) | 10 use-case flows | **Low** | |
 | PR-10 repeated requests | Medium (9) | Repeated create/update/restart; duplicate organizations deduplicated | **Low** | |
 | PJ-01 environment | Medium (9) | Docker stack + harness issues resolved | **Low** | |
-| PJ-02 schedule | Critical (16) | All phases complete locally | **Medium** | Until the GitHub CI run is green |
+| PJ-02 schedule | Critical (16) | All phases complete; CI green on GitHub (run 46148402745) | **Low** | Branch protection still to be enabled by the owner |
 
 ## 8. Recommendation
 
@@ -141,4 +153,4 @@ Run links are added once GitHub has executed them. Merge blocking also needs bra
 **Release when:**
 - DEF-03, 01, 02 are fixed with the API tests updated to expect 400.
 - Dependencies are upgraded and the suites re-run.
-- The CI pipeline is green on GitHub with branch protection enforced.
+- Branch protection is enforced on `main` (the pipeline itself is already green on GitHub).
