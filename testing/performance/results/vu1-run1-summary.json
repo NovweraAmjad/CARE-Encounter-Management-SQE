@@ -1,0 +1,19 @@
+{
+  "run_id": "vu1-run1",
+  "vus": 1,
+  "measured_window_s": 60,
+  "p95_ms": 158.744015,
+  "median_ms": 132.17860000000002,
+  "max_ms": 339.9416,
+  "requests": 440,
+  "requests_per_second": 7.333333333333333,
+  "failure_rate_pct": 0,
+  "p95_limit_ms": 500,
+  "failure_limit_pct": 1,
+  "thresholds_passed": {
+    "http_reqs{phase:steady}": true,
+    "http_req_duration{phase:steady}": true,
+    "checks{phase:steady}": true,
+    "http_req_failed{phase:steady}": true
+  }
+}

@@ -103,6 +103,9 @@ jobs:
     name: Frontend rules, Playwright E2E and security checks
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      # Linux resolves "localhost" to ::1 first; the Vite server listens on IPv4.
+      E2E_BASE_URL: http://127.0.0.1:4000
 
     steps:
       - name: Checkout

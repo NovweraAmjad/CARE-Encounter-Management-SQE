@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T20:25:06.915Z",
+  "generated": "2026-11-28T11:49:47.525Z",
   "account": "care-doctor (synthetic fixture account)",
   "source": "care/config/auth_views.py LogoutView (cache blacklist, 1800 s) + config/authentication.py CustomJWTAuthentication",
   "steps": [

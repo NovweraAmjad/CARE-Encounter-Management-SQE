@@ -1,0 +1,19 @@
+{
+  "run_id": "vu5-run2",
+  "vus": 5,
+  "measured_window_s": 60,
+  "p95_ms": 649.57269,
+  "median_ms": 500.1377,
+  "max_ms": 786.6124,
+  "requests": 583,
+  "requests_per_second": 9.716666666666667,
+  "failure_rate_pct": 0,
+  "p95_limit_ms": 1000,
+  "failure_limit_pct": 1,
+  "thresholds_passed": {
+    "http_req_duration{phase:steady}": true,
+    "checks{phase:steady}": true,
+    "http_reqs{phase:steady}": true,
+    "http_req_failed{phase:steady}": true
+  }
+}

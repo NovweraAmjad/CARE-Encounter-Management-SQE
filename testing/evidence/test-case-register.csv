@@ -74,3 +74,6 @@ API-ENC-039,None,FR-ENC-01,API/integration,Repeated request + read-back,Create l
 API-ENC-040,None,FR-ENC-01,API/integration,Exception path,Encounter create lock held,400 'Encounter creation failed, try again after a while',Matched,Passed
 API-ENC-041,None,FR-ENC-05,API/integration,Read-back,Detail payload with appointment/location/history/care team/tag vs bare,Every field matched; bare defaults,Matched,Passed
 API-ENC-042,None,FR-ENC-01,API/integration,EP (empty departments),Create with organizations=[],Encounter scoped to the facility default organization,Matched,Passed
+PERF-ENC-001,None,FR-ENC-05,Performance (k6 OSS),Load 1 VU x2,GET /api/v1/encounter/{id}/ 60 s steady,p95 <= 500 ms; failures < 1%,p95 158.7 / 161.3 ms; 7.3 / 7.2 req/s; 0.00% (testing/performance/results),Passed
+PERF-ENC-002,None,FR-ENC-05,Performance (k6 OSS),Load 5 VUs x2,GET /api/v1/encounter/{id}/ 60 s steady,p95 <= 1000 ms; failures < 1%,p95 690.5 / 649.6 ms; 9.6 / 9.7 req/s; 0.00% (server saturates ~10 req/s),Passed
+REC-ENC-001,BR-ENC-01,FR-ENC-01,Recovery (Django test runner),Failure injection + retry,Redis lock unavailable mid-create; restore; retry; duplicate retry,500 then nothing persisted; retry creates exactly one encounter/link/identifier; duplicate retry 400,3/3 runs passed (testing/performance/results/recovery-test-runs.log),Passed

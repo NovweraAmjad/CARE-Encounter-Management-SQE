@@ -89,6 +89,18 @@ async function createViaApi(patientId: string, overrides: Record<string, unknown
   return res.data;
 }
 
+/**
+ * CARE grants a doctor access to a patient THROUGH an open encounter in the
+ * doctor's department (find_roles_on_patient ignores completed/cancelled ones).
+ * Create-flow tests therefore reset to exactly one open "anchor" encounter, so
+ * the patient page is reachable on any database, including a fresh CI one.
+ */
+async function resetWithAnchor(patientId: string) {
+  await clearOpen(patientId);
+  await createViaApi(patientId);
+  expect(await activeCount(patientId)).toBe(1);
+}
+
 async function openCreateDialog(page: Page, patientId: string) {
   await browserLogin(page);
   await page.goto(`/facility/${ctx.facilityId}/patient/${patientId}`, { waitUntil: "commit" });
@@ -138,7 +150,7 @@ async function openActionsPanel(page: Page) {
 test.describe("UC1 Create Patient Encounter", () => {
   test("UC1-ALT-1 planned encounter with a future start date is accepted", async ({ page }) => {
     const patientId = ctx.patientId;
-    await clearOpen(patientId);
+    await resetWithAnchor(patientId);
     const { dialog, submit } = await openCreateDialog(page, patientId);
 
     // Status defaults to Planned; a future start is allowed for Planned (BR-ENC-02).
@@ -164,7 +176,7 @@ test.describe("UC1 Create Patient Encounter", () => {
 
   test("UC1-ALT-2 emergency encounter with urgent priority is created", async ({ page }) => {
     const patientId = ctx.patientId;
-    await clearOpen(patientId);
+    await resetWithAnchor(patientId);
     const { dialog, submit } = await openCreateDialog(page, patientId);
 
     await dialog.getByRole("button", { name: /^Emergency/ }).click();
@@ -187,7 +199,7 @@ test.describe("UC1 Create Patient Encounter", () => {
 
   test("UC1-EXC-1 submitting without an encounter type is blocked", async ({ page }) => {
     const patientId = ctx.patientId;
-    await clearOpen(patientId);
+    await resetWithAnchor(patientId);
     const before = (await encountersOf(patientId)).length;
     const writes = trackEncounterWrites(page);
     const { dialog, submit } = await openCreateDialog(page, patientId);
