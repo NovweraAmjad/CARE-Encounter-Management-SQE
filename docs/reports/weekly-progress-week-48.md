@@ -1,5 +1,7 @@
 # Weekly Progress Report – Week 48 (23–29 Nov 2026)
 
+**Public repository:** https://github.com/NovweraAmjad/CARE-Encounter-Management-SQE (upstream references, baseline commits, setup/reset, scripts, test data, tool versions and CI: see its `README.md`).
+
 **Project:** CARE Encounter Management (Create / Complete Patient Encounter)
 **Author:** project author (individual project)
 **Plan baseline:** `docs/test-plan.md` v1.1

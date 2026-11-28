@@ -1,5 +1,7 @@
 # Test Completion Report – CARE Encounter Management
 
+**Public repository:** https://github.com/NovweraAmjad/CARE-Encounter-Management-SQE (upstream references, baseline commits, setup/reset, scripts, test data, tool versions and CI: see its `README.md`).
+
 **Scope.** Workflow 1 Create Patient Encounter and Workflow 2 Complete Patient Encounter, on a local copy of CARE: backend `ddfd840`, frontend `5e02f9a`. Synthetic fixture data only.
 
 **Period.** 26–28 Nov 2026. **Plan:** `docs/test-plan.md` v1.1.

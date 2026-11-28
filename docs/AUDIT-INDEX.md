@@ -1,5 +1,7 @@
 # Project Audit Index – where every requirement's result is
 
+**Public repository:** https://github.com/NovweraAmjad/CARE-Encounter-Management-SQE (upstream references, baseline commits, setup/reset, scripts, test data, tool versions and CI: see its `README.md`).
+
 **Audited:** 28 Nov 2026, against the SE3002 brief (Sections 1–5).
 
 **Legend:**
@@ -92,6 +94,19 @@
 | Per run: p95, req/s, failure %; compared with limits | ✅ | `testing/performance/README.md` §2 (all 4 runs pass) |
 | Environment details and interpretation | ✅ | `testing/performance/README.md` §1–2 |
 | Automated failure-and-recovery test (dependency down mid-write, verify, restore, retry, no duplicates) | ✅ | `testing/integration/test_failure_recovery.py` (REC-ENC-001); log `testing/performance/results/recovery-test-runs.log` |
+
+## Repository requirements (public GitHub link in the report)
+
+| Requirement | Status | Where |
+|---|---|---|
+| Public GitHub link in the report | ✅ | `README.md` header; header of the completion, weekly, SonarQube reports and this index |
+| Upstream reference and baseline commit | ✅ | `README.md` §1, `docs/repository-selection.md`, `baseline.md` |
+| Reproducible setup and reset instructions | ✅ | `README.md` §2, `docs/repository-selection.md`, `testing/README.md` |
+| Runnable scripts and test data | ✅ | `README.md` §3, `test-data/` (+ generated cases), `testing/**` |
+| Tool versions | ✅ | `README.md` §4, `docs/test-plan.md` §6 |
+| CI configuration | ✅ | `.github/workflows/care-quality-gate.yml`, `README.md` §5 |
+| Documented change (fails before, passes after) | ✅ | PR #5: runs 46146842984 ❌ → 46148402745 ✅ (`README.md` §6) |
+| Blocked pull request | ⚠️ | branch `sqe/demo-blocked-remove-tests`, run 46148457020 ❌; **the PR itself must be opened by the owner** (`README.md` §7) |
 
 ## Owner actions still open (cannot be done from the repository)
 

@@ -1,0 +1,28 @@
+{
+  "invalid_values_one_per_test": {
+    "status": "not-a-status",
+    "encounter_class": "not-a-class",
+    "priority": "not-a-priority",
+    "patient": "not-a-uuid",
+    "facility": "not-a-uuid",
+    "external_identifier": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  "restart_age_boundaries": [
+    [
+      "just_below_limit",
+      "23:59:00"
+    ],
+    [
+      "exactly_at_limit",
+      "1 day, 0:00:00"
+    ],
+    [
+      "just_above_limit",
+      "1 day, 0:01:00"
+    ],
+    [
+      "far_above_limit",
+      "7 days, 0:00:00"
+    ]
+  ]
+}
