@@ -103,6 +103,9 @@ jobs:
     name: Frontend rules, Playwright E2E and security checks
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      # Linux resolves "localhost" to ::1 first; the Vite server listens on IPv4.
+      E2E_BASE_URL: http://127.0.0.1:4000
 
     steps:
       - name: Checkout
@@ -126,6 +129,9 @@ jobs:
 
       - name: Apply the Section 3 accessibility fix
         run: git -C care_fe apply --verbose ../testing/accessibility/after/care_fe-create-encounter-fix.patch
+
+      - name: Apply the DEF-20 fix (floating promises, SonarQube typescript:S9383)
+        run: git -C care_fe apply --verbose ../testing/sonar/care_fe-floating-promises-fix.patch
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -248,6 +254,9 @@ jobs:
       - name: Apply the Section 3 accessibility fix
         run: git -C care_fe apply ../testing/accessibility/after/care_fe-create-encounter-fix.patch
 
+      - name: Apply the DEF-20 fix (floating promises, SonarQube typescript:S9383)
+        run: git -C care_fe apply --verbose ../testing/sonar/care_fe-floating-promises-fix.patch
+
       - name: Download coverage evidence
         uses: actions/download-artifact@v4
         with:
@@ -258,6 +267,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
+          cache: npm
+          cache-dependency-path: care_fe/package-lock.json
+
+      # Type-aware TypeScript rules (e.g. typescript:S9383 floating promises)
+      # need the project's dependencies to resolve types. Without them SonarQube
+      # silently skips those rules, so the gate would miss real bugs.
+      - name: Install frontend dependencies for type-aware analysis
+        working-directory: care_fe
+        run: npm ci --ignore-scripts
 
       - name: Scan and enforce the quality gate
         env:

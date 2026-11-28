@@ -1,0 +1,198 @@
+=== run 1 (11:31:14Z)
+Using existing test database for alias 'default' ('test_care')...
+INFO 2026-11-28 17:01:36,080 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:01:36,135 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:01:36,158 __init__ Step 2 - Fetching and parsing CSS - CSS string
+test_redis_unavailable_mid_create_then_recover_without_duplicates (care_testing.integration.test_failure_recovery.EncounterCreateRecoveryTests.test_redis_unavailable_mid_create_then_recover_without_duplicates) ... ERROR 2026-11-28 17:01:37,803 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ERROR 2026-11-28 17:01:37,803 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.502s
+
+OK
+Preserving test database for alias 'default' ('test_care')...
+Found 1 test(s).
+Operations to perform:
+Synchronizing apps without migrations:
+    Running deferred SQL...
+Running migrations:
+System check identified no issues (1 silenced).
+=== run 2 (11:31:38Z)
+Using existing test database for alias 'default' ('test_care')...
+INFO 2026-11-28 17:01:59,022 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:01:59,078 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:01:59,102 __init__ Step 2 - Fetching and parsing CSS - CSS string
+test_redis_unavailable_mid_create_then_recover_without_duplicates (care_testing.integration.test_failure_recovery.EncounterCreateRecoveryTests.test_redis_unavailable_mid_create_then_recover_without_duplicates) ... ERROR 2026-11-28 17:02:00,970 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ERROR 2026-11-28 17:02:00,970 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.522s
+
+OK
+Preserving test database for alias 'default' ('test_care')...
+Found 1 test(s).
+Operations to perform:
+Synchronizing apps without migrations:
+    Running deferred SQL...
+Running migrations:
+System check identified no issues (1 silenced).
+=== run 3 (11:32:02Z)
+Using existing test database for alias 'default' ('test_care')...
+INFO 2026-11-28 17:02:21,639 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:02:21,693 __init__ Step 2 - Fetching and parsing CSS - CSS string
+INFO 2026-11-28 17:02:21,716 __init__ Step 2 - Fetching and parsing CSS - CSS string
+test_redis_unavailable_mid_create_then_recover_without_duplicates (care_testing.integration.test_failure_recovery.EncounterCreateRecoveryTests.test_redis_unavailable_mid_create_then_recover_without_duplicates) ... ERROR 2026-11-28 17:02:23,588 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ERROR 2026-11-28 17:02:23,588 log Internal Server Error: /api/v1/encounter/
+Traceback (most recent call last):
+    response = get_response(request)
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+    return view_func(request, *args, **kwargs)
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+    response = self.handle_exception(exc)
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+    raise exc
+    response = handler(request, *args, **kwargs)
+    return Response(self.handle_create(request.data))
+                    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+    self.perform_create(model_instance)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+    lock.acquire()
+    ~~~~~~~~~~~~^^
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+    raise effect
+redis.exceptions.ConnectionError: Redis unavailable (simulated)
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.450s
+
+OK
+Preserving test database for alias 'default' ('test_care')...
+Found 1 test(s).
+Operations to perform:
+Synchronizing apps without migrations:
+    Running deferred SQL...
+Running migrations:
+System check identified no issues (1 silenced).

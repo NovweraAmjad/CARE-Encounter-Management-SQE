@@ -1,17 +1,45 @@
-# Server-Side Business Rule Audit
+# Server-Side Business Rule Coverage Audit
 
-| Rule | Source function / condition | Test IDs | Statement coverage | Branch coverage | MCC / MC/DC |
-|---|---|---|---|---|---|
-| BR-ENC-01 | `EncounterViewSet.validate_data`: create/update, active count, patient exists, facility exists | `UNIT-ENC-001`, `UNIT-ENC-002`, `UNIT-ENC-003`, `UNIT-ENC-004`, `UNIT-ENC-006`, `API-ENC-001`, `API-ENC-002` | 100% (8/8) | 100% (8/8) | MCC rows cover count/patient/facility/create-update; MC/DC pairs mapped in `mcc-mcdc.md` |
-| BR-ENC-03 | `EncounterCreateSpec.perform_extra_deserialization`; `EncounterUpdateSpec.perform_extra_deserialization`; status-history decision | `UNIT-ENC-009`, `UNIT-ENC-010`, `UNIT-ENC-011`, `UNIT-ENC-012`, `UNIT-ENC-013`, `UNIT-ENC-014`, `API-ENC-003`, `API-ENC-004` | Create 100% (7/7); Update 100% (5/5) | Create 100% (4/4); Update 100% (4/4) | Create simple/appointment branches and update old-status-equals/differs; invalid enum Pydantic test |
-| BR-ENC-05 | `PeriodSpec.validate_period`; `EncounterViewSet.perform_update` period deserialization/persistence | `UNIT-ENC-015`-`UNIT-ENC-019`, `API-ENC-008`, `API-ENC-009` | PeriodSpec 100% (7/7); perform_update 100% (4/4) | PeriodSpec 100% (6/6); perform_update 0 branches | MCC rows cover naive start, naive end and start> end; missing/existing end persistence |
-| BR-ENC-06 | `EncounterViewSet.restart`: authorization, completed status, elapsed time | `API-ENC-005`, `API-ENC-010`, `API-ENC-011`, `API-ENC-012` | 100% (12/12) | 100% (6/6) | Complete three-condition restart table and executable A/B/C pairs |
+**Source:** coverage.py 7.13.0, branch coverage on, 74 backend tests (`coverage-report.txt`, `coverage.json`, `coverage.xml`).
 
-## Remaining Uncovered Code
+**Updated:** 28 Nov 2026.
 
-The three scoped modules still contain unrelated uncovered methods. Examples include
-encounter filter helpers, organization management, identifier management, care-team
-management and unrelated query branches.
+**Gate:** `testing/mutation/coverage_quality_gate.py` → **PASS**: every selected business-rule function has 100% statement and branch coverage. The same gate runs in CI.
 
-These are outside BR-ENC-01, BR-ENC-03, BR-ENC-05 and BR-ENC-06 and do not invalidate
-100% coverage of the selected business-rule functions.
+## 1. Business-rule functions: 100% statement and branch
+
+| Rule | Function | Statements | Branches | MCC / MC/DC |
+|---|---|---|---|---|
+| BR-ENC-01 active limit | `EncounterViewSet.validate_data` | 8/8 | 8/8 | Complete MCC + MC/DC pairs (`mcc-mcdc.md`) |
+| BR-ENC-03 status history (create) | `EncounterCreateSpec.perform_extra_deserialization` | 7/7 | 4/4 | Simple/appointment branches |
+| BR-ENC-03 status history (update) | `EncounterUpdateSpec.perform_extra_deserialization` | 5/5 | 4/4 | Changed/unchanged pairs |
+| BR-ENC-05 completion period | `PeriodSpec.validate_period` | 7/7 | 6/6 | Naive start / naive end / start > end |
+| BR-ENC-05 persistence | `EncounterViewSet.perform_update` | 4/4 | – | – |
+| BR-ENC-06 restart | `EncounterViewSet.restart` | 12/12 | 6/6 | 3-condition table, A/B/C pairs |
+
+BR-ENC-02 and BR-ENC-04 have **no server-side code**. BR-ENC-02 is enforced only in the browser (defect DEF-03); BR-ENC-04 is a frontend routing decision. They're covered by:
+- `testing/frontend/test_encounter_frontend_rules.ts`: the BR-ENC-04 truth table
+- the Playwright use-case flows `E2E-ENC-001/003/007`
+
+## 2. Whole-file coverage of the in-scope modules
+
+| File | Coverage |
+|---|---:|
+| `care/emr/resources/encounter/spec.py` | **100%** |
+| `care/emr/resources/encounter/constants.py` | **100%** |
+| `care/emr/api/viewsets/encounter.py` | 68% |
+| `care/emr/resources/base.py` (shared) | 83% |
+| `care/security/authorization/encounter.py` | 59% |
+| **Total** | **78%** |
+
+## 3. Justification of uncovered code (none of it is business-rule logic for the two workflows)
+
+| File | Lines | What it is | Why not covered |
+|---|---|---|---|
+| viewset | 62–66 | `LiveFilter` `live=true/false` branches | Their behaviour is inverted (**DEF-19**). A test would have to assert the defect; documented as 13 surviving mutants |
+| viewset | 207–209 | Releasing the create lock when identifier evaluation raises | Exception-only path; the recovery test injects the failure at lock *acquire* instead (`REC-ENC-001`) |
+| viewset | 305–316, 327–343, 350–366 | `organizations`, `organizations_add`, `organizations_remove` actions | Department management of an existing encounter; not a step of Create or Complete |
+| viewset | 375–416 | `set_facility_identifier` action | Facility identifier management; outside both workflows |
+| viewset | 423–457 | Other custom actions after `set_facility_identifier` | Outside both workflows |
+| authorization | 42–58, 65, 73–81, 101–104, 136+ | `can_view_encounter_clinical_data`, `can_view_as_pharmacist`, `can_submit_encounter_questionnaire_obj`, `can_update_encounter_clinical_data`, service-request / medication / diagnostic-report helpers | Permission helpers for other EMR features (questionnaires, pharmacy, lab). The encounter create/read/update/list checks *are* covered (API-ENC-027–038, SEC-AC-01–10) |
+| base | 35–37, 48, 62–63, … | Generic `EMRResource` helpers | Shared framework code used by every CARE resource; outside scope |

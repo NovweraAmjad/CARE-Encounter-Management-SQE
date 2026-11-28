@@ -79,9 +79,6 @@ test.beforeAll(async ({ request }) => {
         headers: auth(doctor),
       })
     ).json();
-  const open = await getList(`&status=${OPEN_STATUSES.join(",")}`);
-  const encounter = open.results?.[0] ?? (await getList("")).results[0];
-
   const orgs = await (
     await request.get(`${API}/api/v1/facility/${facilityId}/organizations/`, {
       headers: auth(doctor),
@@ -89,6 +86,31 @@ test.beforeAll(async ({ request }) => {
   ).json();
   const organizationId =
     orgs.results.find((o: any) => o.org_type !== "root")?.id ?? orgs.results[0].id;
+
+  let encounter = (await getList(`&status=${OPEN_STATUSES.join(",")}`)).results?.[0];
+  if (!encounter) {
+    // No open encounter left (e.g. after the E2E suite in CI): create one as the
+    // doctor (an allowed action), so the checks never run against a closed one.
+    const anyEncounter = (await getList("")).results[0];
+    const seeded = await request.post(`${API}/api/v1/encounter/`, {
+      headers: auth(doctor),
+      data: {
+        patient: anyEncounter.patient.id,
+        facility: facilityId,
+        status: "in_progress",
+        encounter_class: "amb",
+        priority: "routine",
+        organizations: [organizationId],
+        period: { start: new Date().toISOString() },
+      },
+    });
+    expect([200, 201], "seed an open encounter").toContain(seeded.status());
+    encounter = await (
+      await request.get(`${API}/api/v1/encounter/${(await seeded.json()).id}/`, {
+        headers: auth(doctor),
+      })
+    ).json();
+  }
 
   // Record the server's own view of each account so the role is evidenced, not assumed.
   const roleEvidence: Record<string, unknown> = {};

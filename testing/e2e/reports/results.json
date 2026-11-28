@@ -4,27 +4,31 @@
       "C:\\Program Files\\nodejs\\node.exe",
       "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\node_modules\\@playwright\\test\\cli.js",
       "test",
-      "--list"
+      "--project=chromium"
     ],
     "configFile": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\playwright.config.ts",
     "rootDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
-    "globalSetup": null,
+    "globalSetup": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\global-setup.ts",
     "globalTeardown": null,
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {},
+    "metadata": {
+      "actualWorkers": 1
+    },
     "preserveOutput": "always",
     "projects": [
       {
         "outputDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "chromium",
         "name": "chromium",
         "testDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
@@ -43,7 +47,9 @@
         "outputDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "name": "chromium",
         "testDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
         "snapshotDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
@@ -54,7 +60,7 @@
         ],
         "timeout": 60000,
         "use": {
-          "baseURL": "http://localhost:4000",
+          "baseURL": "http://127.0.0.1:4000",
           "headless": true,
           "trace": "off",
           "screenshot": "only-on-failure",
@@ -111,7 +117,7 @@
     "webServer": {
       "command": "npm run local -- --host 127.0.0.1 --port 4000",
       "cwd": "../../care_fe",
-      "url": "http://localhost:4000/login",
+      "url": "http://127.0.0.1:4000/login",
       "reuseExistingServer": true,
       "timeout": 120000,
       "env": {
@@ -137,8 +143,33 @@
               "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
-              "results": [],
-              "status": "skipped"
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-28T12:23:09.859Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "keyboard-focus-order.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJleHBlY3RlZE9yZGVyIjogWwogICAgIkRhdGUiLAogICAgIlRpbWUiLAogICAgIlR5cGUgb2YgRW5jb3VudGVyIChBbWJ1bGF0b3J5KSIsCiAgICAiU3RhdHVzIiwKICAgICJQcmlvcml0eSIsCiAgICAiRGVwYXJ0bWVudHMiLAogICAgIkNyZWF0ZSBFbmNvdW50ZXIgKHN1Ym1pdCkiCiAgXSwKICAiZmlyc3RTZWVuSW5DeWNsZSI6IFsKICAgIDAsCiAgICAxLAogICAgNiwKICAgIDExLAogICAgMTIsCiAgICAxNCwKICAgIDE4CiAgXSwKICAiZm9jdXNMb2ciOiBbCiAgICB7CiAgICAgICJ0YWIiOiAxLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk5vdmVtYmVyIDI4dGgsIDIwMjZcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRhdGUiCiAgICB9LAogICAgewogICAgICAidGFiIjogMiwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0LAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogNSwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiSW5wYXRpZW50IFBhdGllbnQgaXMgYWRtaXR0ZWQgdG8gdGhlIGhvc1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNywKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBbWJ1bGF0b3J5IFBhdGllbnQgdmlzaXRzIGZvciBvdXRwYXRpZW50XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUeXBlIG9mIEVuY291bnRlciAoQW1idWxhdG9yeSkiCiAgICB9LAogICAgewogICAgICAidGFiIjogOCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJPYnNlcnZhdGlvbiBQYXRpZW50IGlzIHVuZGVyIG9ic2VydmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA5LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkVtZXJnZW5jeSBNYXJrIGFzIGVtZXJnZW5jeSBpZiBpbW1lZGlhdGVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDEwLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlZpcnR1YWwgVmlydHVhbC90ZWxlaGVhbHRoIGNvbnN1bHRhdGlvblwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTEsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiSG9tZSBIZWFsdGggQ2FyZSBwcm92aWRlZCBhdCBwYXRpZW50J3MgaFwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTIsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiU3RhdHVzXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJTdGF0dXMiCiAgICB9LAogICAgewogICAgICAidGFiIjogMTMsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiUHJpb3JpdHlcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlByaW9yaXR5IgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDE0LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkFkZCBUYWdzXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAxNSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJTZWxlY3QgZGVwYXJ0bWVudFwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiRGVwYXJ0bWVudHMiCiAgICB9LAogICAgewogICAgICAidGFiIjogMTYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiTWFyayBhcyBwcmVmZXJyZWRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDE3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlJlbW92ZSBBZG1pbmlzdHJhdGlvblwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTgsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiQ2FuY2VsIEVTQ1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTksCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltzdWJtaXRdIFwiQ3JlYXRlIEVuY291bnRlciDih6cgKyBFTlRFUlwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiQ3JlYXRlIEVuY291bnRlciAoc3VibWl0KSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyMCwKICAgICAgImZvY3VzZWQiOiAic3BhbiBcIlwiIChvdXRzaWRlIGRpYWxvZykiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyMSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJDbG9zZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMjIsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiTm92ZW1iZXIgMjh0aCwgMjAyNlwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiRGF0ZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyMywKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDI0LAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogMjUsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyNiwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDI3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIklucGF0aWVudCBQYXRpZW50IGlzIGFkbWl0dGVkIHRvIHRoZSBob3NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDI4LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkFtYnVsYXRvcnkgUGF0aWVudCB2aXNpdHMgZm9yIG91dHBhdGllbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlR5cGUgb2YgRW5jb3VudGVyIChBbWJ1bGF0b3J5KSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyOSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJPYnNlcnZhdGlvbiBQYXRpZW50IGlzIHVuZGVyIG9ic2VydmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzMCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJFbWVyZ2VuY3kgTWFyayBhcyBlbWVyZ2VuY3kgaWYgaW1tZWRpYXRlXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzMSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJWaXJ0dWFsIFZpcnR1YWwvdGVsZWhlYWx0aCBjb25zdWx0YXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMyLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkhvbWUgSGVhbHRoIENhcmUgcHJvdmlkZWQgYXQgcGF0aWVudCdzIGhcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMzLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlN0YXR1c1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiU3RhdHVzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM0LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlByaW9yaXR5XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJQcmlvcml0eSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzNSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBZGQgVGFnc1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMzYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiU2VsZWN0IGRlcGFydG1lbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRlcGFydG1lbnRzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk1hcmsgYXMgcHJlZmVycmVkXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzOCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJSZW1vdmUgQWRtaW5pc3RyYXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM5LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkNhbmNlbCBFU0NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQwLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bc3VibWl0XSBcIkNyZWF0ZSBFbmNvdW50ZXIg4oenICsgRU5URVJcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkNyZWF0ZSBFbmNvdW50ZXIgKHN1Ym1pdCkiCiAgICB9LAogICAgewogICAgICAidGFiIjogNDEsCiAgICAgICJmb2N1c2VkIjogInNwYW4gXCJcIiAob3V0c2lkZSBkaWFsb2cpIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNDIsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiQ2xvc2VcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQzLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk5vdmVtYmVyIDI4dGgsIDIwMjZcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRhdGUiCiAgICB9LAogICAgewogICAgICAidGFiIjogNDQsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0NSwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQ2LAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogNDcsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0OCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJJbnBhdGllbnQgUGF0aWVudCBpcyBhZG1pdHRlZCB0byB0aGUgaG9zXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0OSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBbWJ1bGF0b3J5IFBhdGllbnQgdmlzaXRzIGZvciBvdXRwYXRpZW50XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUeXBlIG9mIEVuY291bnRlciAoQW1idWxhdG9yeSkiCiAgICB9LAogICAgewogICAgICAidGFiIjogNTAsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiT2JzZXJ2YXRpb24gUGF0aWVudCBpcyB1bmRlciBvYnNlcnZhdGlvblwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNTEsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiRW1lcmdlbmN5IE1hcmsgYXMgZW1lcmdlbmN5IGlmIGltbWVkaWF0ZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNTIsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiVmlydHVhbCBWaXJ0dWFsL3RlbGVoZWFsdGggY29uc3VsdGF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1MywKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJIb21lIEhlYWx0aCBDYXJlIHByb3ZpZGVkIGF0IHBhdGllbnQncyBoXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1NCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJTdGF0dXNcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlN0YXR1cyIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1NSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJQcmlvcml0eVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiUHJpb3JpdHkiCiAgICB9LAogICAgewogICAgICAidGFiIjogNTYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiQWRkIFRhZ3NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDU3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlNlbGVjdCBkZXBhcnRtZW50XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJEZXBhcnRtZW50cyIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1OCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJNYXJrIGFzIHByZWZlcnJlZFwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNTksCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiUmVtb3ZlIEFkbWluaXN0cmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA2MCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJDYW5jZWwgRVNDXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0KICBdCn0="
+                    },
+                    {
+                      "name": "rejected-future-date",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\test-results\\encounter-e2e-create-a-pat-bf07d-board-validation-correction-chromium\\attachments\\rejected-future-date-c30fbd0c342ef275149b00291d73927731790c71.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
             }
           ],
           "id": "ae663e7e46c3f20bc2fa-88a3072d106e12789970",
@@ -157,8 +188,22 @@
               "expectedStatus": "passed",
               "projectId": "chromium",
               "projectName": "chromium",
-              "results": [],
-              "status": "skipped"
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-28T12:23:34.959Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
             }
           ],
           "id": "ae663e7e46c3f20bc2fa-3c7809de2c744780a5f7",
@@ -178,7 +223,7 @@
         {
           "title": "UC1 Create Patient Encounter",
           "file": "use-cases.spec.ts",
-          "line": 138,
+          "line": 150,
           "column": 6,
           "specs": [
             {
@@ -192,13 +237,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16563,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:23:50.014Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-8d08b6baf6715dbb97c3",
               "file": "use-cases.spec.ts",
-              "line": 139,
+              "line": 151,
               "column": 3
             },
             {
@@ -212,13 +271,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 17274,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:24:06.924Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-9f2c1ec062d32eff15fa",
               "file": "use-cases.spec.ts",
-              "line": 165,
+              "line": 177,
               "column": 3
             },
             {
@@ -232,13 +305,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 16808,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:24:24.215Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-c5d47cf45cac81678c8c",
               "file": "use-cases.spec.ts",
-              "line": 188,
+              "line": 200,
               "column": 3
             },
             {
@@ -252,13 +339,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10791,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:24:41.033Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-91464af0b726795b3cfc",
               "file": "use-cases.spec.ts",
-              "line": 205,
+              "line": 217,
               "column": 3
             }
           ]
@@ -266,7 +367,7 @@
         {
           "title": "UC2 Complete Patient Encounter",
           "file": "use-cases.spec.ts",
-          "line": 235,
+          "line": 247,
           "column": 6,
           "specs": [
             {
@@ -280,13 +381,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11384,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:24:51.832Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-81672558829367a6c561",
               "file": "use-cases.spec.ts",
-              "line": 236,
+              "line": 248,
               "column": 3
             },
             {
@@ -300,13 +415,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12334,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:25:03.228Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-cff2eb757e49609ab731",
               "file": "use-cases.spec.ts",
-              "line": 257,
+              "line": 269,
               "column": 3
             },
             {
@@ -320,13 +449,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9198,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:25:15.576Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-3c6f3278d8c1f6ce6107",
               "file": "use-cases.spec.ts",
-              "line": 277,
+              "line": 289,
               "column": 3
             },
             {
@@ -340,13 +483,27 @@
                   "expectedStatus": "passed",
                   "projectId": "chromium",
                   "projectName": "chromium",
-                  "results": [],
-                  "status": "skipped"
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10411,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-28T12:25:24.785Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
                 }
               ],
               "id": "0ddb63d24dd243255c8f-d99fcaf9cb7b3212e948",
               "file": "use-cases.spec.ts",
-              "line": 298,
+              "line": 310,
               "column": 3
             }
           ]
@@ -356,10 +513,10 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-28T09:35:14.561Z",
-    "duration": 227.96000000000004,
-    "expected": 0,
-    "skipped": 10,
+    "startTime": "2026-11-28T12:22:10.638Z",
+    "duration": 206652.293,
+    "expected": 10,
+    "skipped": 0,
     "unexpected": 0,
     "flaky": 0
   }

@@ -1,5 +1,7 @@
 # SonarQube Static Analysis – CARE Encounter Workflows
 
+**Public repository:** https://github.com/NovweraAmjad/CARE-Encounter-Management-SQE (upstream references, baseline commits, setup/reset, scripts, test data, tool versions and CI: see its `README.md`).
+
 **Server.** SonarQube 26.11.0.134175 (Community Build), a fresh instance created by `testing/sonar/sonar-gate.sh`. It's the same script CI uses, against a SonarQube service container.
 
 **Scanner.** `@sonar/scan` 4.4.0.

@@ -1,0 +1,2 @@
+
+vu5-run1: p95=690.5 ms, 9.6 req/s, failures=0.00%

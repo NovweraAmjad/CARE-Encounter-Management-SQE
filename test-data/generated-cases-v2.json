@@ -1,0 +1,141 @@
+{
+  "spec": "encounter-openapi.v2.yaml",
+  "constraints": {
+    "statuses": [
+      "planned",
+      "in_progress",
+      "on_hold",
+      "discharged",
+      "completed",
+      "cancelled",
+      "discontinued",
+      "entered_in_error",
+      "unknown"
+    ],
+    "classes": [
+      "imp",
+      "amb",
+      "obsenc",
+      "emer",
+      "vr",
+      "hh"
+    ],
+    "priorities": [
+      "stat",
+      "ASAP",
+      "emergency",
+      "urgent",
+      "routine",
+      "elective",
+      "rush_reporting",
+      "timing_critical",
+      "callback_results",
+      "callback_for_scheduling",
+      "preop",
+      "as_needed",
+      "use_as_directed"
+    ],
+    "external_identifier_max_length": 12,
+    "active_encounter_limit": 3
+  },
+  "equivalence_classes": {
+    "status": {
+      "valid": [
+        "planned",
+        "in_progress",
+        "on_hold",
+        "discharged",
+        "completed",
+        "cancelled",
+        "discontinued",
+        "entered_in_error",
+        "unknown"
+      ],
+      "invalid": [
+        "not-a-status"
+      ]
+    },
+    "encounter_class": {
+      "valid": [
+        "imp",
+        "amb",
+        "obsenc",
+        "emer",
+        "vr",
+        "hh"
+      ],
+      "invalid": [
+        "not-a-class"
+      ]
+    },
+    "priority": {
+      "valid": [
+        "stat",
+        "ASAP",
+        "emergency",
+        "urgent",
+        "routine",
+        "elective",
+        "rush_reporting",
+        "timing_critical",
+        "callback_results",
+        "callback_for_scheduling",
+        "preop",
+        "as_needed",
+        "use_as_directed"
+      ],
+      "invalid": [
+        "not-a-priority"
+      ]
+    },
+    "patient": {
+      "valid": [
+        "existing patient UUID"
+      ],
+      "invalid": [
+        "not-a-uuid",
+        "well-formed UUID that does not exist"
+      ]
+    },
+    "facility": {
+      "valid": [
+        "existing facility UUID"
+      ],
+      "invalid": [
+        "not-a-uuid",
+        "well-formed UUID that does not exist"
+      ]
+    },
+    "external_identifier": {
+      "valid": [
+        "null",
+        "string of length 1..12"
+      ],
+      "invalid": [
+        "string longer than 12"
+      ]
+    }
+  },
+  "boundary_values": {
+    "active_encounters_before_create": {
+      "below": 2,
+      "at": 3,
+      "above": 4,
+      "expected": {
+        "below": "created",
+        "at": "rejected (400)",
+        "above": "rejected (400)"
+      }
+    },
+    "external_identifier_length": {
+      "below": 11,
+      "at": 12,
+      "above": 13,
+      "expected": {
+        "below": "accepted",
+        "at": "accepted",
+        "above": "rejected by the spec; the API returns 500 (DEF-01)"
+      }
+    }
+  }
+}

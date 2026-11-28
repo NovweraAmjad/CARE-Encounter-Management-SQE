@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T20:24:48.419Z",
+  "generated": "2026-11-28T11:49:42.246Z",
   "backend": "http://127.0.0.1:9000",
   "frontend": "http://localhost:4000",
   "role_evidence": {
@@ -52,7 +52,7 @@
       "expected": "Allowed",
       "observed": "Allowed",
       "http_status": 200,
-      "evidence": "count=323",
+      "evidence": "count=460",
       "result": "PASS"
     },
     {
@@ -85,7 +85,7 @@
       "expected": "Denied",
       "observed": "Denied",
       "http_status": 403,
-      "evidence": "Body: {\"detail\":\"You do not have permission to update encounter\"}; status after request still \"planned\"",
+      "evidence": "Body: {\"detail\":\"You do not have permission to update encounter\"}; status after request still \"in_progress\"",
       "result": "PASS"
     },
     {
@@ -96,7 +96,7 @@
       "expected": "Allowed",
       "observed": "Allowed",
       "http_status": 200,
-      "evidence": "Encounter status \"planned\" re-sent unchanged",
+      "evidence": "Encounter status \"in_progress\" re-sent unchanged",
       "result": "PASS"
     },
     {

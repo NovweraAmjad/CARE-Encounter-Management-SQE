@@ -13,8 +13,12 @@ The frontend README describes CARE as a web frontend for an open-source EMR and 
 
 | Item | Baseline |
 |---|---|
+| Backend upstream | https://github.com/ohcnetwork/care |
 | Backend commit | `ddfd840dbe314b4e53d2a719d2138324d970634b` |
+| Backend licence | **MIT License** (`care/LICENSE`, "Copyright (c) 2026 Open Healthcare Network Foundation") |
+| Frontend upstream | https://github.com/ohcnetwork/care_fe |
 | Frontend commit | `5e02f9aa4f690e08375da310511e14606985f788` |
+| Frontend licence | **MIT License** (`care_fe/LICENSE`, "Copyright (c) 2024 Open Healthcare Network") |
 | Baseline date | 26 November 2026 |
 
 Both commit hashes were verified with `git rev-parse HEAD` in the checked-out repositories. Both working trees were checked with `git status --porcelain`. The backend worktree was clean. The frontend worktree has a pre-existing or externally present modification in `care_fe/src/routeTree.gen.ts`; no application source or database file was modified for this documentation task.

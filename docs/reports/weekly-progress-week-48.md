@@ -1,5 +1,7 @@
 # Weekly Progress Report – Week 48 (23–29 Nov 2026)
 
+**Public repository:** https://github.com/NovweraAmjad/CARE-Encounter-Management-SQE (upstream references, baseline commits, setup/reset, scripts, test data, tool versions and CI: see its `README.md`).
+
 **Project:** CARE Encounter Management (Create / Complete Patient Encounter)
 **Author:** project author (individual project)
 **Plan baseline:** `docs/test-plan.md` v1.1
@@ -10,12 +12,13 @@
 |---|---|---|---|
 | 1 Planning, requirements, risks | Week 48 | ✅ Done | test plan, risk register (10 product + 2 project risks), estimation |
 | 2 Unit tests | Week 48 | ✅ Done | 18 unit tests; 100% statement and branch on the selected business-rule functions |
-| 3 API/integration tests | Week 48 | ✅ Done | 46 integration tests + 3 generator tests (67 backend total, all pass) |
+| 3 API/integration tests | Week 48 | ✅ Done | 51 integration tests + 5 generator tests (74 backend total, all pass) |
 | 4 Browser E2E (use cases) | Week 48 | ✅ Done | 2 use cases × (main + 2 alternative + 2 exception) = 10 flows; 30/30 over 3 consecutive runs |
 | 5 Generator + OpenAPI | Week 48 | ✅ Done | `testing/openapi/encounter-openapi.yaml`, generator, two-constraint regeneration |
 | 6 Mutation + defect analysis | Week 48 | ✅ Done | score 65.1% → **92.8%**; 146 survivors analysed; 20 defects, 3 RCAs |
-| 7 CI quality gate | Week 48 | ⚠️ Configured and verified locally; **GitHub run pending** | `.github/workflows/care-quality-gate.yml` (§4) |
+| 7 CI quality gate | Week 48 | ✅ Done: PR #5 green on GitHub (run 46148402745); blocked demo fails the mutation gate (run 46148457020) | `docs/reports/test-completion-report.md` §6 |
 | 8 Regression + final reporting | Week 48 | ✅ Done locally | completion report |
+| Section 5 performance + recovery | Week 48 | ✅ Done | k6: p95 ≈ 160 ms (1 VU) / 650–690 ms (5 VUs), 0% failures, all within the pre-set limits; REC-ENC-001 3/3 (`testing/performance/`) |
 
 **Deviations from the plan:**
 - **The mutation phase took far longer than estimated.** The harness produced no score at first. After fixing that, it produced *false* verdicts: 0 survivors that were really 146 (four harness defects, see `testing/evidence/mutation-analysis.md` §2).
@@ -46,6 +49,9 @@
 | Only 2 browser flows | Added 8 alternative/exception flows, each with UI + API post-condition checks | 10/10 flows automated; 30/30 runs |
 | CI never passed | Pinned the frontend baseline; seeded fresh-DB fixtures; SonarQube run inside CI with a custom gate; removed `|| true` | Verified locally; awaiting GitHub run |
 | SonarQube gate failed (5 bugs, DEF-20) | Fix patch delivered through a pull request | Reliability A after the fix |
+| CI frontend job failed only on GitHub (fresh DB, cold Vite server, IPv6 `localhost`) | Reproduced each cause locally under CI conditions, fixed the tests/config | PR #5 run 46144666161 fully green |
+| CI SonarQube passed while local failed | Found type-aware rules silently skipped (no `node_modules`); proved by scanning with/without deps | Dependencies installed in CI (`testing/sonar/type-aware-analysis-evidence.md`) |
+| PR #4 was merged with a red pipeline | Branch protection not yet enabled on `main` | Repository owner to enable required checks |
 | Stale traceability ("Planned") | Rewrote it from executed tests only | 10/10 requirements covered |
 
 ## 4. Risks and issues carried forward
