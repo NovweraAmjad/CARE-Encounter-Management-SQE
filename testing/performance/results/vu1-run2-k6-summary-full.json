@@ -263,28 +263,24 @@
       }
     }
   },
-  "setup_data": {
-    "encounterId": "7c7c6895-bcb1-4ae6-91ce-25d244e9a3c0",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1ODY1NzYxLCJpYXQiOjE3OTU4NjUxNjEsImp0aSI6IjE5Yzg1MTM3ZDI0YzQ2YzU4NWJhYmQ3MTA0OGNmOGUwIiwidXNlcl9pZCI6ImYxZjBhYjFmLTNlNGMtNDY2YS1hNThjLTg2OTdhYzU2N2NhMCIsImhhc2hfcGFzc3dvcmQiOiI2QjBGMzAxMjg5OTA2NjJDMDk1MjUzODQzMjYwQ0I4NCJ9.scG2NdCkjuXoWZfZnCdTI4P98F2TcJLVVcOIwZ-ZWsU"
-  },
   "root_group": {
     "groups": [],
     "checks": [
-        {
-          "fails": 0,
-          "name": "status is 200",
-          "path": "::status is 200",
-          "id": "6210a8cd14cd70477eba5c5e4cb3fb5f",
-          "passes": 433
-        },
-        {
-          "path": "::returns the requested encounter",
-          "id": "934673c2bb61e80567b125aa4de3483a",
-          "passes": 433,
-          "fails": 0,
-          "name": "returns the requested encounter"
-        }
-      ],
+      {
+        "fails": 0,
+        "name": "status is 200",
+        "path": "::status is 200",
+        "id": "6210a8cd14cd70477eba5c5e4cb3fb5f",
+        "passes": 433
+      },
+      {
+        "path": "::returns the requested encounter",
+        "id": "934673c2bb61e80567b125aa4de3483a",
+        "passes": 433,
+        "fails": 0,
+        "name": "returns the requested encounter"
+      }
+    ],
     "name": "",
     "path": "",
     "id": "d41d8cd98f00b204e9800998ecf8427e"

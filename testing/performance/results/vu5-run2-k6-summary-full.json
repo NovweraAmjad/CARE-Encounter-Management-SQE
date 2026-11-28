@@ -5,21 +5,21 @@
     "id": "d41d8cd98f00b204e9800998ecf8427e",
     "groups": [],
     "checks": [
-        {
-          "name": "status is 200",
-          "path": "::status is 200",
-          "id": "6210a8cd14cd70477eba5c5e4cb3fb5f",
-          "passes": 652,
-          "fails": 0
-        },
-        {
-          "name": "returns the requested encounter",
-          "path": "::returns the requested encounter",
-          "id": "934673c2bb61e80567b125aa4de3483a",
-          "passes": 652,
-          "fails": 0
-        }
-      ]
+      {
+        "name": "status is 200",
+        "path": "::status is 200",
+        "id": "6210a8cd14cd70477eba5c5e4cb3fb5f",
+        "passes": 652,
+        "fails": 0
+      },
+      {
+        "name": "returns the requested encounter",
+        "path": "::returns the requested encounter",
+        "id": "934673c2bb61e80567b125aa4de3483a",
+        "passes": 652,
+        "fails": 0
+      }
+    ]
   },
   "options": {
     "summaryTrendStats": [
@@ -284,9 +284,5 @@
         "count": 652
       }
     }
-  },
-  "setup_data": {
-    "encounterId": "7c7c6895-bcb1-4ae6-91ce-25d244e9a3c0",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1ODY1OTE0LCJpYXQiOjE3OTU4NjUzMTQsImp0aSI6ImY3MWJlZWUxM2NmYTQ4NWM5ODlhOGMxZTM5MDQ0N2I2IiwidXNlcl9pZCI6ImYxZjBhYjFmLTNlNGMtNDY2YS1hNThjLTg2OTdhYzU2N2NhMCIsImhhc2hfcGFzc3dvcmQiOiI2QjBGMzAxMjg5OTA2NjJDMDk1MjUzODQzMjYwQ0I4NCJ9.C8nEDOzgQBgtVbDQ8-Yrbaa4eLScitAdFRRnRlybC5w"
   }
 }

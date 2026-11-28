@@ -72,6 +72,8 @@ export default function (data) {
 }
 
 export function handleSummary(data) {
+  // setup_data holds the login token: never write it to the results.
+  delete data.setup_data;
   const m = data.metrics;
   const steadyReqs = m["http_reqs{phase:steady}"]?.values.count ?? 0;
   const result = {
