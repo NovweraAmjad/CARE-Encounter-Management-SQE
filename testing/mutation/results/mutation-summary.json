@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-27T11:15:21.759613+00:00",
-  "standard_mutmut_status": "blocked",
+  "timestamp": "2026-11-28T10:53:40.549597+00:00",
+  "standard_mutmut_status": "measured",
   "standard_mutmut_counts": {
-    "total": null,
-    "killed": null,
-    "survived": null,
-    "timeout": null,
+    "killed": 388,
+    "survived": 30,
+    "timeout": 0,
     "equivalent": null,
-    "blocked": null,
-    "excluded": null
+    "blocked": 0,
+    "excluded": 0,
+    "total": 418
   },
-  "standard_mutation_score": null,
-  "standard_mutation_score_reason": "mutmut run did not complete successfully",
+  "standard_mutation_score": 92.82296650717703,
+  "standard_mutation_score_reason": null,
   "custom_operator_counts": {
     "generated": 3,
     "killed": 3,

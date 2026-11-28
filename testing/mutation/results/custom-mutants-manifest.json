@@ -3,7 +3,7 @@
     "operator_id": "BR01_ACTIVE_LIMIT_COMPARISON",
     "rule_id": "BR-ENC-01",
     "target": "care/emr/api/viewsets/encounter.py",
-    "source_mutation_copy": "/tmp/care_mutation_workspace/results/custom-mutants/BR01_ACTIVE_LIMIT_COMPARISON.py",
+    "source_mutation_copy": "/tmp/campaign_results/custom-mutants/BR01_ACTIVE_LIMIT_COMPARISON.py",
     "executed": true,
     "verdict": "killed"
   },
@@ -11,7 +11,7 @@
     "operator_id": "BR06_RESTART_ELAPSED_TIME",
     "rule_id": "BR-ENC-06",
     "target": "care/emr/api/viewsets/encounter.py",
-    "source_mutation_copy": "/tmp/care_mutation_workspace/results/custom-mutants/BR06_RESTART_ELAPSED_TIME.py",
+    "source_mutation_copy": "/tmp/campaign_results/custom-mutants/BR06_RESTART_ELAPSED_TIME.py",
     "executed": true,
     "verdict": "killed"
   },
@@ -19,7 +19,7 @@
     "operator_id": "BR03_STATUS_HISTORY_CHANGE",
     "rule_id": "BR-ENC-03",
     "target": "care/emr/resources/encounter/spec.py",
-    "source_mutation_copy": "/tmp/care_mutation_workspace/results/custom-mutants/BR03_STATUS_HISTORY_CHANGE.py",
+    "source_mutation_copy": "/tmp/campaign_results/custom-mutants/BR03_STATUS_HISTORY_CHANGE.py",
     "executed": true,
     "verdict": "killed"
   }

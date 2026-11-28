@@ -1,0 +1,523 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=chromium"
+    ],
+    "configFile": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\playwright.config.ts",
+    "rootDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "encounter-e2e.spec.ts",
+          "use-cases.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "snapshotDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "testIgnore": [],
+        "testMatch": [
+          "encounter-e2e.spec.ts",
+          "use-cases.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://localhost:4000",
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "video": "off",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reports/playwright-html",
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run local -- --host 127.0.0.1 --port 4000",
+      "cwd": "../../care_fe",
+      "url": "http://localhost:4000/login",
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "REACT_CARE_API_URL": "http://127.0.0.1:9000"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "encounter-e2e.spec.ts",
+      "file": "encounter-e2e.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "create a patient encounter with keyboard validation correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17961,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T21:40:02.791Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "keyboard-focus-order.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJleHBlY3RlZE9yZGVyIjogWwogICAgIkRhdGUiLAogICAgIlRpbWUiLAogICAgIlR5cGUgb2YgRW5jb3VudGVyIChBbWJ1bGF0b3J5KSIsCiAgICAiU3RhdHVzIiwKICAgICJQcmlvcml0eSIsCiAgICAiRGVwYXJ0bWVudHMiLAogICAgIkNyZWF0ZSBFbmNvdW50ZXIgKHN1Ym1pdCkiCiAgXSwKICAiZmlyc3RTZWVuSW5DeWNsZSI6IFsKICAgIDAsCiAgICAxLAogICAgNiwKICAgIDExLAogICAgMTIsCiAgICAxNCwKICAgIDE4CiAgXSwKICAiZm9jdXNMb2ciOiBbCiAgICB7CiAgICAgICJ0YWIiOiAxLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk5vdmVtYmVyIDI4dGgsIDIwMjZcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRhdGUiCiAgICB9LAogICAgewogICAgICAidGFiIjogMiwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0LAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogNSwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiSW5wYXRpZW50IFBhdGllbnQgaXMgYWRtaXR0ZWQgdG8gdGhlIGhvc1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNywKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBbWJ1bGF0b3J5IFBhdGllbnQgdmlzaXRzIGZvciBvdXRwYXRpZW50XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUeXBlIG9mIEVuY291bnRlciAoQW1idWxhdG9yeSkiCiAgICB9LAogICAgewogICAgICAidGFiIjogOCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJPYnNlcnZhdGlvbiBQYXRpZW50IGlzIHVuZGVyIG9ic2VydmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA5LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkVtZXJnZW5jeSBNYXJrIGFzIGVtZXJnZW5jeSBpZiBpbW1lZGlhdGVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDEwLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlZpcnR1YWwgVmlydHVhbC90ZWxlaGVhbHRoIGNvbnN1bHRhdGlvblwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTEsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiSG9tZSBIZWFsdGggQ2FyZSBwcm92aWRlZCBhdCBwYXRpZW50J3MgaFwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTIsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiU3RhdHVzXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJTdGF0dXMiCiAgICB9LAogICAgewogICAgICAidGFiIjogMTMsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiUHJpb3JpdHlcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlByaW9yaXR5IgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDE0LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkFkZCBUYWdzXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAxNSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJTZWxlY3QgZGVwYXJ0bWVudFwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiRGVwYXJ0bWVudHMiCiAgICB9LAogICAgewogICAgICAidGFiIjogMTYsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiTWFyayBhcyBwcmVmZXJyZWRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDE3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlJlbW92ZSBBZG1pbmlzdHJhdGlvblwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTgsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiQ2FuY2VsIEVTQ1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMTksCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltzdWJtaXRdIFwiQ3JlYXRlIEVuY291bnRlciDih6cgKyBFTlRFUlwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiQ3JlYXRlIEVuY291bnRlciAoc3VibWl0KSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyMCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJDbG9zZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMjEsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiTm92ZW1iZXIgMjh0aCwgMjAyNlwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiRGF0ZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyMiwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDIzLAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogMjQsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyNSwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDI2LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIklucGF0aWVudCBQYXRpZW50IGlzIGFkbWl0dGVkIHRvIHRoZSBob3NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDI3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkFtYnVsYXRvcnkgUGF0aWVudCB2aXNpdHMgZm9yIG91dHBhdGllbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlR5cGUgb2YgRW5jb3VudGVyIChBbWJ1bGF0b3J5KSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyOCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJPYnNlcnZhdGlvbiBQYXRpZW50IGlzIHVuZGVyIG9ic2VydmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAyOSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJFbWVyZ2VuY3kgTWFyayBhcyBlbWVyZ2VuY3kgaWYgaW1tZWRpYXRlXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzMCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJWaXJ0dWFsIFZpcnR1YWwvdGVsZWhlYWx0aCBjb25zdWx0YXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMxLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkhvbWUgSGVhbHRoIENhcmUgcHJvdmlkZWQgYXQgcGF0aWVudCdzIGhcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMyLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlN0YXR1c1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiU3RhdHVzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDMzLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlByaW9yaXR5XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJQcmlvcml0eSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzNCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBZGQgVGFnc1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogMzUsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiU2VsZWN0IGRlcGFydG1lbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRlcGFydG1lbnRzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM2LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk1hcmsgYXMgcHJlZmVycmVkXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiAzNywKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJSZW1vdmUgQWRtaW5pc3RyYXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM4LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkNhbmNlbCBFU0NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDM5LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bc3VibWl0XSBcIkNyZWF0ZSBFbmNvdW50ZXIg4oenICsgRU5URVJcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkNyZWF0ZSBFbmNvdW50ZXIgKHN1Ym1pdCkiCiAgICB9LAogICAgewogICAgICAidGFiIjogNDAsCiAgICAgICJmb2N1c2VkIjogInNwYW4gXCJcIiAob3V0c2lkZSBkaWFsb2cpIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNDEsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiTm92ZW1iZXIgMjh0aCwgMjAyNlwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiRGF0ZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0MiwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQzLAogICAgICAiZm9jdXNlZCI6ICJpbnB1dFt0aW1lXSBcIkRhdGUgYW5kIFRpbWVcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlRpbWUiCiAgICB9LAogICAgewogICAgICAidGFiIjogNDQsCiAgICAgICJmb2N1c2VkIjogImlucHV0W3RpbWVdIFwiRGF0ZSBhbmQgVGltZVwiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiVGltZSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0NSwKICAgICAgImZvY3VzZWQiOiAiaW5wdXRbdGltZV0gXCJEYXRlIGFuZCBUaW1lXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJUaW1lIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQ2LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIklucGF0aWVudCBQYXRpZW50IGlzIGFkbWl0dGVkIHRvIHRoZSBob3NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDQ3LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkFtYnVsYXRvcnkgUGF0aWVudCB2aXNpdHMgZm9yIG91dHBhdGllbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIlR5cGUgb2YgRW5jb3VudGVyIChBbWJ1bGF0b3J5KSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0OCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJPYnNlcnZhdGlvbiBQYXRpZW50IGlzIHVuZGVyIG9ic2VydmF0aW9uXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA0OSwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJFbWVyZ2VuY3kgTWFyayBhcyBlbWVyZ2VuY3kgaWYgaW1tZWRpYXRlXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1MCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJWaXJ0dWFsIFZpcnR1YWwvdGVsZWhlYWx0aCBjb25zdWx0YXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDUxLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkhvbWUgSGVhbHRoIENhcmUgcHJvdmlkZWQgYXQgcGF0aWVudCdzIGhcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDUyLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlN0YXR1c1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiAiU3RhdHVzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDUzLAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIlByaW9yaXR5XCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6ICJQcmlvcml0eSIKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1NCwKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJBZGQgVGFnc1wiIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9LAogICAgewogICAgICAidGFiIjogNTUsCiAgICAgICJmb2N1c2VkIjogImJ1dHRvbltidXR0b25dIFwiU2VsZWN0IGRlcGFydG1lbnRcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkRlcGFydG1lbnRzIgogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDU2LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIk1hcmsgYXMgcHJlZmVycmVkXCIiLAogICAgICAicmVxdWlyZWRGaWVsZCI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJ0YWIiOiA1NywKICAgICAgImZvY3VzZWQiOiAiYnV0dG9uW2J1dHRvbl0gXCJSZW1vdmUgQWRtaW5pc3RyYXRpb25cIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDU4LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bYnV0dG9uXSBcIkNhbmNlbCBFU0NcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInRhYiI6IDU5LAogICAgICAiZm9jdXNlZCI6ICJidXR0b25bc3VibWl0XSBcIkNyZWF0ZSBFbmNvdW50ZXIg4oenICsgRU5URVJcIiIsCiAgICAgICJyZXF1aXJlZEZpZWxkIjogIkNyZWF0ZSBFbmNvdW50ZXIgKHN1Ym1pdCkiCiAgICB9LAogICAgewogICAgICAidGFiIjogNjAsCiAgICAgICJmb2N1c2VkIjogInNwYW4gXCJcIiAob3V0c2lkZSBkaWFsb2cpIiwKICAgICAgInJlcXVpcmVkRmllbGQiOiBudWxsCiAgICB9CiAgXQp9"
+                    },
+                    {
+                      "name": "rejected-future-date",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\test-results\\encounter-e2e-create-a-pat-bf07d-board-validation-correction-chromium\\attachments\\rejected-future-date-c30fbd0c342ef275149b00291d73927731790c71.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-88a3072d106e12789970",
+          "file": "encounter-e2e.spec.ts",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "complete an existing encounter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9249,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T21:40:20.886Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-3c7809de2c744780a5f7",
+          "file": "encounter-e2e.spec.ts",
+          "line": 239,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "use-cases.spec.ts",
+      "file": "use-cases.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "UC1 Create Patient Encounter",
+          "file": "use-cases.spec.ts",
+          "line": 144,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC1-ALT-1 planned encounter with a future start date is accepted",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10721,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:40:30.162Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-8d08b6baf6715dbb97c3",
+              "file": "use-cases.spec.ts",
+              "line": 145,
+              "column": 3
+            },
+            {
+              "title": "UC1-ALT-2 emergency encounter with urgent priority is created",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10889,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:40:41.281Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-9f2c1ec062d32eff15fa",
+              "file": "use-cases.spec.ts",
+              "line": 171,
+              "column": 3
+            },
+            {
+              "title": "UC1-EXC-1 submitting without an encounter type is blocked",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8846,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:40:52.180Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-c5d47cf45cac81678c8c",
+              "file": "use-cases.spec.ts",
+              "line": 194,
+              "column": 3
+            },
+            {
+              "title": "UC1-EXC-2 creation is rejected at the active-encounter limit",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11463,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:41:01.035Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-91464af0b726795b3cfc",
+              "file": "use-cases.spec.ts",
+              "line": 211,
+              "column": 3
+            }
+          ]
+        },
+        {
+          "title": "UC2 Complete Patient Encounter",
+          "file": "use-cases.spec.ts",
+          "line": 241,
+          "column": 6,
+          "specs": [
+            {
+              "title": "UC2-ALT-1 inpatient encounter is routed to the discharge questionnaire",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9026,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:41:12.511Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-81672558829367a6c561",
+              "file": "use-cases.spec.ts",
+              "line": 242,
+              "column": 3
+            },
+            {
+              "title": "UC2-ALT-2 completing an encounter that already has an end time keeps that end",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9061,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:41:21.545Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-cff2eb757e49609ab731",
+              "file": "use-cases.spec.ts",
+              "line": 263,
+              "column": 3
+            },
+            {
+              "title": "UC2-EXC-1 cancelling the confirmation leaves the encounter open",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 8504,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:41:30.615Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-3c6f3278d8c1f6ce6107",
+              "file": "use-cases.spec.ts",
+              "line": 283,
+              "column": 3
+            },
+            {
+              "title": "UC2-EXC-2 a user without encounter permission cannot complete it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6889,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-27T21:41:39.125Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0ddb63d24dd243255c8f-d99fcaf9cb7b3212e948",
+              "file": "use-cases.spec.ts",
+              "line": 304,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-27T21:40:02.335Z",
+    "duration": 105281.26299999999,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

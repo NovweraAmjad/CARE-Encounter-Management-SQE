@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ok  1 [chromium] › specs\encounter-e2e.spec.ts:47:1 › create a patient encounter with keyboard validation correction (17.7s)
+  ok  2 [chromium] › specs\encounter-e2e.spec.ts:239:1 › complete an existing encounter (9.4s)
+  ok  3 [chromium] › specs\use-cases.spec.ts:145:3 › UC1 Create Patient Encounter › UC1-ALT-1 planned encounter with a future start date is accepted (10.7s)
+  ok  4 [chromium] › specs\use-cases.spec.ts:171:3 › UC1 Create Patient Encounter › UC1-ALT-2 emergency encounter with urgent priority is created (12.0s)
+  ok  5 [chromium] › specs\use-cases.spec.ts:194:3 › UC1 Create Patient Encounter › UC1-EXC-1 submitting without an encounter type is blocked (10.0s)
+  ok  6 [chromium] › specs\use-cases.spec.ts:211:3 › UC1 Create Patient Encounter › UC1-EXC-2 creation is rejected at the active-encounter limit (11.7s)
+  ok  7 [chromium] › specs\use-cases.spec.ts:242:3 › UC2 Complete Patient Encounter › UC2-ALT-1 inpatient encounter is routed to the discharge questionnaire (8.6s)
+  ok  8 [chromium] › specs\use-cases.spec.ts:263:3 › UC2 Complete Patient Encounter › UC2-ALT-2 completing an encounter that already has an end time keeps that end (9.9s)
+  ok  9 [chromium] › specs\use-cases.spec.ts:283:3 › UC2 Complete Patient Encounter › UC2-EXC-1 cancelling the confirmation leaves the encounter open (9.4s)
+  ok 10 [chromium] › specs\use-cases.spec.ts:304:3 › UC2 Complete Patient Encounter › UC2-EXC-2 a user without encounter permission cannot complete it (8.1s)
+
+  10 passed (1.8m)

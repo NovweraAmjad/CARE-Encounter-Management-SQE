@@ -1,0 +1,246 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@tailwindcss/typography": {
+      "name": "@tailwindcss/typography",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "postcss-selector-parser"
+      ],
+      "effects": [],
+      "range": "<=0.0.0-insiders.fda8ce5 || >=0.5.5",
+      "nodes": [
+        "node_modules/@tailwindcss/typography"
+      ],
+      "fixAvailable": {
+        "name": "@tailwindcss/typography",
+        "version": "0.5.4",
+        "isSemVerMajor": true
+      }
+    },
+    "@ts-morph/common": {
+      "name": "@ts-morph/common",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "minimatch"
+      ],
+      "effects": [
+        "ts-morph"
+      ],
+      "range": "0.19.0 - 0.29.0",
+      "nodes": [
+        "node_modules/@ts-morph/common"
+      ],
+      "fixAvailable": {
+        "name": "shadcn",
+        "version": "4.23.1",
+        "isSemVerMajor": false
+      }
+    },
+    "glob": {
+      "name": "glob",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244013,
+          "name": "glob",
+          "dependency": "glob",
+          "title": "Glob: AbortSignal cancellation bypass allows post-timeout filesystem traversal",
+          "url": "https://github.com/advisories/GHSA-3g3m-2fjr-6pw4",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=9.0.0 <=14.0.1"
+        },
+        "minimatch"
+      ],
+      "effects": [
+        "workbox-build"
+      ],
+      "range": "9.0.0 - 14.0.1",
+      "nodes": [
+        "node_modules/workbox-build/node_modules/glob"
+      ],
+      "fixAvailable": {
+        "name": "vite-plugin-pwa",
+        "version": "1.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "minimatch": {
+      "name": "minimatch",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1244623,
+          "name": "minimatch",
+          "dependency": "minimatch",
+          "title": "minimatch has potential denial of service via globparts amplification",
+          "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-405"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=7.0.0 <11.0.1"
+        }
+      ],
+      "effects": [
+        "@ts-morph/common",
+        "glob"
+      ],
+      "range": "7.0.0 - 11.0.0",
+      "nodes": [
+        "node_modules/@ts-morph/common/node_modules/minimatch",
+        "node_modules/workbox-build/node_modules/minimatch"
+      ],
+      "fixAvailable": {
+        "name": "vite-plugin-pwa",
+        "version": "1.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "postcss-selector-parser": {
+      "name": "postcss-selector-parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1243379,
+          "name": "postcss-selector-parser",
+          "dependency": "postcss-selector-parser",
+          "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+          "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "cvss": {
+            "score": 5.9,
+            "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<6.1.5"
+        }
+      ],
+      "effects": [
+        "@tailwindcss/typography"
+      ],
+      "range": "<6.1.5",
+      "nodes": [
+        "node_modules/postcss-selector-parser"
+      ],
+      "fixAvailable": {
+        "name": "@tailwindcss/typography",
+        "version": "0.5.4",
+        "isSemVerMajor": true
+      }
+    },
+    "shadcn": {
+      "name": "shadcn",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "ts-morph"
+      ],
+      "effects": [],
+      "range": "<=0.0.0-rc-20261007105214 || 2.0.0 - 4.23.0",
+      "nodes": [
+        "node_modules/shadcn"
+      ],
+      "fixAvailable": {
+        "name": "shadcn",
+        "version": "4.23.1",
+        "isSemVerMajor": false
+      }
+    },
+    "ts-morph": {
+      "name": "ts-morph",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@ts-morph/common"
+      ],
+      "effects": [
+        "shadcn"
+      ],
+      "range": "18.0.0 - 27.0.2",
+      "nodes": [
+        "node_modules/ts-morph"
+      ],
+      "fixAvailable": {
+        "name": "shadcn",
+        "version": "4.23.1",
+        "isSemVerMajor": false
+      }
+    },
+    "vite-plugin-pwa": {
+      "name": "vite-plugin-pwa",
+      "severity": "moderate",
+      "isDirect": true,
+      "via": [
+        "workbox-build"
+      ],
+      "effects": [],
+      "range": ">=1.2.0",
+      "nodes": [
+        "node_modules/vite-plugin-pwa"
+      ],
+      "fixAvailable": {
+        "name": "vite-plugin-pwa",
+        "version": "1.1.0",
+        "isSemVerMajor": true
+      }
+    },
+    "workbox-build": {
+      "name": "workbox-build",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "glob"
+      ],
+      "effects": [
+        "vite-plugin-pwa"
+      ],
+      "range": ">=7.4.0",
+      "nodes": [
+        "node_modules/workbox-build"
+      ],
+      "fixAvailable": {
+        "name": "vite-plugin-pwa",
+        "version": "1.1.0",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 9,
+      "high": 0,
+      "critical": 0,
+      "total": 9
+    },
+    "dependencies": {
+      "prod": 531,
+      "dev": 688,
+      "optional": 175,
+      "peer": 7,
+      "peerOptional": 0,
+      "total": 1352
+    }
+  }
+}

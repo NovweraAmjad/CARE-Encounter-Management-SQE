@@ -25,15 +25,15 @@ The PERT formula used is:
 
 | Activity | O (hours) | M (hours) | P (hours) | PERT E (hours) | Estimated effort | Actual effort | Variance | Status |
 |---|---:|---:|---:|---:|---:|---|---|---|
-| Unit test design and implementation | 6 | 10 | 18 | 10.67 | 10.67 hours | Pending | Pending | Pending |
-| API and integration test design and implementation | 8 | 14 | 24 | 14.67 | 14.67 hours | Pending | Pending | Pending |
-| Browser Playwright E2E test implementation | 7 | 12 | 22 | 12.83 | 12.83 hours | Pending | Pending | Pending |
-| Test data and fixture generation | 4 | 7 | 13 | 7.50 | 7.50 hours | Pending | Pending | Pending |
-| Mutation testing setup and execution | 5 | 9 | 16 | 9.50 | 9.50 hours | Pending | Pending | Pending |
-| CI/CD workflow and quality-gate setup | 5 | 8 | 15 | 8.67 | 8.67 hours | Pending | Pending | Pending |
-| Defect investigation and analysis | 4 | 8 | 15 | 8.50 | 8.50 hours | Pending | Pending | Pending |
-| Test execution and reporting | 5 | 9 | 16 | 9.50 | 9.50 hours | Pending | Pending | Pending |
-| **Total** | **44** | **77** | **139** | **82.33** | **82.33 hours** | **Pending** | **Pending** | **Pending** |
+| Unit test design and implementation | 6 | 10 | 18 | 10.67 | 10.67 hours | *author to record* | *after actuals* | Done |
+| API and integration test design and implementation | 8 | 14 | 24 | 14.67 | 14.67 hours | *author to record* | *after actuals* | Done |
+| Browser Playwright E2E test implementation | 7 | 12 | 22 | 12.83 | 12.83 hours | *author to record* | *after actuals* | Done |
+| Test data and fixture generation | 4 | 7 | 13 | 7.50 | 7.50 hours | *author to record* | *after actuals* | Done |
+| Mutation testing setup and execution | 5 | 9 | 16 | 9.50 | 9.50 hours | *author to record* | *after actuals* | Done |
+| CI/CD workflow and quality-gate setup | 5 | 8 | 15 | 8.67 | 8.67 hours | *author to record* | *after actuals* | Done |
+| Defect investigation and analysis | 4 | 8 | 15 | 8.50 | 8.50 hours | *author to record* | *after actuals* | Done |
+| Test execution and reporting | 5 | 9 | 16 | 9.50 | 9.50 hours | *author to record* | *after actuals* | Done |
+| **Total** | **44** | **77** | **139** | **82.33** | **82.33 hours** | ***author to record*** | ***after actuals*** | **Done (28 Nov 2026)** |
 
 ## 3. PERT Calculations
 
@@ -90,3 +90,20 @@ The PERT total is approximately **82.33 person-hours**. This is a planning estim
 - The active encounter limit uses the documented default of `5`, while restart-age tests use an explicitly configured test value.
 - Estimates assume that a student can investigate setup failures and small application defects as part of testing, but they do not include major application reimplementation.
 - Actual effort and variance must be completed later from execution records only.
+
+## 6. Comparison with Actual Effort (end of project)
+
+All eight activities were completed by 28 Nov 2026. **Actual hours** must be entered by the author from their own time records. They can't be derived from git history or tool logs, so they are not estimated here.
+
+**Variance:** Actual − PERT E (positive means over the estimate).
+
+Scope changes that are known, with evidence, to have **increased** effort beyond the estimate:
+
+| Activity | Estimate assumption | What actually happened | Evidence |
+|---|---|---|---|
+| Mutation testing | One working campaign | 4 harness defects (no score, then false verdicts), root-caused and fixed; 3 full re-runs; 146 survivors analysed; 16 tests added | `testing/evidence/mutation-analysis.md` §2–3; RCA-3 |
+| Browser E2E | 2 workflow tests | 10 use-case flows (2 main + 4 alternative + 4 exception) | `testing/e2e/specs/use-cases.spec.ts` |
+| CI/CD | Existing workflow | SonarQube moved into CI; fresh-DB seeding; frontend pinned to baseline; patch application | `.github/workflows/care-quality-gate.yml` |
+| Defect analysis | Estimate covered RCA only | 20 defects, 3 RCAs, Pareto, 20 GitHub issue bodies | `docs/defects/` |
+
+These are qualitative signals of over-run. Record the measured variance in the table above once the actual hours are entered.

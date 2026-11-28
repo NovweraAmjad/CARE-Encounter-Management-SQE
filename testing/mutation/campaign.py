@@ -349,7 +349,10 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="care-mutation-") as temp_name:
         temp = Path(temp_name)
         isolated_care = temp / "care"
-        isolated_testing = temp / "care_testing"
+        # The tests live INSIDE the project copy: mutmut runs pytest from its
+        # mutants/ copy and names tests relative to that root, so tests outside
+        # it cannot be re-selected per mutant ("file or directory not found").
+        isolated_testing = isolated_care / "care_testing"
         shutil.copytree(source_root, isolated_care)
         shutil.copytree(testing_root, isolated_testing)
 
@@ -361,11 +364,23 @@ def main() -> int:
                     "source_paths =",
                     "    care/emr/api/viewsets/encounter.py",
                     "    care/emr/resources/encounter/spec.py",
+                    # mutmut copies only source_paths into mutants/; Django also
+                    # needs the settings package, the rest of the app and tests.
+                    "also_copy =",
+                    "    config",
+                    "    care",
+                    "    plugs",
+                    "    manage.py",
+                    "    plug_config.py",
+                    "    install_plugins.py",
+                    "    care_testing",
                     "pytest_add_cli_args =",
                     "    -q",
+                    "    -p",
+                    "    no:cacheprovider",
                     "pytest_add_cli_args_test_selection =",
-                    f"    {isolated_testing / 'unit'}",
-                    f"    {isolated_testing / 'integration'}",
+                    "    care_testing/unit",
+                    "    care_testing/integration",
                     "process_isolation = fork",
                     "debug = true",
                     "log_to_file = true",
@@ -380,14 +395,17 @@ def main() -> int:
 
         env = {
             **os.environ,
-            "PYTHONPATH": f"{temp}:{isolated_care}:{isolated_testing}",
+            "PYTHONPATH": f"{isolated_care}",
             "DJANGO_SETTINGS_MODULE": "config.settings.test",
         }
+        # mutmut must import the MUTATED copy in mutants/, so it gets no extra
+        # PYTHONPATH that could shadow it with the original sources.
+        mutmut_env = {k: v for k, v in env.items() if k != "PYTHONPATH"}
 
         probe = subprocess.run(
             [args.mutmut_bin, "results"],
             cwd=isolated_care,
-            env=env,
+            env=mutmut_env,
             capture_output=True,
             text=True,
         )
@@ -671,12 +689,15 @@ def main() -> int:
 
         try:
             standard = subprocess.run(
-                [args.mutmut_bin, "run"],
+                # One worker: Django TestCases share one test database and
+                # CARE's Redis encounter-create lock, so parallel workers
+                # interfere and produce false kills.
+                [args.mutmut_bin, "run", "--max-children", "1"],
                 cwd=isolated_care,
-                env=env,
+                env=mutmut_env,
                 capture_output=True,
                 text=True,
-                timeout=3600,
+                timeout=7200,
             )
         except subprocess.TimeoutExpired as exc:
             write_mutation_results(
@@ -733,7 +754,7 @@ def main() -> int:
         export = subprocess.run(
             [args.mutmut_bin, "export-cicd-stats"],
             cwd=isolated_care,
-            env=env,
+            env=mutmut_env,
             capture_output=True,
             text=True,
         )
@@ -826,7 +847,7 @@ def main() -> int:
         survivor_probe = subprocess.run(
             [args.mutmut_bin, "results"],
             cwd=isolated_care,
-            env=env,
+            env=mutmut_env,
             capture_output=True,
             text=True,
         )

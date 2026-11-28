@@ -1,0 +1,20 @@
+{
+  "phase": "before",
+  "generated": "2026-11-27T20:55:06.254Z",
+  "field": "Create Encounter > Date and Time > time input",
+  "accessible_name": null,
+  "before_submit": {
+    "id": null,
+    "labelledBy": null,
+    "ariaInvalid": null,
+    "describedByText": []
+  },
+  "after_rejected_submit": {
+    "id": null,
+    "labelledBy": null,
+    "ariaInvalid": null,
+    "describedByText": []
+  },
+  "error_announced_with_field": false,
+  "create_requests_sent": 0
+}

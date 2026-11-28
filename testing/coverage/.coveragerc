@@ -1,9 +1,16 @@
 [run]
 branch = True
-source =
-    care.emr.api.viewsets.encounter
-    care.emr.resources.encounter.spec
-    care.emr.resources.base
+# File patterns rather than `source = <module names>`: naming modules in
+# `source` makes coverage resolve them through the import system before Django
+# starts, which changed import order and broke a pydantic schema build when the
+# authorization module was added (SchemaError: 'le' must be coercible to a Decimal).
+# (`include` is ignored when `source` is set, so `source` is not used.)
+include =
+    */care/emr/api/viewsets/encounter.py
+    */care/emr/resources/encounter/spec.py
+    */care/emr/resources/encounter/constants.py
+    */care/security/authorization/encounter.py
+    */care/emr/resources/base.py
 
 [report]
 show_missing = True

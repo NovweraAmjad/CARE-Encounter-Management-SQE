@@ -1,0 +1,26 @@
+{
+  "generated": "2026-11-27T20:25:06.915Z",
+  "account": "care-doctor (synthetic fixture account)",
+  "source": "care/config/auth_views.py LogoutView (cache blacklist, 1800 s) + config/authentication.py CustomJWTAuthentication",
+  "steps": [
+    {
+      "step": "GET /api/v1/users/getcurrentuser/ with new access token",
+      "status": 200
+    },
+    {
+      "step": "POST /api/v1/auth/logout/ {access, refresh}",
+      "status": 200
+    },
+    {
+      "step": "GET /api/v1/users/getcurrentuser/ with the same access token",
+      "status": 403,
+      "body": "{\"detail\":\"Invalid Token\",\"code\":\"token_not_valid\"}"
+    },
+    {
+      "step": "POST /api/v1/auth/token/refresh/ with the same refresh token",
+      "status": 403,
+      "body": "{\"detail\":\"Invalid Token\"}"
+    }
+  ],
+  "note": "CARE answers revoked tokens with HTTP 403 (not 401): CustomJWTAuthentication.authenticate_header in config/authentication.py changes the default challenge, so DRF returns 403."
+}

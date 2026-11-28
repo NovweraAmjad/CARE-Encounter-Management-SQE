@@ -1,0 +1,14 @@
+{
+  "name": "care-section4-security",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Section 4 defensive security assessment: Playwright role checks, ZAP passive run, dependency audit",
+  "scripts": {
+    "test:authz": "playwright test --config=playwright.security.config.ts",
+    "test:zap-workflows": "playwright test --config=playwright.zap.config.ts",
+    "audit:npm": "node dependency-audit/run-npm-audit.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-11-27T14:05:09.455Z",
+  "routes": [
+    "POST /api/v1/encounter/",
+    "PUT /api/v1/encounter/{id}/",
+    "GET /api/v1/encounter/{id}/"
+  ],
+  "roleAccountEvidence": {
+    "careDoctor": "synthetic staff account",
+    "careVolunteer": "synthetic volunteer account"
+  },
+  "checks": [
+    {
+      "role": "care-doctor",
+      "action": "Create encounter",
+      "expected": "Allowed",
+      "observed_status": 200,
+      "observed": "Allowed",
+      "evidence": "POST /api/v1/encounter/ returned 200 or 201"
+    },
+    {
+      "role": "care-volunteer",
+      "action": "Create encounter",
+      "expected": "Denied",
+      "observed_status": 403,
+      "observed": "Denied",
+      "evidence": "POST /api/v1/encounter/ returned 403 or 404"
+    },
+    {
+      "role": "care-doctor",
+      "action": "Update encounter",
+      "expected": "Allowed",
+      "observed_status": 200,
+      "observed": "Allowed",
+      "evidence": "PUT /api/v1/encounter/{id}/ returned 200 or 202"
+    },
+    {
+      "role": "care-volunteer",
+      "action": "Update encounter",
+      "expected": "Denied",
+      "observed_status": 403,
+      "observed": "Denied",
+      "evidence": "PUT /api/v1/encounter/{id}/ returned 403 or 404"
+    },
+    {
+      "role": "care-doctor",
+      "action": "Read encounter",
+      "expected": "Allowed",
+      "observed_status": 200,
+      "observed": "Allowed",
+      "evidence": "GET /api/v1/encounter/{id}/ returned the matching encounter ID"
+    }
+  ]
+}

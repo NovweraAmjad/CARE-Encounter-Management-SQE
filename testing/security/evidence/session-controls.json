@@ -1,0 +1,47 @@
+{
+  "generated": "2026-11-27T20:25:06.066Z",
+  "account": "care-doctor (synthetic fixture account)",
+  "login_request": {
+    "authorization_header_sent": false,
+    "cookie_header_sent": false
+  },
+  "login_response_headers": {
+    "content-security-policy": null,
+    "strict-transport-security": null,
+    "x-frame-options": "DENY",
+    "x-content-type-options": "nosniff",
+    "referrer-policy": "same-origin",
+    "cross-origin-opener-policy": "same-origin",
+    "access-control-allow-origin": "*",
+    "access-control-allow-credentials": null,
+    "cache-control": null,
+    "set-cookie": null
+  },
+  "spa_document_headers": {
+    "content-security-policy": null,
+    "strict-transport-security": null,
+    "x-frame-options": null,
+    "x-content-type-options": null,
+    "referrer-policy": null,
+    "cross-origin-opener-policy": null,
+    "access-control-allow-origin": null,
+    "access-control-allow-credentials": null,
+    "cache-control": "no-cache",
+    "set-cookie": null
+  },
+  "browser_cookies": [],
+  "credential_keys_in_localStorage": [
+    {
+      "key": "care_refresh_token",
+      "length": 347,
+      "looks_like_jwt": true
+    },
+    {
+      "key": "care_access_token",
+      "length": 345,
+      "looks_like_jwt": true
+    }
+  ],
+  "access_token_readable_by_page_javascript": true,
+  "token_persists_after_reload": true
+}

@@ -1,0 +1,220 @@
+{
+  "generated": "2026-11-27T20:56:27.548Z",
+  "before": "2026-11-27T20:46:58.423Z",
+  "after": "2026-11-27T20:52:34.341Z",
+  "scores": [
+    {
+      "screen": "create",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "accessibility",
+      "before": 0.96,
+      "after": 0.96
+    },
+    {
+      "screen": "create",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "best-practices",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "screen": "create",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "seo",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "screen": "create",
+      "run": "snapshot",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "accessibility",
+      "before": 0.94,
+      "after": 0.99
+    },
+    {
+      "screen": "create",
+      "run": "snapshot",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "best-practices",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "screen": "create",
+      "run": "snapshot",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patients/home?phone_number=%2B916244366823&year_of_birth=1980&partial_id=a3f7d",
+      "category": "seo",
+      "before": 1,
+      "after": 1
+    },
+    {
+      "screen": "complete",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patient/a3f7d15b-0208-4a17-ac48-7bfa963ab1f9/encounter/c684b393-577b-4dc5-bf74-37aa6641b5e3/updates",
+      "category": "accessibility",
+      "before": 0.96,
+      "after": 0.96
+    },
+    {
+      "screen": "complete",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patient/a3f7d15b-0208-4a17-ac48-7bfa963ab1f9/encounter/c684b393-577b-4dc5-bf74-37aa6641b5e3/updates",
+      "category": "best-practices",
+      "before": 0.96,
+      "after": 0.96
+    },
+    {
+      "screen": "complete",
+      "run": "navigation",
+      "url": "http://127.0.0.1:4000/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/patient/a3f7d15b-0208-4a17-ac48-7bfa963ab1f9/encounter/c684b393-577b-4dc5-bf74-37aa6641b5e3/updates",
+      "category": "seo",
+      "before": 1,
+      "after": 1
+    }
+  ],
+  "axe": [
+    {
+      "screen": "create",
+      "before": 2,
+      "after": 1,
+      "beforeRules": [
+        "label",
+        "svg-img-alt"
+      ],
+      "afterRules": [
+        "svg-img-alt"
+      ]
+    },
+    {
+      "screen": "complete",
+      "before": 2,
+      "after": 2,
+      "beforeRules": [
+        "aria-command-name",
+        "label-content-name-mismatch"
+      ],
+      "afterRules": [
+        "aria-command-name",
+        "label-content-name-mismatch"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "screen": "complete",
+      "rule": "aria-command-name",
+      "detectedBy": [
+        "Lighthouse (navigation)",
+        "axe-core"
+      ],
+      "before": "present",
+      "after": "present",
+      "status": "remaining",
+      "impact": "serious",
+      "elements_before": [
+        "#base-ui-_r_m_",
+        "main#pages > div.flex > div.contents > span#base-ui-_r_o_"
+      ]
+    },
+    {
+      "screen": "complete",
+      "rule": "errors-in-console",
+      "detectedBy": [
+        "Lighthouse (navigation)"
+      ],
+      "before": "present",
+      "after": "present",
+      "status": "remaining",
+      "impact": null,
+      "elements_before": [
+        "Failed to load resource: the server responded with a status of 400 (Bad Request) http://localhost:9000/api/v1/facility/209d3774-d521-4d96-b1d1-d3d7db4ab204/account/default_account/"
+      ]
+    },
+    {
+      "screen": "complete",
+      "rule": "label-content-name-mismatch",
+      "detectedBy": [
+        "Lighthouse (navigation)",
+        "axe-core"
+      ],
+      "before": "present",
+      "after": "present",
+      "status": "remaining",
+      "impact": "serious",
+      "elements_before": [
+        "a[aria-label=\"Add Allergy\"]",
+        "a[aria-label=\"Service Request\"]",
+        "a[aria-label=\"Add Medication\"]",
+        "#base-ui-_r_1a_",
+        "a[aria-label=\"Add Symptom\"]",
+        "a[aria-label=\"Add Diagnosis\"]",
+        "a[aria-label=\"Add Procedure\"]",
+        "#base-ui-_r_1c_",
+        "div.group/tabs > div.min-w-0 > div.lg:hidden > button#base-ui-_r_t_",
+        "div.flex > div.@container > div.grid > a.inline-flex"
+      ]
+    },
+    {
+      "screen": "create",
+      "rule": "aria-prohibited-attr",
+      "detectedBy": [
+        "Lighthouse (navigation)"
+      ],
+      "before": "present",
+      "after": "present",
+      "status": "remaining",
+      "impact": null,
+      "elements_before": [
+        "div.relative > div.flex > div.flex > div.relative"
+      ]
+    },
+    {
+      "screen": "create",
+      "rule": "label",
+      "detectedBy": [
+        "Lighthouse (snapshot)",
+        "axe-core"
+      ],
+      "before": "present",
+      "after": "absent",
+      "status": "FIXED",
+      "impact": "critical",
+      "elements_before": [
+        ".file\\:text-foreground",
+        "div.space-y-5 > div.grid > div.flex > input.dark:bg-input/30"
+      ]
+    },
+    {
+      "screen": "create",
+      "rule": "svg-img-alt",
+      "detectedBy": [
+        "Lighthouse (snapshot)",
+        "axe-core"
+      ],
+      "before": "present",
+      "after": "present",
+      "status": "remaining",
+      "impact": "serious",
+      "elements_before": [
+        "#base-ui-_r_31_ > .care-l-calender.care-svg-icon__baseline.mr-0",
+        "div.grid > div.flex > button#base-ui-_r_31_ > svg.care-l-calender"
+      ]
+    }
+  ],
+  "devArtifacts": [
+    {
+      "screen": "create",
+      "id": "valid-source-maps",
+      "run": "navigation"
+    },
+    {
+      "screen": "complete",
+      "id": "valid-source-maps",
+      "run": "navigation"
+    }
+  ]
+}

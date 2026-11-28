@@ -43,11 +43,12 @@ The test plan is based on the functional requirements, business rules and test b
 
 A risk-based testing approach will be followed. Testing depth and techniques will depend on the likelihood and impact of failure.
 
-| Risk level | Testing approach |
-|---|---|
-| High | Extensive unit, branch, API, boundary, negative and end-to-end testing. |
-| Medium | Functional, integration, equivalence partitioning and selected boundary tests. |
-| Low | Basic functional, regression and smoke testing. |
+| Risk level (score) | Testing approach and depth | Applied to (risk register) |
+|---|---|---|
+| Critical (16–25) | All of High, plus role-by-endpoint authorization matrix, passive security scan, dependency audit, and a dedicated exit criterion | PR-08 (authorization) → Section 4 access matrix (10 checks), ZAP, pip-audit, exit criterion 2; PJ-02 (schedule) → weekly control actions, exit criterion 3 |
+| High (10–15) | 100% statement/branch on the rule function, MCC + MC/DC, 3-point BVA, decision table, state transitions, negative and repeated-request API tests, browser alternative/exception flows, mutation testing | PR-02, PR-04, PR-05, PR-06, PR-07 → BR-ENC-03/04/05 decision tables, `E2E-ENC-007/008`, mutmut |
+| Medium (5–9) | Equivalence partitioning, selected boundaries, integration tests, one browser flow | PR-01, PR-03, PR-09, PR-10, PJ-01 → EP classes from the generator, `E2E-ENC-003..006` |
+| Low (1–4) | Smoke and regression only | — (no Low risks registered) |
 
 The following test levels will be performed:
 
@@ -85,6 +86,8 @@ For this individual assignment, these responsibilities are performed by the proj
 | Container environment | Docker Desktop |
 | API testing | Python Requests / pytest |
 
+Measured tool versions (28 Nov 2026): Python 3.13.18 in the backend container, Django 6.0, coverage.py 7.13.0, pytest 9.2.0, mutmut 3.8.1, Node 24.18.0, Playwright 1.65.1 (Chromium), Lighthouse 13.6.0, axe-core 4.14.1, OWASP ZAP 2.17.0, pip-audit 2.10.1.
+
 The backend and frontend source repositories will be checked out at their documented baseline commits during CI execution.
 
 ## 7. Test Data
@@ -106,18 +109,18 @@ No real patient-identifiable production data will be used.
 
 ## 8. Test Schedule
 
-| Phase | Planned activity |
-|---|---|
-| Phase 1 | Test planning, requirements analysis and risk identification |
-| Phase 2 | Unit test design and implementation |
-| Phase 3 | API and integration test implementation |
-| Phase 4 | Browser end-to-end automation |
-| Phase 5 | Test data generator and OpenAPI specification |
-| Phase 6 | Mutation testing and defect analysis |
-| Phase 7 | CI quality-gate configuration |
-| Phase 8 | Regression testing and final reporting |
+| Phase | Planned activity | Actual dates (from git history and evidence timestamps) | Status 28 Nov 2026 |
+|---|---|---|---|
+| Phase 1 | Test planning, requirements analysis and risk identification | 26 Nov 2026 (commit `ade9ab0`) | Done |
+| Phase 2 | Unit test design and implementation | 26–27 Nov | Done (18 unit tests) |
+| Phase 3 | API and integration test implementation | 26–27 Nov | Done (30 integration tests) |
+| Phase 4 | Browser end-to-end automation | 27–28 Nov | Done (2 main + 8 alternative/exception flows) |
+| Phase 5 | Test data generator and OpenAPI specification | 27 Nov | Done (3 generator tests, two-constraint regeneration) |
+| Phase 6 | Mutation testing and defect analysis | 27–28 Nov | Done locally; see completion report |
+| Phase 7 | CI quality-gate configuration | 27 Nov – open | **Not passed on GitHub** (see completion report) |
+| Phase 8 | Regression testing and final reporting | 28 Nov | Done locally |
 
-Actual dates and effort will be recorded as work progresses.
+Actual effort in hours is recorded in `docs/test-estimation.md` once the author confirms it; it can't be derived from git history.
 
 ## 9. Entry Criteria
 
@@ -200,3 +203,12 @@ Weekly progress reports and a final test completion report will document results
 - CI/CD workflow and quality-gate evidence.
 - Weekly progress reports.
 - Final test completion report.
+
+## 16. Plan Status and Revision History
+
+| Version | Date | Change |
+|---|---|---|
+| 1.0 | 26 Nov 2026 | Initial plan (Part 1 documentation, commit `ade9ab0`) |
+| 1.1 | 28 Nov 2026 | Added Critical risk level to the approach table and mapped every registered risk to a technique; recorded tool versions; recorded actual phase dates; added links to the defect register, RCA, weekly progress report and completion report |
+
+Current status: see `docs/reports/weekly-progress-week-48.md` and `docs/reports/test-completion-report.md`. Exit criteria are evaluated one by one in the completion report.

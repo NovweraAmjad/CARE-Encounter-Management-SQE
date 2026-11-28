@@ -1,0 +1,204 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=../security/playwright.zap.config.ts"
+    ],
+    "configFile": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\security\\playwright.zap.config.ts",
+    "rootDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/security/zap/reports/playwright-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/lenovo/Desktop/sem5/Software Quality Engineering/Project/testing/e2e/specs",
+        "testIgnore": [],
+        "testMatch": [
+          "encounter-e2e.spec.ts"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\security\\zap\\reports\\playwright-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "chromium",
+        "testDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "snapshotDir": "C:\\Users\\lenovo\\Desktop\\sem5\\Software Quality Engineering\\Project\\testing\\e2e\\specs",
+        "testIgnore": [],
+        "testMatch": "encounter-e2e.spec.ts",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://localhost:4000",
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "video": "off",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "proxy": {
+              "server": "http://127.0.0.1:8090"
+            },
+            "args": [
+              "--proxy-bypass-list=<-loopback>"
+            ]
+          },
+          "browserName": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "chromium"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "zap/reports/playwright-workflows-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run local -- --host 127.0.0.1 --port 4000",
+      "cwd": "../../care_fe",
+      "url": "http://localhost:4000/login",
+      "reuseExistingServer": true,
+      "timeout": 120000,
+      "env": {
+        "REACT_CARE_API_URL": "http://127.0.0.1:9000"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "encounter-e2e.spec.ts",
+      "file": "encounter-e2e.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "create a patient encounter with keyboard validation correction",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28837,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T20:13:46.349Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-88a3072d106e12789970",
+          "file": "encounter-e2e.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "complete an existing encounter",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "chromium",
+              "projectName": "chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20051,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-27T20:14:15.481Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ae663e7e46c3f20bc2fa-3c7809de2c744780a5f7",
+          "file": "encounter-e2e.spec.ts",
+          "line": 91,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-27T20:13:45.862Z",
+    "duration": 87932.591,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

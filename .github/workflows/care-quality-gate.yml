@@ -1,5 +1,9 @@
 name: CARE Encounter Quality Gate
 
+# Runs on every pull request and on pushes to the protected branches.
+# Every job must pass; branch protection on `main` lists all three jobs as
+# required status checks, so a failing job blocks merging (and therefore
+# deployment). No step is allowed to fail silently (no continue-on-error, no OR-true).
 on:
   pull_request:
     branches:
@@ -9,14 +13,20 @@ on:
     branches:
       - develop
       - main
+      - "sqe/**"
 
 permissions:
   contents: read
+
+env:
+  CARE_BACKEND_REF: ddfd840dbe314b4e53d2a719d2138324d970634b
+  CARE_FRONTEND_REF: 5e02f9aa4f690e08375da310511e14606985f788
 
 jobs:
   backend-and-mutation:
     name: Python tests, coverage and mutation
     runs-on: ubuntu-latest
+    timeout-minutes: 180
 
     steps:
       - name: Checkout
@@ -26,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ohcnetwork/care
-          ref: ddfd840dbe314b4e53d2a719d2138324d970634b
+          ref: ${{ env.CARE_BACKEND_REF }}
           path: care
           persist-credentials: false
 
@@ -42,9 +52,8 @@ jobs:
           mkdir -p testing/mutation/results
 
       - name: Start CARE Docker services
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml up -d --build --wait
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml up -d --build --wait
 
       - name: Install mutation tools
         working-directory: care
@@ -52,32 +61,28 @@ jobs:
           docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend /.venv/bin/pip install mutmut==3.8.1 pytest==9.2.0
 
       - name: Load synthetic fixtures
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py load_fixtures'
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py load_fixtures'
 
       - name: Copy independent testing package
         run: |
           docker cp testing/. care-backend-1:/tmp/care_testing/
 
       - name: Run Python unit, integration and generator tests
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1'
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1'
 
       - name: Run coverage and selected-function gate
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.xml'
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json ../testing/coverage/coverage.json
-          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml ../testing/coverage/coverage.xml
-          python ../testing/mutation/coverage_quality_gate.py
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc 'cd /app && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage erase && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/coverage run --rcfile=/tmp/care_testing/coverage/.coveragerc manage.py test care_testing.unit care_testing.integration care_testing.generators --keepdb --verbosity=1 && /.venv/bin/coverage json --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.json && /.venv/bin/coverage xml --rcfile=/tmp/care_testing/coverage/.coveragerc -o /tmp/care_testing/coverage/coverage.xml'
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.json testing/coverage/coverage.json
+          docker cp care-backend-1:/tmp/care_testing/coverage/coverage.xml testing/coverage/coverage.xml
+          python testing/mutation/coverage_quality_gate.py
 
       - name: Run mutmut campaign
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'mkdir -p /tmp/care_mutation_workspace && cd /tmp/care_mutation_workspace && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python /tmp/care_testing/mutation/campaign.py --source-root /app --testing-root /tmp/care_testing --mutmut-bin /.venv/bin/mutmut --python-bin /.venv/bin/python --results-dir /tmp/care_testing/mutation/results'
-          docker cp care-backend-1:/tmp/care_testing/mutation/results/. ../testing/mutation/results/
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc 'mkdir -p /tmp/care_mutation_workspace && cd /tmp/care_mutation_workspace && PYTHONPATH=/tmp:/app DJANGO_SETTINGS_MODULE=config.settings.test /.venv/bin/python /tmp/care_testing/mutation/campaign.py --source-root /app --testing-root /tmp/care_testing --mutmut-bin /.venv/bin/mutmut --python-bin /.venv/bin/python --results-dir /tmp/care_testing/mutation/results'
+          docker cp care-backend-1:/tmp/care_testing/mutation/results/. testing/mutation/results/
 
       - name: Enforce mutation threshold
         run: |
@@ -95,33 +100,64 @@ jobs:
           if-no-files-found: warn
 
   frontend-playwright:
-    name: Frontend Playwright
+    name: Frontend rules, Playwright E2E and security checks
     runs-on: ubuntu-latest
+    timeout-minutes: 90
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Checkout CARE backend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care
+          ref: ${{ env.CARE_BACKEND_REF }}
+          path: care
+          persist-credentials: false
+
+      - name: Checkout CARE frontend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care_fe
+          ref: ${{ env.CARE_FRONTEND_REF }}
+          path: care_fe
+          persist-credentials: false
+
+      - name: Apply the Section 3 accessibility fix
+        run: git -C care_fe apply --verbose ../testing/accessibility/after/care_fe-create-encounter-fix.patch
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "24"
           cache: npm
-          cache-dependency-path: care_fe/package-lock.json
+          cache-dependency-path: |
+            care_fe/package-lock.json
+            testing/e2e/package-lock.json
+            testing/security/package-lock.json
 
       - name: Start CARE Docker services
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml up -d --build --wait
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml up -d --build --wait
 
       - name: Load synthetic fixtures
-        working-directory: care
         run: |
-          docker compose -f docker-compose.yaml -f docker-compose.local.yaml exec -T backend bash -lc 'python manage.py load_fixtures'
+          docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py load_fixtures'
+
+      - name: Export a synthetic fixture patient for E2E seeding
+        run: |
+          PATIENT=$(docker compose -f care/docker-compose.yaml -f care/docker-compose.local.yaml exec -T backend bash -lc '/.venv/bin/python manage.py shell -c "from care.emr.models import Patient; print(Patient.objects.order_by(\"id\").first().external_id)"' | tail -1 | tr -d '\r')
+          test -n "$PATIENT"
+          echo "E2E_PATIENT_ID=$PATIENT" >> "$GITHUB_ENV"
 
       - name: Install frontend dependencies
         working-directory: care_fe
         run: npm ci
+
+      - name: Frontend business-rule unit tests
+        working-directory: care_fe
+        run: node --import tsx --test ../testing/frontend/test_encounter_frontend_rules.ts
 
       - name: Start frontend
         working-directory: care_fe
@@ -139,51 +175,124 @@ jobs:
 
       - name: Wait for CARE frontend
         run: |
-          for i in $(seq 1 60); do
-            if curl --fail --silent http://127.0.0.1:4000/ >/dev/null; then exit 0; fi
+          for i in $(seq 1 90); do
+            if curl --fail --silent http://127.0.0.1:4000/login >/dev/null; then exit 0; fi
             sleep 2
           done
           cat /tmp/care_fe.log
           exit 1
 
-      - name: Run Playwright Chromium suite
+      - name: Run Playwright use-case suite (main, alternative and exception flows)
         working-directory: testing/e2e
         run: npx playwright test --project=chromium
+
+      - name: Run Section 4 authorization and session checks
+        working-directory: testing/security
+        run: |
+          npm ci
+          npx playwright test --config=playwright.security.config.ts
 
       - name: Run Lighthouse
         working-directory: testing/e2e
         run: node lighthouse-run.js http://127.0.0.1:4000/login
 
+      - name: Upload browser test evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: care-browser-evidence
+          path: |
+            testing/e2e/reports/
+            testing/security/evidence/
+          if-no-files-found: warn
+
   sonar:
     name: SonarQube quality gate
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     needs:
       - backend-and-mutation
       - frontend-playwright
 
+    # A fresh SonarQube for every run; the gate is created from
+    # testing/sonar/quality-gate.json (conditions on overall code, so it can
+    # fail on a first analysis).
+    services:
+      sonarqube:
+        image: sonarqube:community
+        ports:
+          - 9000:9000
+        env:
+          SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Download quality evidence
+      - name: Checkout CARE backend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care
+          ref: ${{ env.CARE_BACKEND_REF }}
+          path: care
+          persist-credentials: false
+
+      - name: Checkout CARE frontend baseline
+        uses: actions/checkout@v4
+        with:
+          repository: ohcnetwork/care_fe
+          ref: ${{ env.CARE_FRONTEND_REF }}
+          path: care_fe
+          persist-credentials: false
+
+      - name: Apply the Section 3 accessibility fix
+        run: git -C care_fe apply ../testing/accessibility/after/care_fe-create-encounter-fix.patch
+
+      - name: Download coverage evidence
         uses: actions/download-artifact@v4
         with:
           name: care-quality-evidence
-          path: .
+          path: testing
 
-      - name: Sonar scan
-        uses: SonarSource/sonarqube-scan-action@v5
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          args: >
-            -Dsonar.python.coverage.reportPaths=testing/coverage/coverage.xml
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          node-version: "24"
 
-      - name: Sonar quality gate
-        uses: SonarSource/sonarqube-quality-gate-action@v2
+      - name: Scan and enforce the quality gate
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: http://localhost:9000
+        run: bash testing/sonar/sonar-gate.sh
+
+      - name: Upload SonarQube measures
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sonarqube-measures
+          path: testing/sonar/results/
+          if-no-files-found: warn
+
+  deploy-evidence:
+    # "Deployment" of this project = publishing the verified quality evidence.
+    # It needs every gate job, so any failing gate blocks it; it only runs for
+    # pushes to main (i.e. after a pull request has been merged).
+    name: Deploy verified evidence (main only)
+    runs-on: ubuntu-latest
+    needs:
+      - backend-and-mutation
+      - frontend-playwright
+      - sonar
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download gate evidence
+        uses: actions/download-artifact@v4
+        with:
+          path: evidence
+
+      - name: Publish release evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-evidence-${{ github.sha }}
+          path: evidence/
+          retention-days: 90

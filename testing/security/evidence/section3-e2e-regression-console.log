@@ -1,0 +1,6 @@
+Running 2 tests using 1 worker
+
+  ok 1 [chromium] › specs\encounter-e2e.spec.ts:27:1 › create a patient encounter with keyboard validation correction (28.5s)
+  ok 2 [chromium] › specs\encounter-e2e.spec.ts:91:1 › complete an existing encounter (20.5s)
+
+  2 passed (50.7s)
